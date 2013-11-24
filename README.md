@@ -25,14 +25,20 @@ __________
 - Deve ser possível inserir e actualizar encomendas
 - Para ajudar o cliente deve-se fornecer uma lista de sugestões através das suas compras habituais e/ou últimas pesquisas
 - Inserir a primeira parte do trabalho como Widget na loja actual
+
+
 ## ShippingAll ##
 - ShippingAll é um WebService que deve ser implementado
 - O WebService deve ter uma regra de calculo do preço de envio
 - O WebService deve ter uma função para o envio da encomenda
+
+
 ## LogisticaSA ##
 - LogisticaSA é um WebService que deve ser implementado
 - O WebService deve ter uma regra de calculo do preço de envio
 - O WebService deve ter uma função para o envio da encomenda
+
+
 ## AnalisaMercados ##
 - AnalisaMercados é um WebService que deve ser implementado
 - Deve analisar o preço dos livros de outras empresas, comprar esse preço ao catálogo da empresa IDEIBiblio e dizer quais as alterações de preços que devem ser feitas
