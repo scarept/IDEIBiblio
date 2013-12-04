@@ -245,6 +245,18 @@
     <Compile Include="Migrations\201312032333323_changeProdut.Designer.cs">
       <DependentUpon>201312032333323_changeProdut.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312041610343_addUnitPriceLinhaDoc_andname.cs" />
+    <Compile Include="Migrations\201312041610343_addUnitPriceLinhaDoc_andname.Designer.cs">
+      <DependentUpon>201312041610343_addUnitPriceLinhaDoc_andname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312041708111_addCarrinho.cs" />
+    <Compile Include="Migrations\201312041708111_addCarrinho.Designer.cs">
+      <DependentUpon>201312041708111_addCarrinho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312041719541_addItemsCarrinho.cs" />
+    <Compile Include="Migrations\201312041719541_addItemsCarrinho.Designer.cs">
+      <DependentUpon>201312041719541_addItemsCarrinho.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Carrinho.cs" />
@@ -252,6 +264,7 @@
     <Compile Include="Models\Cat_Revista.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Compra.cs" />
+    <Compile Include="Models\Encomenda.cs" />
     <Compile Include="Models\Fatura.cs" />
     <Compile Include="Models\Gestor_P.cs" />
     <Compile Include="Models\Item_Carrinho.cs" />
@@ -401,6 +414,11 @@
     <Content Include="Views\Revista\Create.cshtml" />
     <Content Include="Views\Revista\Edit.cshtml" />
     <Content Include="Views\Revista\Delete.cshtml" />
+    <Content Include="Views\Encomenda\Index.cshtml" />
+    <Content Include="Views\Encomenda\Details.cshtml" />
+    <Content Include="Views\Encomenda\Create.cshtml" />
+    <Content Include="Views\Encomenda\Edit.cshtml" />
+    <Content Include="Views\Encomenda\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -447,6 +465,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312032333323_changeProdut.resx">
       <DependentUpon>201312032333323_changeProdut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312041610343_addUnitPriceLinhaDoc_andname.resx">
+      <DependentUpon>201312041610343_addUnitPriceLinhaDoc_andname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312041708111_addCarrinho.resx">
+      <DependentUpon>201312041708111_addCarrinho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312041719541_addItemsCarrinho.resx">
+      <DependentUpon>201312041719541_addItemsCarrinho.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

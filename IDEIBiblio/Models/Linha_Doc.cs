@@ -10,6 +10,7 @@ namespace IDEIBiblio.Models
         public int ID { get; set; }
         public virtual Produto produto { get; set; }
         public float qtd { get; set; }
+        public float preço_unitário { get; set; }
 
 
     }

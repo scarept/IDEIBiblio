@@ -35,6 +35,11 @@ namespace IDEIBiblio.Dal
         public DbSet<Livro> Livroes { get; set; }
 
         public DbSet<Revista> Revistas { get; set; }
+
+        //public DbSet<Encomenda> Encomendas { get; set; }
+        public DbSet<Carrinho> carrinhos { get; set; }
+
+        public DbSet<Item_Carrinho> items_carrinho { get; set; }
                
         
     }

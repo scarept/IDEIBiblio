@@ -198,3 +198,6 @@ C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIB
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.dll
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.pdb
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.csprojResolveAssemblyReference.cache
+C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.Migrations.addUnitPriceLinhaDoc_andname.resources
+C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.Migrations.addCarrinho.resources
+C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.Migrations.addItemsCarrinho.resources
