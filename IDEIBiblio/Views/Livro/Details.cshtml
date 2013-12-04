@@ -1,0 +1,64 @@
+﻿@model IDEIBiblio.Models.Livro
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Livro</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.isbn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.isbn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.publicação)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.publicação)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sinopse)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sinopse)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.path_img)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.path_img)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.titulo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.titulo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.editora)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.editora)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.preco)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.preco)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

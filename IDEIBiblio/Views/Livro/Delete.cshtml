@@ -1,0 +1,68 @@
+﻿@model IDEIBiblio.Models.Livro
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Livro</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.isbn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.isbn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.publicação)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.publicação)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sinopse)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sinopse)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.path_img)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.path_img)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.titulo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.titulo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.editora)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.editora)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.preco)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.preco)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
