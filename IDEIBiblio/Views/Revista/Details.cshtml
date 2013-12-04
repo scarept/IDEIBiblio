@@ -1,0 +1,57 @@
+﻿@model IDEIBiblio.Models.Revista
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Revista</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.numero)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numero)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.edição)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.edição)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.país)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.país)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.titulo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.titulo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.editora)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.editora)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.preco)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.preco)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

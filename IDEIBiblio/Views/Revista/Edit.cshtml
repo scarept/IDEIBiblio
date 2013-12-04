@@ -1,0 +1,78 @@
+﻿@model IDEIBiblio.Models.Revista
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Revista</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.numero)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.numero)
+            @Html.ValidationMessageFor(model => model.numero)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.edição)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.edição)
+            @Html.ValidationMessageFor(model => model.edição)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.país)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.país)
+            @Html.ValidationMessageFor(model => model.país)
+        </div>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.titulo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.titulo)
+            @Html.ValidationMessageFor(model => model.titulo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.editora)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.editora)
+            @Html.ValidationMessageFor(model => model.editora)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.preco)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.preco)
+            @Html.ValidationMessageFor(model => model.preco)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

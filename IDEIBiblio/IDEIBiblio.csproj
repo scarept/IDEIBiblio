@@ -187,6 +187,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivroController.cs" />
+    <Compile Include="Controllers\RevistaController.cs" />
     <Compile Include="Dal\DataContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -246,13 +247,15 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Carrinho.cs" />
     <Compile Include="Models\Cat_Livro.cs" />
     <Compile Include="Models\Cat_Revista.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Fatura.cs" />
     <Compile Include="Models\Gestor_P.cs" />
-    <Compile Include="Models\Linha_Fat.cs" />
+    <Compile Include="Models\Item_Carrinho.cs" />
+    <Compile Include="Models\Linha_Doc.cs" />
     <Compile Include="Models\Livro.cs" />
     <Compile Include="Models\Morada.cs" />
     <Compile Include="Models\Produto.cs" />
@@ -393,6 +396,11 @@
     <Content Include="Views\Livro\Create.cshtml" />
     <Content Include="Views\Livro\Edit.cshtml" />
     <Content Include="Views\Livro\Delete.cshtml" />
+    <Content Include="Views\Revista\Index.cshtml" />
+    <Content Include="Views\Revista\Details.cshtml" />
+    <Content Include="Views\Revista\Create.cshtml" />
+    <Content Include="Views\Revista\Edit.cshtml" />
+    <Content Include="Views\Revista\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

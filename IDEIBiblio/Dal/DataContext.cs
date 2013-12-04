@@ -28,11 +28,13 @@ namespace IDEIBiblio.Dal
         public DbSet<Compra> Compras { get; set; }
         public DbSet<Fatura> Faturas { get; set; }
         public DbSet<Gestor_P> Gestores { get; set; }
-        public DbSet<Linha_Fat> Linhas_Faturas { get; set; }
+        public DbSet<Linha_Doc> Linhas_Faturas { get; set; }
         public DbSet<Morada> Moradas { get; set; }
         public DbSet<Tipo_Pub> Tipos_Publicacao { get; set; }
 
         public DbSet<Livro> Livroes { get; set; }
+
+        public DbSet<Revista> Revistas { get; set; }
                
         
     }

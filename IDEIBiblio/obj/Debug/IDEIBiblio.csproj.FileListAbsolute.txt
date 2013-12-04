@@ -181,7 +181,6 @@ C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIB
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\bin\ru\System.Spatial.resources.dll
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.csprojResolveAssemblyReference.cache
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.Migrations.initial.resources
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.Migrations.morada.resources
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.Migrations.compras.resources
@@ -198,3 +197,4 @@ C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIB
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.csproj.GenerateResource.Cache
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.dll
 C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.pdb
+C:\Users\Márcio\Dropbox\Faculdade\3º Ano\ARQSI\Trabalho2\IDEIBiblio\repo\IDEIBiblio\obj\Debug\IDEIBiblio.csprojResolveAssemblyReference.cache
