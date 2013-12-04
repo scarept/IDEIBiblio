@@ -16,13 +16,6 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.data)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.numero)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.numero)
-    </div>
 </fieldset>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()

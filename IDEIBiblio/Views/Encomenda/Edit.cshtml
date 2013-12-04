@@ -13,7 +13,7 @@
     <fieldset>
         <legend>Encomenda</legend>
 
-        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.EncomendaID)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.data)
@@ -21,14 +21,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.data)
             @Html.ValidationMessageFor(model => model.data)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.numero)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.numero)
-            @Html.ValidationMessageFor(model => model.numero)
         </div>
 
         <p>

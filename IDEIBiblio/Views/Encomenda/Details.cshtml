@@ -15,15 +15,8 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.data)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.numero)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.numero)
-    </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id=Model.EncomendaID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

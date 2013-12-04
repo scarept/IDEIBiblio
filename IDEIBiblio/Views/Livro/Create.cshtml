@@ -1,7 +1,7 @@
 ﻿@model IDEIBiblio.Models.Livro
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Inserir novo livro";
 }
 
 <h2>Create</h2>
@@ -12,6 +12,31 @@
 
     <fieldset>
         <legend>Livro</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.titulo)
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.titulo)
+            @Html.ValidationMessageFor(model => model.titulo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.editora)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.editora)
+            @Html.ValidationMessageFor(model => model.editora)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.preco)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.preco)
+            @Html.ValidationMessageFor(model => model.preco)
+        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.isbn)
@@ -45,29 +70,8 @@
             @Html.ValidationMessageFor(model => model.path_img)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.titulo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.titulo)
-            @Html.ValidationMessageFor(model => model.titulo)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.editora)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.editora)
-            @Html.ValidationMessageFor(model => model.editora)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.preco)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.preco)
-            @Html.ValidationMessageFor(model => model.preco)
-        </div>
+        
 
         <p>
             <input type="submit" value="Create" />

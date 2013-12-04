@@ -185,6 +185,7 @@
     <Compile Include="Controllers\Cat_LivroController.cs" />
     <Compile Include="Controllers\Cat_RevistaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\EncomendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivroController.cs" />
     <Compile Include="Controllers\RevistaController.cs" />
@@ -256,6 +257,14 @@
     <Compile Include="Migrations\201312041719541_addItemsCarrinho.cs" />
     <Compile Include="Migrations\201312041719541_addItemsCarrinho.Designer.cs">
       <DependentUpon>201312041719541_addItemsCarrinho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312041753223_addEncomenda.cs" />
+    <Compile Include="Migrations\201312041753223_addEncomenda.Designer.cs">
+      <DependentUpon>201312041753223_addEncomenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312041854558_updEncomenda.cs" />
+    <Compile Include="Migrations\201312041854558_updEncomenda.Designer.cs">
+      <DependentUpon>201312041854558_updEncomenda.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -474,6 +483,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312041719541_addItemsCarrinho.resx">
       <DependentUpon>201312041719541_addItemsCarrinho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312041753223_addEncomenda.resx">
+      <DependentUpon>201312041753223_addEncomenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312041854558_updEncomenda.resx">
+      <DependentUpon>201312041854558_updEncomenda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
