@@ -12,6 +12,6 @@ namespace IDEIBiblio.Models
         public DateTime data { get; set; }
         public DateTime vencimento { get; set; }
         public float portes { get; set; }
-        public virtual IList<Linha_Fat> linha_fatura { get; set; }
+        public virtual IList<Linha_Doc> linha_fatura { get; set; }
     }
 }

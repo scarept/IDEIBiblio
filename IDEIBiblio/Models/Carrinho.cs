@@ -5,12 +5,9 @@ using System.Web;
 
 namespace IDEIBiblio.Models
 {
-    public class Linha_Fat
+    public class Carrinho
     {
         public int ID { get; set; }
-        public virtual Produto produto { get; set; }
-        public float qtd { get; set; }
-
-
+        public IList<Item_Carrinho> linhas { get; set; }
     }
 }

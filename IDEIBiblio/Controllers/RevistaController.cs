@@ -9,58 +9,56 @@ using IDEIBiblio.Models;
 using IDEIBiblio.Dal;
 using System.Data.Objects;
 
-
 namespace IDEIBiblio.Controllers
 {
-    public class LivroController : Controller
+    public class RevistaController : Controller
     {
         private DataContext db = new DataContext();
 
         //
-        // GET: /Livro/
+        // GET: /Revista/
 
         public ActionResult Index()
         {
-          
-           List<Livro> livros_list = new List<Livro>();
-           var produtos = db.produtos.ToList();
-           foreach (var p in produtos)
-           {
-              var entityType = ObjectContext.GetObjectType(p.GetType());
-              Livro l = new Livro();
-              if (entityType == ObjectContext.GetObjectType(l.GetType()))
-              {
-                  l = (Livro)p;
-                  livros_list.Add(l);
-              }
-          
-           }
-           IEnumerable<Livro> ret_livros = livros_list;
- 
-          return View(ret_livros);
+            List<Revista> revista_list = new List<Revista>();
+            var produtos = db.produtos.ToList();
+            foreach (var p in produtos)
+            {
+                var entityType = ObjectContext.GetObjectType(p.GetType());
+                Revista r = new Revista();
+                if (entityType == ObjectContext.GetObjectType(r.GetType()))
+                {
+                    r = (Revista)p;
+                    revista_list.Add(r);
+                }
+
+            }
+            IEnumerable<Revista> ret_revistas= revista_list;
+            return View(ret_revistas);
         }
 
         //
-        // GET: /Livro/Details/5
+        // GET: /Revista/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            Livro livro = null;
+            Revista revista = null;
             try
             {
-                livro = (Livro)db.produtos.Find(id);
+                revista = (Revista)db.produtos.Find(id);
             }
-            catch (InvalidCastException e) { }
-           
-            if (livro == null)
+            catch (InvalidCastException e)
+            {}
+            
+            if (revista == null)
             {
                 return HttpNotFound();
             }
-            return View(livro);
+            return View(revista);
         }
 
         //
-        // GET: /Livro/Create
+        // GET: /Revista/Create
 
         public ActionResult Create()
         {
@@ -68,73 +66,73 @@ namespace IDEIBiblio.Controllers
         }
 
         //
-        // POST: /Livro/Create
+        // POST: /Revista/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Livro livro)
+        public ActionResult Create(Revista revista)
         {
             if (ModelState.IsValid)
             {
-                db.produtos.Add(livro);
+                db.produtos.Add(revista);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(livro);
+            return View(revista);
         }
 
         //
-        // GET: /Livro/Edit/5
+        // GET: /Revista/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            Livro livro = (Livro)db.produtos.Find(id);
-            if (livro == null)
+            Revista revista = (Revista)db.produtos.Find(id);
+            if (revista == null)
             {
                 return HttpNotFound();
             }
-            return View(livro);
+            return View(revista);
         }
 
         //
-        // POST: /Livro/Edit/5
+        // POST: /Revista/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Livro livro)
+        public ActionResult Edit(Revista revista)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(livro).State = EntityState.Modified;
+                db.Entry(revista).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(livro);
+            return View(revista);
         }
 
         //
-        // GET: /Livro/Delete/5
+        // GET: /Revista/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            Livro livro = (Livro)db.produtos.Find(id);
-            if (livro == null)
+            Revista revista = (Revista)db.produtos.Find(id);
+            if (revista == null)
             {
                 return HttpNotFound();
             }
-            return View(livro);
+            return View(revista);
         }
 
         //
-        // POST: /Livro/Delete/5
+        // POST: /Revista/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Livro livro = (Livro)db.produtos.Find(id);
-            db.produtos.Remove(livro);
+            Revista revista = (Revista)db.produtos.Find(id);
+            db.produtos.Remove(revista);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
