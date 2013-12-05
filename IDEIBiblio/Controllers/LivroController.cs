@@ -74,7 +74,7 @@ namespace IDEIBiblio.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "titulo,editora,preço,isbn,publicação,sinopse,path_img")]Livro livro, string categoriaSelecionada, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "titulo,editora,preco,isbn,publicação,sinopse,path_img")]Livro livro, string categoriaSelecionada, HttpPostedFileBase file)
         {
             // Colocação da categoria no livro
             try
@@ -91,14 +91,14 @@ namespace IDEIBiblio.Controllers
                 
                 file.SaveAs(path);
                 livro.path_img = "Images/Livros/"+pic;
-                // save the image path path to the database or you can send image 
-                // directly to database
-                // in-case if you want to store byte[] ie. for DB
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    file.InputStream.CopyTo(ms);
-                    byte[] array = ms.GetBuffer();
-                }
+                //// save the image path path to the database or you can send image 
+                //// directly to database
+                //// in-case if you want to store byte[] ie. for DB
+                //using (MemoryStream ms = new MemoryStream())
+                //{
+                //    file.InputStream.CopyTo(ms);
+                //    byte[] array = ms.GetBuffer();
+                //}
 
             }
             
@@ -122,6 +122,7 @@ namespace IDEIBiblio.Controllers
             {
                 return HttpNotFound();
             }
+            CategoriasDropDownList();
             return View(livro);
         }
 
@@ -130,8 +131,34 @@ namespace IDEIBiblio.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Livro livro)
+        public ActionResult Edit(Livro livro, string categoriaSelecionada, HttpPostedFileBase file)
         {
+            try
+            {
+                Cat_Livro tmp = db.Categorias_Livros.Find(Convert.ToInt32(categoriaSelecionada));
+                livro.categoria = null;
+                livro.categoria = tmp;
+            }
+            catch (Exception e) { }
+
+            // Colocação da imagem no livro
+            if (file != null)
+            {
+                string pic = livro.isbn.ToString() + System.IO.Path.GetFileName(file.FileName);
+                string path = Path.Combine(Server.MapPath("~/Images/Livros/"), pic);
+
+                file.SaveAs(path);
+                livro.path_img = "Images/Livros/" + pic;
+                //// save the image path path to the database or you can send image 
+                //// directly to database
+                //// in-case if you want to store byte[] ie. for DB
+                //using (MemoryStream ms = new MemoryStream())
+                //{
+                //    file.InputStream.CopyTo(ms);
+                //    byte[] array = ms.GetBuffer();
+                //}
+
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(livro).State = EntityState.Modified;

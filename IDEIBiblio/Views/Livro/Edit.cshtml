@@ -6,13 +6,46 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Edit", "Livro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Livro</legend>
 
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.path_img)
+       
+        <div class="editor-label">
+            @Html.LabelFor(model => model.titulo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.titulo)
+            @Html.ValidationMessageFor(model => model.titulo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.editora)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.editora)
+            @Html.ValidationMessageFor(model => model.editora)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.preco)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.preco)
+            @Html.ValidationMessageFor(model => model.preco)
+        </div>
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.categoria)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("categoriaSelecionada", (SelectList)ViewBag.categoria)
+        </div>*@
         <div class="editor-label">
             @Html.LabelFor(model => model.isbn)
         </div>
@@ -41,35 +74,10 @@
             @Html.LabelFor(model => model.path_img)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.path_img)
-            @Html.ValidationMessageFor(model => model.path_img)
+            <input type="file" name="file" id="file" style="width: 100%;" />
         </div>
 
-        @Html.HiddenFor(model => model.ID)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.titulo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.titulo)
-            @Html.ValidationMessageFor(model => model.titulo)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.editora)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.editora)
-            @Html.ValidationMessageFor(model => model.editora)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.preco)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.preco)
-            @Html.ValidationMessageFor(model => model.preco)
-        </div>
 
         <p>
             <input type="submit" value="Save" />

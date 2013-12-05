@@ -8,55 +8,69 @@
 
 <fieldset>
     <legend>Livro</legend>
+    <table>
+        <tr>
+            <td>
+                <div class="display-label">
+                    <b>@Html.DisplayNameFor(model => model.titulo)</b>
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.titulo)
+                </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.isbn)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.isbn)
-    </div>
+                <div class="display-label">
+                    <b>@Html.DisplayNameFor(model => model.editora)</b>
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.editora)
+                </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.publicação)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.publicação)
-    </div>
+                <div class="display-label">
+                    <b>@Html.DisplayNameFor(model => model.preco)</b>
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.preco)
+                </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.sinopse)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.sinopse)
-    </div>
+                <div class="display-label">
+                    <b>@Html.DisplayNameFor(model => model.isbn)</b>
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.isbn)
+                </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.path_img)
+                <div class="display-label">
+                    <b>@Html.DisplayNameFor(model => model.publicação)</b>
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.publicação)
+                </div>
+
+                <div class="display-label">
+                    <b>@Html.DisplayNameFor(model => model.sinopse)</b>
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.sinopse)
+                </div>
+            </td>
+           
+            <td>
+                <img src=../../@Html.DisplayFor(model => model.path_img) alt="Imagem" width="190" height="235" />
+            </td>
+            
+        </tr>
+
+    </table>
+   
+
+    @*<div class="display-label">
+         <b>@Html.DisplayNameFor(model => model.path_img)</b>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.path_img)
-    </div>
+    </div>*@
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.titulo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.titulo)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.editora)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.editora)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.preco)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.preco)
-    </div>
+   
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
