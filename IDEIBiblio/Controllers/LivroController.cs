@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using IDEIBiblio.Models;
 using IDEIBiblio.Dal;
 using System.Data.Objects;
+using System.IO;
 
 
 namespace IDEIBiblio.Controllers
@@ -64,6 +65,7 @@ namespace IDEIBiblio.Controllers
 
         public ActionResult Create()
         {
+            CategoriasDropDownList();
             return View();
         }
 
@@ -72,15 +74,41 @@ namespace IDEIBiblio.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Livro livro)
+        public ActionResult Create([Bind(Include = "titulo,editora,preço,isbn,publicação,sinopse,path_img")]Livro livro, string categoriaSelecionada, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            // Colocação da categoria no livro
+            try
             {
+                Cat_Livro tmp = db.Categorias_Livros.Find(Convert.ToInt32(categoriaSelecionada));
+                livro.categoria = tmp;
+            }catch (Exception e) { }
+
+            // Colocação da imagem no livro
+            if (file != null)
+            {
+                string pic = livro.isbn.ToString() + System.IO.Path.GetFileName(file.FileName);
+                string path = Path.Combine(Server.MapPath("~/Images/Livros/"), pic);
+                
+                file.SaveAs(path);
+                livro.path_img = "Images/Livros/"+pic;
+                // save the image path path to the database or you can send image 
+                // directly to database
+                // in-case if you want to store byte[] ie. for DB
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    file.InputStream.CopyTo(ms);
+                    byte[] array = ms.GetBuffer();
+                }
+
+            }
+            
+            if (ModelState.IsValid)
+            {                
                 db.produtos.Add(livro);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            CategoriasDropDownList(livro.categoria);
             return View(livro);
         }
 
@@ -139,10 +167,22 @@ namespace IDEIBiblio.Controllers
             return RedirectToAction("Index");
         }
 
+        private void CategoriasDropDownList(object selectedCategorias = null)
+        {
+            var categoriasQuery = from d in db.Categorias_Livros
+                                  orderby d.nome
+                                  select d;
+            //ViewBag.categoria = new SelectList(categoriasQuery, "ID", "nome", selectedCategorias);
+            //ViewData["myList"] = new SelectList(categoriasQuery, "ID", "nome", selectedCategorias);
+            var selectList = new SelectList(categoriasQuery, "ID", "nome", selectedCategorias);
+            ViewBag.categoria = selectList;
+        } 
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
             base.Dispose(disposing);
         }
+
     }
 }

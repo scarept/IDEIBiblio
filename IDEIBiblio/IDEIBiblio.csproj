@@ -266,6 +266,10 @@
     <Compile Include="Migrations\201312041854558_updEncomenda.Designer.cs">
       <DependentUpon>201312041854558_updEncomenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312042251154_updProdutoLivro.cs" />
+    <Compile Include="Migrations\201312042251154_updProdutoLivro.Designer.cs">
+      <DependentUpon>201312042251154_updProdutoLivro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Carrinho.cs" />
@@ -282,6 +286,7 @@
     <Compile Include="Models\Morada.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Revista.cs" />
+    <Compile Include="Models\Selected_View_Model.cs" />
     <Compile Include="Models\Tipo_Pub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -431,6 +436,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Livros\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -489,6 +495,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312041854558_updEncomenda.resx">
       <DependentUpon>201312041854558_updEncomenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312042251154_updProdutoLivro.resx">
+      <DependentUpon>201312042251154_updProdutoLivro.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

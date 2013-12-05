@@ -12,6 +12,18 @@
 <table>
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.editora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.preco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.categoria)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.isbn)
         </th>
         <th>
@@ -23,20 +35,24 @@
         <th>
             @Html.DisplayNameFor(model => model.path_img)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.editora)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.preco)
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.editora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.preco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categoria.nome)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.isbn)
         </td>
@@ -47,17 +63,8 @@
             @Html.DisplayFor(modelItem => item.sinopse)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.path_img)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.editora)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.preco)
-        </td>
+            <img src="@Html.DisplayFor(modelItem => item.path_img)" alt="Imagem" width="75" height="100"/></td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |

@@ -40,6 +40,8 @@ namespace IDEIBiblio.Dal
         public DbSet<Carrinho> carrinhos { get; set; }
 
         public DbSet<Item_Carrinho> items_carrinho { get; set; }
+
+        
                
         
     }
