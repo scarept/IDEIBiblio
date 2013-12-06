@@ -186,6 +186,7 @@
     <Compile Include="Controllers\Cat_RevistaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EncomendaController.cs" />
+    <Compile Include="Controllers\Gestor_PController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivroController.cs" />
     <Compile Include="Controllers\RevistaController.cs" />
@@ -437,6 +438,11 @@
     <Content Include="Views\Encomenda\Create.cshtml" />
     <Content Include="Views\Encomenda\Edit.cshtml" />
     <Content Include="Views\Encomenda\Delete.cshtml" />
+    <Content Include="Views\Gestor_P\Create.cshtml" />
+    <Content Include="Views\Gestor_P\Delete.cshtml" />
+    <Content Include="Views\Gestor_P\Details.cshtml" />
+    <Content Include="Views\Gestor_P\Edit.cshtml" />
+    <Content Include="Views\Gestor_P\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

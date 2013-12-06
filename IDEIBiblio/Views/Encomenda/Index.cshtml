@@ -1,31 +1,56 @@
 ﻿@model IEnumerable<IDEIBiblio.Models.Encomenda>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listagem de Encomendas por Validar";
 }
 
-<h2>Index</h2>
+<h2>Listagem de Encomendas por Validar</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table>
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.EncomendaID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente)
+        </th>
+        <th>
+            Total Encomenda
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.EncomendaID)
+        </td>
+        <td>    
             @Html.DisplayFor(modelItem => item.data)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EncomendaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EncomendaID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EncomendaID })
+            @Html.DisplayFor(modelItem => item.cliente.nome)
+        </td>
+        <td>
+            @{float total = 0;}
+            total = total + item.portes;
+            @foreach (IDEIBiblio.Models.Linha_Doc p in item.linhas)
+            {
+                total = total + (p.preço_unitário * p.qtd);
+            }
+            total €
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.EncomendaID }) |*@
+            @Html.ActionLink("Details", "Details", new { id=item.EncomendaID }) 
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.EncomendaID })*@
         </td>
     </tr>
 }

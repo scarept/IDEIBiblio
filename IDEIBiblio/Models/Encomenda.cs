@@ -9,12 +9,16 @@ namespace IDEIBiblio.Models
 {
     public class Encomenda
     {
-        
+        [Display(Name = "ID")]
         public int EncomendaID { get; set; }
+        [Display(Name = "Data")]
         public DateTime data { get; set; }
         public virtual Compra compra { get; set; }
         public virtual IList<Linha_Doc> linhas { get; set; }
+        [Display(Name = "Cliente")]
         public virtual Cliente cliente { get; set; }
+        [Display(Name = "Portes")]
+        public float Portes { get; set; }
 
         public Encomenda() { }
          //Construtor que efetiva uma encomenda perante um carrinho de compras
