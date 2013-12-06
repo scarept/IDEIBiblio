@@ -6,7 +6,7 @@
     
 }
 
-<h2>Create</h2>
+<h2>Registo de novo cliente</h2><p></p>
 
 @using (Html.BeginForm("Create","Cliente")) {
     @Html.AntiForgeryToken()
@@ -97,14 +97,14 @@
 
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Submeter" />
         </p>
     </fieldset>
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

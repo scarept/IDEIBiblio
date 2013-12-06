@@ -23,6 +23,7 @@ namespace IDEIBiblio.Models
         [Display(Name = "Morada")]
         public virtual Morada morada { get; set; }
         public virtual IList<Compra> compras { get; set; }
+        public virtual Carrinho carrinho { get; set; }
         public virtual int profile { get; set; }
     }
 }

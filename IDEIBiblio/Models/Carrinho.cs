@@ -9,11 +9,13 @@ namespace IDEIBiblio.Models
     {
         public int ID { get; set; }
         public IList<Item_Carrinho> linhas { get; set; }
-
-
+       
         public void AdicionarAoCarrinho(Produto prod, int quant)
         {
-            
+            if (linhas == null)
+            {
+                linhas = new List<Item_Carrinho>();
+            }
             Boolean flag = false;
             foreach (Item_Carrinho t in linhas)
             {
@@ -36,7 +38,7 @@ namespace IDEIBiblio.Models
             //storeDB.SaveChanges();
         }
 
-        public void RemoverDoCarrino(Produto prod)
+        public bool RemoverDoCarrino(Produto prod)
         {
             Boolean flag = false;
             foreach (Item_Carrinho t in linhas)
@@ -47,6 +49,29 @@ namespace IDEIBiblio.Models
                     flag = true;
                 }
             }
+            return flag;
         }
+
+        public int getNItemsCarrinho()
+        {
+            if (linhas == null)
+            {
+                linhas = new List<Item_Carrinho>();
+            }
+            return linhas.Count;
+        }
+
+        private void resetItemsCarrino()
+        {
+            linhas = new List<Item_Carrinho>();
+        }
+
+        public Encomenda checkout(Cliente cli)
+        {
+            Encomenda novaEncomenda = new Encomenda(this,cli);
+            this.resetItemsCarrino();
+            return novaEncomenda;
+        }
+
     }
 }
