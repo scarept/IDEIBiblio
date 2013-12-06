@@ -1,55 +1,61 @@
 ﻿@model IDEIBiblio.Models.Revista
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes de Revista";
 }
 
-<h2>Details</h2>
+<h2>Detalhes de Revista</h2><p></p>
 
 <fieldset>
     <legend>Revista</legend>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.numero)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.numero)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.edição)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.edição)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.país)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.país)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.titulo)
+        <b>@Html.DisplayNameFor(model => model.titulo)</b>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.titulo)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.editora)
+        <b>@Html.DisplayNameFor(model => model.editora)</b>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.editora)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.preco)
+        <b>@Html.DisplayNameFor(model => model.preco)</b>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.preco)
     </div>
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => model.categoria)</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.categoria.nome)
+    </div>
+    <div class="display-label">
+         <b>@Html.DisplayNameFor(model => model.numero)</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numero)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => model.edição)</b>
+</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.edição)
+    </div>
+
+    <div class="display-label">
+        <b>@Html.DisplayNameFor(model => model.país)</b>
+</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.país)
+    </div>
+
+
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |

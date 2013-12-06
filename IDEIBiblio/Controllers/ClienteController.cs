@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using IDEIBiblio.Models;
 using IDEIBiblio.Dal;
+using System.Web.Security;
 
 namespace IDEIBiblio.Controllers
 {
@@ -50,13 +51,16 @@ namespace IDEIBiblio.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Cliente cliente)
         {
+            //Adiciona o tipo de acesso que o cliente tem
+            
             if (ModelState.IsValid)
             {
                 db.Cliente.Add(cliente);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            //UsersContext.
+            //Roles.AddUserToRole(cliente.user_profile_id.UserName, "Cliente");
             return View(cliente);
         }
 

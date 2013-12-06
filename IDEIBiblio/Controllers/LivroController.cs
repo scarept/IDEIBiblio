@@ -19,7 +19,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Livro/
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
           
@@ -199,8 +199,6 @@ namespace IDEIBiblio.Controllers
             var categoriasQuery = from d in db.Categorias_Livros
                                   orderby d.nome
                                   select d;
-            //ViewBag.categoria = new SelectList(categoriasQuery, "ID", "nome", selectedCategorias);
-            //ViewData["myList"] = new SelectList(categoriasQuery, "ID", "nome", selectedCategorias);
             var selectList = new SelectList(categoriasQuery, "ID", "nome", selectedCategorias);
             ViewBag.categoria = selectList;
         } 

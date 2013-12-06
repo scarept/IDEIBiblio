@@ -20,6 +20,8 @@ namespace IDEIBiblio.Controllers
 
         public ActionResult Index()
         {
+            
+            
             List<Revista> revista_list = new List<Revista>();
             var produtos = db.produtos.ToList();
             foreach (var p in produtos)
@@ -62,6 +64,7 @@ namespace IDEIBiblio.Controllers
 
         public ActionResult Create()
         {
+            CategoriasDropDownList();
             return View();
         }
 
@@ -70,15 +73,21 @@ namespace IDEIBiblio.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Revista revista)
+        public ActionResult Create([Bind(Include = "titulo,editora,preco,numero,edição,país,tipo_publicação,categoria")]Revista revista, string categoriaSelecionada)
         {
+            try
+            {
+                Cat_Revista tmp = db.Categorias_Revistas.Find(Convert.ToInt32(categoriaSelecionada));
+                revista.categoria = tmp;
+            }
+            catch (Exception e) { }
             if (ModelState.IsValid)
             {
                 db.produtos.Add(revista);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            CategoriasDropDownList();
             return View(revista);
         }
 
@@ -92,6 +101,7 @@ namespace IDEIBiblio.Controllers
             {
                 return HttpNotFound();
             }
+            CategoriasDropDownList();
             return View(revista);
         }
 
@@ -100,8 +110,15 @@ namespace IDEIBiblio.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Revista revista)
+        public ActionResult Edit(Revista revista, string categoriaSelecionada)
         {
+            try
+            {
+                Cat_Revista tmp = db.Categorias_Revistas.Find(Convert.ToInt32(categoriaSelecionada));
+                revista.categoria = null;
+                revista.categoria = tmp;
+            }
+            catch (Exception e) { }
             if (ModelState.IsValid)
             {
                 db.Entry(revista).State = EntityState.Modified;
@@ -136,7 +153,14 @@ namespace IDEIBiblio.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        private void CategoriasDropDownList(object selectedCategorias = null)
+        {
+            var categoriasQuery = from d in db.Categorias_Revistas
+                                  orderby d.nome
+                                  select d;
+            var selectList = new SelectList(categoriasQuery, "ID", "nome", selectedCategorias);
+            ViewBag.categoria = selectList;
+        } 
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

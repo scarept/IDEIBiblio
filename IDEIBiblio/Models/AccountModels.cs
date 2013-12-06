@@ -73,7 +73,7 @@ namespace IDEIBiblio.Models
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Utilizador")]
         public string UserName { get; set; }
 
         [Required]
@@ -83,8 +83,8 @@ namespace IDEIBiblio.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmar password")]
+        [Compare("Password", ErrorMessage = "As passwords inseridas não coincidem.")]
         public string ConfirmPassword { get; set; }
     }
 

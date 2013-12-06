@@ -1,10 +1,10 @@
 ﻿@model IDEIBiblio.Models.Revista
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar dados de Revista";
 }
 
-<h2>Edit</h2>
+<h2>Editar dados de Revista</h2><p></p>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -12,31 +12,6 @@
 
     <fieldset>
         <legend>Revista</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.numero)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.numero)
-            @Html.ValidationMessageFor(model => model.numero)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.edição)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.edição)
-            @Html.ValidationMessageFor(model => model.edição)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.país)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.país)
-            @Html.ValidationMessageFor(model => model.país)
-        </div>
-
         @Html.HiddenFor(model => model.ID)
 
         <div class="editor-label">
@@ -62,6 +37,37 @@
             @Html.EditorFor(model => model.preco)
             @Html.ValidationMessageFor(model => model.preco)
         </div>
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.categoria)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("categoriaSelecionada", (SelectList)ViewBag.categoria)
+        </div>*@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.numero)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.numero)
+            @Html.ValidationMessageFor(model => model.numero)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.edição)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.edição)
+            @Html.ValidationMessageFor(model => model.edição)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.país)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.país)
+            @Html.ValidationMessageFor(model => model.país)
+        </div>
+
+        
 
         <p>
             <input type="submit" value="Save" />

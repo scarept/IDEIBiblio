@@ -12,7 +12,35 @@
 
     <fieldset>
         <legend>Revista</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.titulo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.titulo)
+            @Html.ValidationMessageFor(model => model.titulo)
+        </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.editora)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.editora)
+            @Html.ValidationMessageFor(model => model.editora)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.preco)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.preco)
+            @Html.ValidationMessageFor(model => model.preco)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.categoria)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("categoriaSelecionada", (SelectList)ViewBag.categoria)
+        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.numero)
         </div>
@@ -37,29 +65,7 @@
             @Html.ValidationMessageFor(model => model.país)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.titulo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.titulo)
-            @Html.ValidationMessageFor(model => model.titulo)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.editora)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.editora)
-            @Html.ValidationMessageFor(model => model.editora)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.preco)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.preco)
-            @Html.ValidationMessageFor(model => model.preco)
-        </div>
 
         <p>
             <input type="submit" value="Create" />

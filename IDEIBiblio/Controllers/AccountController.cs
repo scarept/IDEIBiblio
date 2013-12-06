@@ -76,11 +76,19 @@ namespace IDEIBiblio.Controllers
         {
             if (ModelState.IsValid)
             {
+                try
+                {
+                    Roles.CreateRole("Cliente");
+                }
+                catch (Exception e) { }
+                
+                //Roles.AddUserToRole("martinsmas", "Cliente");
                 // Attempt to register the user
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
