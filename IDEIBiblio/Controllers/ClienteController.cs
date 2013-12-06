@@ -62,9 +62,12 @@ namespace IDEIBiblio.Controllers
                     reg_model_tmp.UserName = collection.Get("reg_mod.UserName");
                     reg_model_tmp.Password = collection.Get("reg_mod.Password");
                     reg_model_tmp.ConfirmPassword = collection.Get("reg_mod.ConfirmPassword");
-                    AccountController act_ctr = new AccountController();
-                    act_ctr.Register(reg_model_tmp);
-                    cliente.profile = WebSecurity.CurrentUserId;
+                    //AccountController act_ctr = new AccountController();
+                    //act_ctr.Register(reg_model_tmp);
+                    WebSecurity.CreateUserAndAccount(reg_model_tmp.UserName, reg_model_tmp.Password);
+                    WebSecurity.Login(reg_model_tmp.UserName, reg_model_tmp.Password);
+                    int id = WebSecurity.GetUserId(reg_model_tmp.UserName);
+                    cliente.profile = id;
                     Roles.AddUserToRole(reg_model_tmp.UserName, "Cliente");
                 }
                 if (ModelState.IsValid)

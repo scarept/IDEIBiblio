@@ -1,6 +1,13 @@
 ﻿@if (Request.IsAuthenticated) {
+    int id_login = WebSecurity.CurrentUserId;
+    IDEIBiblio.Dal.DataContext db = new IDEIBiblio.Dal.DataContext();
+
+    var cliente = from d in db.Cliente where d.profile == id_login select d;
+    int i  = 0;
+    
+    
     <text>
-        Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+        Olá, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
