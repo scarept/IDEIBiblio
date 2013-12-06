@@ -1,0 +1,40 @@
+﻿@model IDEIBiblio.Models.Produto
+
+@if(true){
+    int i=0;
+<tr>
+    <table width="800">
+        <tr>
+            <td rowspan="2">
+            @try{
+                IDEIBiblio.Models.Livro liv = (IDEIBiblio.Models.Livro)@Model;
+                <img src=../@liv.path_img alt="Imagem" width="75" height="100">
+            }
+            catch (Exception e)
+            {
+                <img src="~/Images/not-found.png" alt="Imagem" width="75" height="100" />
+            }
+            </td>
+            <td>
+                <b>Titulo: </b>@Model.titulo
+            </td>
+            <td>
+                <b>Preço: </b>@Model.preco
+            </td>
+            <td rowspan="2">
+                <input id="Add" type="submit" value="Add" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Editora: </b>@Model.editora
+            </td>
+            <td>
+                <b>Quant: </b><input id="Text1" type="text" size="2" width="10"/>
+            </td>
+        </tr>
+    </table>
+</tr>
+
+
+}

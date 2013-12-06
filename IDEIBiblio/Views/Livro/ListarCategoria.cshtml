@@ -26,14 +26,7 @@
         <table>
         @foreach (IDEIBiblio.Models.Livro liv in test)
         {
-            <tr>
-                <td>
-                <h4>@liv.titulo</h4>
-                <p>Editora: @liv.editora</p>
-                <p>Preço: @liv.preco </p>
-                <p><img src=../@liv.path_img alt="Imagem" width="75" height="100"></p>
-                </td>
-            </tr>
+            @Html.Partial("_ProdutoPartial", liv)
         }
         </table>
     }
