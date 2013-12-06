@@ -186,6 +186,7 @@
     <Compile Include="Controllers\Cat_RevistaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EncomendaController.cs" />
+    <Compile Include="Controllers\Gestor_PController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivroController.cs" />
     <Compile Include="Controllers\RevistaController.cs" />
@@ -348,6 +349,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\welcome.jpg" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -433,6 +435,14 @@
     <Content Include="Views\Encomenda\Create.cshtml" />
     <Content Include="Views\Encomenda\Edit.cshtml" />
     <Content Include="Views\Encomenda\Delete.cshtml" />
+    <Content Include="Views\Home\_SugestionsPartial.cshtml" />
+    <Content Include="Views\Livro\ListarTodos.cshtml" />
+    <Content Include="Views\Livro\ListarCategoria.cshtml" />
+    <Content Include="Views\Gestor_P\Index.cshtml" />
+    <Content Include="Views\Gestor_P\Details.cshtml" />
+    <Content Include="Views\Gestor_P\Create.cshtml" />
+    <Content Include="Views\Gestor_P\Edit.cshtml" />
+    <Content Include="Views\Gestor_P\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,22 +12,71 @@
          </div>
     </section>
 }
-<h3>Novidades:</h3>
+
 
 <ol class="round">
-    <li>
-        <ul><a href="/Livros/ListarTodos">Todos os livros </a></ul>
-    </li>
-    
-    
+
+    <table cellpadding="10" cellspacing="10">
+        <tr>
+            <th><h2>CLIENTE</h2></th>
+            <th><h2>GESTOR DE PRODUTO</h2></th>
+            <th><h2>ADMINISTRADOR</h2></th>
+        </tr>
+        <tr>
+            <td>
+                    <ul><a href="/Livro/ListarTodos">Listar Todos os livros </a></ul>
+                    <ul><a href="/Livro/ListarCategoria">Listar livros por categoria</a></ul>
+                    <ul><a href="/Livro/PesquisarISBN">Pesquisar Por ISBN</a></ul>
+                    <ul><a href="/Revista/ListarTodas">Listar Todas as Revistas</a></ul>
+                    <ul><a href="/Revista/ListarCategoria">Listar Revistas por Categoria</a></ul>
+                    <ul><a href="/AreaCliente">Area do Cliente</a></ul>
+                    <ul><a href="/Carrinho">Carrinho</a></ul>
+            </td>
+            <td>
+                <ul><a href="Livro/Create">Inserir Livro</a></ul>
+                <ul><a href="Livro/Delete">Eliminar Livro</a></ul>
+                <ul><a href="Livro/Edit">Editar Livro</a></ul>
+                <ul><a href="Revista/Create">Inserir Revista</a></ul>
+                <ul><a href="Revista/Delete">Eliminar Revista</a></ul>
+                <ul><a href="Revista/Edit">Editar Revista</a></ul>
+                <ul><a href="Cat_Livro/Create">Nova Categoria Livro</a></ul>
+                <ul><a href="Cat_Revista/Create">Nova Categoria Revista</a></ul>
+                <ul><a href="Cat_Livro/Delete">Eliminar Categoria Livro</a></ul>
+                <ul><a href="Cat_Revista/Delete">Eliminar Categoria Revista</a></ul>
+                <ul><a href="">Verificar Alterações de Preços</a></ul>
+            </td>    
+            <td>
+                <ul><a href="Gestor_P/Create">Criar Gestor de Produto</a></ul>
+                <ul><a href="Gestor_P/Delete">Eliminar Gestor de Produtos</a></ul>
+                <ul><a href="Encomenda/Validar">Validar Encomendas</a></ul>
+
+                <ul><a href="Livro/Create">Inserir Livro</a></ul>
+                <ul><a href="Livro/Delete">Eliminar Livro</a></ul>
+                <ul><a href="Livro/Edit">Editar Livro</a></ul>
+                <ul><a href="Revista/Create">Inserir Revista</a></ul>
+                <ul><a href="Revista/Delete">Eliminar Revista</a></ul>
+                <ul><a href="Revista/Edit">Editar Revista</a></ul>
+                <ul><a href="Cat_Livro/Create">Nova Categoria Livro</a></ul>
+                <ul><a href="Cat_Revista/Create">Nova Categoria Revista</a></ul>
+                <ul><a href="Cat_Livro/Delete">Eliminar Categoria Livro</a></ul>
+                <ul><a href="Cat_Revista/Delete">Eliminar Categoria Revista</a></ul>
+                <ul><a href="">Verificar Alterações de Preços</a></ul>
+            </td>
+        </tr>
+    </table>
+
+
+    <h3>Novidades:</h3>
+
     @foreach (var prod in @Model)
     {
         <li class="one">
             <h4>@prod.titulo</h4>
             <p>Editora: @prod.editora</p>
             <p>Preço: @prod.preco €</p>
-            <p><img src=@prod.path_img alt="Imagem" width="100" height="75"></p>
+            <p><img src=@prod.path_img alt="Imagem" width="75" height="100"></p>
         </li>
     }
-    
+
+    @Html.Partial("_SugestionsPartial")
 </ol>

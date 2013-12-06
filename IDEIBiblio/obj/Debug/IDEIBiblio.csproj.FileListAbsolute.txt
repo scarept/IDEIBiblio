@@ -181,7 +181,6 @@ C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\bin\ko\System.Spatial.reso
 C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\bin\ru\System.Spatial.resources.dll
 C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\obj\Debug\IDEIBiblio.csprojResolveAssemblyReference.cache
 C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\obj\Debug\IDEIBiblio.Migrations.initial.resources
 C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\obj\Debug\IDEIBiblio.Migrations.morada.resources
 C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\obj\Debug\IDEIBiblio.Migrations.compras.resources
@@ -204,3 +203,4 @@ C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\obj\Debug\IDEIBiblio.Migra
 C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\obj\Debug\IDEIBiblio.csproj.GenerateResource.Cache
 C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\obj\Debug\IDEIBiblio.dll
 C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\obj\Debug\IDEIBiblio.pdb
+C:\Users\Scare\Documents\GitHub\IDEIBiblio\IDEIBiblio\obj\Debug\IDEIBiblio.csprojResolveAssemblyReference.cache

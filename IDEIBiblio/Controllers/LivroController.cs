@@ -211,5 +211,63 @@ namespace IDEIBiblio.Controllers
             base.Dispose(disposing);
         }
 
+        public ActionResult ListarTodos()
+        {
+            List<Livro> livros_list = new List<Livro>();
+            var produtos = db.produtos.ToList();
+            foreach (var p in produtos)
+            {
+                var entityType = ObjectContext.GetObjectType(p.GetType());
+                Livro l = new Livro();
+                if (entityType == ObjectContext.GetObjectType(l.GetType()))
+                {
+
+                    l = (Livro)p;
+                    livros_list.Add(l);
+                }
+
+            }
+            IEnumerable<Livro> ret_livros = livros_list;
+
+            return View(ret_livros);
+        }
+
+
+        //
+        // GET: /Livro/ListarCategoria
+        public ActionResult ListarCategoria()
+        {
+            //List<Cat_Livro> cat_livros_list = new List<Cat_Livro>();
+            //var lista_categorias = db.Categorias_Livros.ToList();
+            
+            //IEnumerable<Cat_Livro> cat_livros = cat_livros_list;
+            CategoriasDropDownList();
+            return View();
+        }
+
+        //
+        // POST: /Livro/listarCategoria
+
+        [HttpPost, ActionName("ListarCategoria")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ListarCategoria(string categoriaSelecionada)
+        {
+            try
+            {
+                Cat_Livro tmp = db.Categorias_Livros.Find(Convert.ToInt32(categoriaSelecionada));
+                ListarPorCategorias(tmp);
+            }
+            catch (Exception e) { }
+            CategoriasDropDownList();
+            return View();
+        }
+
+        private void ListarPorCategorias(Cat_Livro cat)
+        {
+            var livroscategoriaQuery = from d in db.Livroes where d.categoria.ID == cat.ID select d;
+            List<IDEIBiblio.Models.Livro> lista = livroscategoriaQuery.ToList();
+            
+            ViewBag.listaLivrosCategoria = lista;
+        } 
     }
 }
