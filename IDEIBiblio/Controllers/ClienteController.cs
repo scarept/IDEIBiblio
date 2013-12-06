@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using IDEIBiblio.Models;
 using IDEIBiblio.Dal;
 using System.Web.Security;
+using WebMatrix.WebData;
+using IDEIBiblio.Filters;
 
 namespace IDEIBiblio.Controllers
 {
@@ -49,19 +51,37 @@ namespace IDEIBiblio.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Cliente cliente)
+        [InitializeSimpleMembership]
+        public ActionResult Create(Cliente cliente, FormCollection collection)
         {
-            //Adiciona o tipo de acesso que o cliente tem
-            
-            if (ModelState.IsValid)
+            try
             {
-                db.Cliente.Add(cliente);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    RegisterModel reg_model_tmp = new RegisterModel();
+                    reg_model_tmp.UserName = collection.Get("reg_mod.UserName");
+                    reg_model_tmp.Password = collection.Get("reg_mod.Password");
+                    reg_model_tmp.ConfirmPassword = collection.Get("reg_mod.ConfirmPassword");
+                    AccountController act_ctr = new AccountController();
+                    act_ctr.Register(reg_model_tmp);
+                    cliente.profile = WebSecurity.CurrentUserId;
+                    Roles.AddUserToRole(reg_model_tmp.UserName, "Cliente");
+                }
+                if (ModelState.IsValid)
+                {
+                    db.Cliente.Add(cliente);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-            //UsersContext.
-            //Roles.AddUserToRole(cliente.user_profile_id.UserName, "Cliente");
-            return View(cliente);
+            catch (Exception e)
+            {
+                return View(cliente);
+            }
+                return View(cliente);
+            
+           
+            
         }
 
         //

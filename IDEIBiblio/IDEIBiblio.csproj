@@ -186,6 +186,7 @@
     <Compile Include="Controllers\Cat_RevistaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EncomendaController.cs" />
+    <Compile Include="Controllers\Gestor_PController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivroController.cs" />
     <Compile Include="Controllers\RevistaController.cs" />
