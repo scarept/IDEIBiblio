@@ -69,6 +69,7 @@ namespace IDEIBiblio.Controllers
                     int id = WebSecurity.GetUserId(reg_model_tmp.UserName);
                     cliente.profile = id;
                     Roles.AddUserToRole(reg_model_tmp.UserName, "Cliente");
+                    cliente.carrinho = new Carrinho();
                 }
                 if (ModelState.IsValid)
                 {

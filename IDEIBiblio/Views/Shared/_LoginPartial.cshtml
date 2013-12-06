@@ -1,13 +1,24 @@
 ﻿@if (Request.IsAuthenticated) {
+
     int id_login = WebSecurity.CurrentUserId;
     IDEIBiblio.Dal.DataContext db = new IDEIBiblio.Dal.DataContext();
 
     var cliente = from d in db.Cliente where d.profile == id_login select d;
-    int i  = 0;
+    List<IDEIBiblio.Models.Cliente> tempList = cliente.ToList();
+    IDEIBiblio.Models.Cliente tmpClie = tempList.ElementAt(0);
+    int nItemsCarrinho = tmpClie.carrinho.getNItemsCarrinho();
+    //IDEIBiblio.Models.Livro tmpProd = new IDEIBiblio.Models.Livro();
+    //tmpProd.titulo = "Titulo";
+    //tmpClie.carrinho.AdicionarAoCarrinho(tmpProd, 2);
+   
+    //    db.produtos.Add(tmpProd);
+    //    db.SaveChanges();
+       
     
-    
+    //int teste;   
     <text>
-        Olá, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+        Olá, @Html.ActionLink(tmpClie.nome, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })
+        <a href="/Carrinho/Edit/@tmpClie.carrinho.ID"><img src="~/Images/cart.png" width="15" height="15" /><span class="username">@nItemsCarrinho</span></a>
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
@@ -15,7 +26,7 @@
     </text>
 } else {
     <ul>
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Register", "Create", "Cliente", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
