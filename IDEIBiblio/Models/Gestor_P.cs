@@ -14,7 +14,7 @@ namespace IDEIBiblio.Models
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
         public string email { get; set; }
-        public string Password { get; set; }
+        public virtual int profile { get; set; }
         public virtual IList<Produto> produtos { get; set; }
     }
 }

@@ -13,7 +13,6 @@ namespace IDEIBiblio.Models
         public int EncomendaID { get; set; }
         [Display(Name = "Data")]
         public DateTime data { get; set; }
-        public virtual Compra compra { get; set; }
         public virtual IList<Linha_Doc> linhas { get; set; }
         [Display(Name = "Cliente")]
         public virtual Cliente cliente { get; set; }
