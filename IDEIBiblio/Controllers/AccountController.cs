@@ -76,11 +76,11 @@ namespace IDEIBiblio.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    Roles.CreateRole("Cliente");
-                }
-                catch (Exception e) { }
+                //try
+                //{
+                //    Roles.CreateRole("Cliente");
+                //}
+                //catch (Exception e) { }
                 
                 //Roles.AddUserToRole("martinsmas", "Cliente");
                 // Attempt to register the user

@@ -19,7 +19,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Livro/
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Cliente")]
         public ActionResult Index()
         {
           
