@@ -90,10 +90,7 @@ namespace IDEIBiblio.Controllers
             {
                 return RedirectToAction("Details/" + idEncomenda, "Encomenda");
             }
-            
-
-           
-            //return RedirectToAction("Detail/"+enco.EncomendaID, "Encomenda");
+      
         }
         ////
         //// GET: /Encomenda/Create

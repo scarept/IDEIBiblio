@@ -511,6 +511,7 @@
     <Content Include="Views\Home\Widget.cshtml" />
     <Content Include="Views\Home\_SugestionsPartial.cshtml" />
     <Content Include="Views\Shared\_PartialLinhaDoc.cshtml" />
+    <Content Include="Views\Shared\_PartialItemCarrinho.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
