@@ -18,13 +18,15 @@ namespace IDEIBiblio.Models
         public virtual Cliente cliente { get; set; }
         [Display(Name = "Portes")]
         public float Portes { get; set; }
+        public Logistica logistica { get; set; }
 
         public Encomenda() { }
          //Construtor que efetiva uma encomenda perante um carrinho de compras
-        public Encomenda(Carrinho carr, Cliente cli)
+        public Encomenda(Carrinho carr, Cliente cli, Logistica log)
         {
             cliente = cli;
             data = DateTime.Now;
+            logistica = log;
             foreach (Item_Carrinho i_c in carr.linhas)
             {
                 Linha_Doc l_d = new Linha_Doc();
