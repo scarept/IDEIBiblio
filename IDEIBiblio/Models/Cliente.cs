@@ -8,6 +8,7 @@ namespace IDEIBiblio.Models
 {
     public class Cliente
     {
+        [Display(Name = "Nº Cliente")]
         public int ID { get; set; }
         [Display(Name = "Nome")]
         public string nome { get; set; }

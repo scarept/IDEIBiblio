@@ -9,7 +9,7 @@ namespace IDEIBiblio.Models
 {
     public class Encomenda
     {
-        [Display(Name = "ID")]
+        [Display(Name = "Nº Encomenda")]
         public int EncomendaID { get; set; }
         [Display(Name = "Data")]
         public DateTime data { get; set; }
