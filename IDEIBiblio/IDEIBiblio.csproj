@@ -383,13 +383,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-<<<<<<< HEAD
     <Content Include="Images\bar.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\not-found.png" />
-=======
     <Content Include="Images\cart.png" />
->>>>>>> 610a1ead2c5dd37c5b7e13b8460a5a305c92a187
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -480,12 +477,10 @@
     <Content Include="Views\Gestor_P\Details.cshtml" />
     <Content Include="Views\Gestor_P\Edit.cshtml" />
     <Content Include="Views\Gestor_P\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Livro\ListarCategoria.cshtml" />
     <Content Include="Views\Livro\ListarTodos.cshtml" />
     <Content Include="Views\Shared\_ProdutoPartial.cshtml" />
     <Content Include="Views\Home\Widget.cshtml" />
-=======
     <Content Include="Views\Carrinho\Index.cshtml" />
     <Content Include="Views\Carrinho\Details.cshtml" />
     <Content Include="Views\Carrinho\Create.cshtml" />
@@ -505,7 +500,6 @@
     <Content Include="Views\Administrador\Delete.cshtml" />
     <Content Include="Views\Home\Widget.cshtml" />
     <Content Include="Views\Home\_SugestionsPartial.cshtml" />
->>>>>>> 610a1ead2c5dd37c5b7e13b8460a5a305c92a187
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
