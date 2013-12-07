@@ -1,0 +1,86 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <h3>Sugestões:</h3>
+    int id_login;
+    if (WebSecurity.Initialized)
+    {
+        id_login = WebSecurity.CurrentUserId;
+    }
+    else
+    {
+        WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+        id_login = WebSecurity.CurrentUserId;
+    }
+    IDEIBiblio.Dal.DataContext db = new IDEIBiblio.Dal.DataContext();
+
+    var cliente = from d in db.Cliente where d.profile == id_login select d;
+    List<IDEIBiblio.Models.Cliente> tempList = cliente.ToList();
+    IDEIBiblio.Models.Cliente tmpClie = tempList.ElementAt(0);
+
+    if (tmpClie.compras.Count > 0)
+    {
+        try { 
+        var comprasQuery = from d in db.Compras
+                           orderby d.data
+                              where d.cliente.ID == tmpClie.ID
+                              select d;
+
+        List<IDEIBiblio.Models.Compra> listaCompras = comprasQuery.ToList();
+        
+        var livroCategoria = from d in db.Livroes
+                             orderby d.categoria
+                             select d;
+
+        List<IDEIBiblio.Models.Livro> listaLivro = livroCategoria.ToList();
+        
+        foreach (IDEIBiblio.Models.Compra c in listaCompras)
+        {
+            foreach (IDEIBiblio.Models.Linha_Doc linha in c.fatura.linha_fatura)
+            {
+                IDEIBiblio.Models.Produto prod = linha.produto;
+                if(prod.GetType() == typeof(IDEIBiblio.Models.Livro))
+                {
+                    IDEIBiblio.Models.Livro livro = (IDEIBiblio.Models.Livro)prod;
+                    if (listaLivro.Contains(livro))
+                    {
+                        listaLivro.Remove(livro);
+                    }
+                }
+                
+            }    
+        }
+
+        if (listaLivro.Count > 1)
+        {
+            @Html.Partial("_ProdutoPartial", listaLivro.ElementAt(0));
+            @Html.Partial("_ProdutoPartial", listaLivro.ElementAt(1));
+        }
+
+        }
+        catch (Exception)
+        {
+            <p>Sem sugestões disponiveis para mostrar</p>
+        }
+    }else{
+    //senao
+    //apresenta os ultimos dois inseridos na base de dados
+        List<IDEIBiblio.Models.Livro> t = db.Livroes.ToList();
+        if (t.Count > 1)
+        {
+            @Html.Partial("_ProdutoPartial", t.ElementAt(t.Count - 1));
+            @Html.Partial("_ProdutoPartial", t.ElementAt(t.Count - 2));
+        }
+        else
+        {
+            <p>Sem sugestões disponiveis para mostrar</p>
+        }
+        
+        
+    }
+    
+    
+}
+else
+{
+    <img src="~/Images/welcome.jpg" width="990" />
+}
