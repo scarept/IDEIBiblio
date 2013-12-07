@@ -51,5 +51,14 @@ namespace IDEIBiblio.Controllers
 
             return View();
         }
+
+        public ActionResult E404(){
+            return View();
+        }
+        public ActionResult E403()
+        {
+            return View();
+        }
+
     }
 }
