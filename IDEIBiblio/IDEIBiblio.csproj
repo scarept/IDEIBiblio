@@ -388,6 +388,7 @@
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\bar.png" />
+    <Content Include="Images\DeleteRed.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\not-found.png" />
     <Content Include="Images\cart.png" />
@@ -395,6 +396,10 @@
     <Content Include="Images\logo.png" />
     <Content Include="Images\not-found.png" />
     <Content Include="Images\cart.png" />
+<<<<<<< HEAD
+=======
+    <Content Include="Images\smallbar.png" />
+>>>>>>> 0a647a603bcd61310bb0a39de38de291b3a2ef39
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

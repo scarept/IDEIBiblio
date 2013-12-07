@@ -1,33 +1,37 @@
 ﻿@model IDEIBiblio.Models.Encomenda
 
 @{
-    ViewBag.Title = "Detalhes de Encomenda = @Model.EncomendaID";
+    ViewBag.Title = "Detalhes de Encomenda";
 }
 
-<h2>Detalhes de Encomenda = @Model.EncomendaID</h2>
+<h2>Detalhes de Encomenda</h2>
 
 
-<h4>Nota de encomenda</h4>
+<h4>Nota de encomenda @Model.EncomendaID</h4>
 <table width="1000">
     <tr>
-        <td rowspan="2"><img src="~/Images/logo.png" width="100" height="50"/></td>
+        <td align="left"><img src="~/Images/logo.png" width="100" height="50"/></td>
+        <td></td>
     </tr>
     <tr>
         <td align="left">
-        Empresa IDEIBiblio LDA
-        ZONA INDUSTRIAL DO PORTO
-        9999-999 PORTO
-        Tel: 123456789
+            <p>Empresa IDEIBiblio LDA</p>
+            <p>ZONA INDUSTRIAL DO PORTO</p>
+            <p>9999-999 PORTO</p>
+            <p>Tel: 123456789</p>
         </td>
         <td align="right">
-            @Model.cliente.nome
-            @Model.cliente.morada
+            <p>@Model.cliente.nome</p>
+            <p>@Model.cliente.morada.rua</p> 
+            <p>Nº: @Model.cliente.morada.porta Andar: @Model.cliente.morada.andar</p>
+            <p>@Model.cliente.morada.cod_postal</p>
+
         </td>
     </tr>
     <tr>
         <td align="left">
-            Contribuinte: XXXXXXXX
-            Cap. Social: ZZZZZZZZ
+            Contribuinte: 500500500<br />
+            Cap. Social: 2.500.000<br />
         </td>
         <td align="right">
             Contribuinte nº @Model.cliente.nif
@@ -76,6 +80,9 @@
 <table width="1000">
     <tr>
         <th>
+            &nbsp;
+        </th>
+        <th>
             Referencia
         </th>
         <th>
@@ -88,21 +95,19 @@
             Preço
         </th>
     </tr>
-    @{float soma = 0;}
+    <tr>
+        <td colspan="5"><img src="~/Images/smallbar.png" width="1000" style="align-content:center;" /></td>
+    </tr>
+    @{float soma = Model.Portes;}
     @foreach (var item in Model.linhas) {
         <tr>
-            <td>
-                <table>
-                    <tr>
-                        <td>BT</td>
+                        <td><img src="~/Images/DeleteRed.png" width="25" height="25"/></td>
                         <td>@item.produto.ID</td>
                         <td>@item.produto.titulo</td>
                         <td>@item.qtd</td>
                         <td>@item.preço_unitário</td>
-                        {@soma=@soma+(@item.preço_unitário * @item.qtd)}
-                    </tr>
-                </table>
-            </td>
+                        @{soma=soma+(item.preço_unitário * item.qtd);}
+          
         </tr>
     }
 </table>
@@ -110,16 +115,18 @@
 <table width="1000">
     <tr>
         <td align="left">
-            Transportadora: @Model.transp.ID
-            @Model.transp.Nome
+            Transportadora: @Model.logistica.nome
         </td>
-        <td align="right">Total encomenda: @soma</td>
+        <td align="right">
+        <p>Valor portes: @Model.Portes</p>
+        <p>Total encomenda: @soma</p>
+        </td>
     </tr>
 </table>
 
 
 
-<p>
-    @Html.ActionLink("Validar Encomenda", "Validate", new { id=Model.EncomendaID }) |
-    @Html.ActionLink("Eliminar Encomenda", "Delete")
+<p style="text-align: center;">
+    @Html.ActionLink("Validar Encomenda", "Validar/"+Model.EncomendaID, "Encomenda" ) |
+    @Html.ActionLink("Remover Encomenda","Remover/"+Model.EncomendaID, "Encomenda")
 </p>
