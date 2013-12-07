@@ -190,29 +190,17 @@ namespace IDEIBiblio.Controllers
                 
                 float portes = (float)Convert.ToDouble(collection.Get("Portes"));
                 encomenda.Portes = portes;
+                carro.resetItemsCarrino();
+                db.Entry(tmpClie).State = EntityState.Modified;
+                db.Encomendas.Add(encomenda);
+                db.SaveChanges();
+                return RedirectToAction("Index","Home");
 
             }
             catch (Exception)
             {
                 return RedirectToAction("Edit/" + collection.Get("ID"), "Carrinho");
             }
-           
-
-                
-
-                return RedirectToAction("Index", "Home");
-            
-                
-            
-       
-                
-            
-
-            
-            
-            
-            //Encomenda encomenda = new Encomenda()
-            
         }
 
     }

@@ -18,7 +18,7 @@ namespace IDEIBiblio.Models
         public virtual Cliente cliente { get; set; }
         [Display(Name = "Portes")]
         public float Portes { get; set; }
-        public Logistica logistica { get; set; }
+        public virtual Logistica logistica { get; set; }
 
         public Encomenda() { }
          //Construtor que efetiva uma encomenda perante um carrinho de compras
@@ -33,6 +33,7 @@ namespace IDEIBiblio.Models
                 l_d.produto = i_c.produto;
                 l_d.qtd = i_c.qtd;
                 l_d.preço_unitário = i_c.produto.preco;
+                linhas = new List<Linha_Doc>();
                 linhas.Add(l_d);
             }
         }

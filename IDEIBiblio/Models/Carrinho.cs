@@ -68,7 +68,7 @@ namespace IDEIBiblio.Models
             return linhas.Count;
         }
 
-        private void resetItemsCarrino()
+        public void resetItemsCarrino()
         {
             linhas = new List<Item_Carrinho>();
         }
