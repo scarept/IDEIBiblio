@@ -8,6 +8,8 @@
 
 
 <h4>Nota de encomenda @Model.EncomendaID</h4>
+@*@using (Ajax.BeginForm("CheckoutValidated", "Carrinho",new AjaxOptions { UpdateTargetId = "formId" }))*@
+                            
 <table width="1000">
     <tr>
         <td align="left"><img src="~/Images/logo.png" width="100" height="50"/></td>
@@ -98,17 +100,10 @@
     <tr>
         <td colspan="5"><img src="~/Images/smallbar.png" width="1000" style="align-content:center;" /></td>
     </tr>
-    @{float soma = Model.Portes;}
+    @{float soma = Model.Portes; int count = 0;}
     @foreach (var item in Model.linhas) {
-        <tr>
-                        <td><img src="~/Images/DeleteRed.png" width="25" height="25"/></td>
-                        <td>@item.produto.ID</td>
-                        <td>@item.produto.titulo</td>
-                        <td>@item.qtd</td>
-                        <td>@item.preço_unitário</td>
-                        @{soma=soma+(item.preço_unitário * item.qtd);}
-          
-        </tr>
+        @Html.Partial("_PartialLinhaDoc", item)
+        soma = soma + (item.preço_unitário * item.qtd); count++;
     }
 </table>
 <img src="~/Images/bar.png" width="1000" />

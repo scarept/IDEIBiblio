@@ -1,6 +1,15 @@
 ﻿@if (Request.IsAuthenticated) {
-
-    int id_login = WebSecurity.CurrentUserId;
+    int id_login;
+    if (WebSecurity.Initialized)
+    {
+        id_login = WebSecurity.CurrentUserId;
+    }
+    else
+    {
+        WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+        id_login = WebSecurity.CurrentUserId;
+    }
+    
     IDEIBiblio.Dal.DataContext db = new IDEIBiblio.Dal.DataContext();
 
     var cliente = from d in db.Cliente where d.profile == id_login select d;

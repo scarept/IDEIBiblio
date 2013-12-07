@@ -1,0 +1,15 @@
+﻿@model IDEIBiblio.Models.Linha_Doc
+@using (Ajax.BeginForm("RemoverLinha", "Encomenda", new AjaxOptions { UpdateTargetId = "formId" }))
+{
+    int idL = @Model.ID;
+    <tr id="formId">
+        @Html.HiddenFor(model => idL)
+        @Html.HiddenFor(model => model.ID)
+    @*<img id="@count" src="~/Images/DeleteRed.png" width="25" height="25" />*@
+    <td><input type="submit" value="Eliminar" /></td>
+    <td>@Model.produto.ID</td>
+    <td>@Model.produto.titulo</td>
+    <td>@Model.qtd</td>
+    <td>@Model.preço_unitário</td>
+</tr> 
+}

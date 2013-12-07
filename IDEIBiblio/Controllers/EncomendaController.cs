@@ -75,6 +75,26 @@ namespace IDEIBiblio.Controllers
  
         }
 
+        public ActionResult RemoverLinha(FormCollection collection)
+        {
+            int idEncomenda = Convert.ToInt32(collection.Get("ID"));
+            int idLinha = Convert.ToInt32(collection.Get("idL"));
+            Linha_Doc linha = db.Linhas_Faturas.Find(idLinha);
+            try
+            {
+                db.Linhas_Faturas.Remove(linha);
+                db.SaveChanges();
+                return RedirectToAction("Details/" + idEncomenda, "Encomenda");
+            }
+            catch
+            {
+                return RedirectToAction("Details/" + idEncomenda, "Encomenda");
+            }
+            
+
+           
+            //return RedirectToAction("Detail/"+enco.EncomendaID, "Encomenda");
+        }
         ////
         //// GET: /Encomenda/Create
 
