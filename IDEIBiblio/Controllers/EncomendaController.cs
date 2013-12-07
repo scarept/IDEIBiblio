@@ -35,6 +35,43 @@ namespace IDEIBiblio.Controllers
             return View(encomenda);
         }
 
+        public ActionResult Validar(int id = 0)
+        {
+            try
+            {
+                Encomenda enco = db.Encomendas.Find(id);
+                Compra compra = new Compra();
+                compra.data = DateTime.Now;
+                compra.total = enco.Get_Total();
+                compra.cliente = enco.cliente;
+                compra.fatura = new Fatura(enco);
+
+                db.Compras.Add(compra);
+                db.Encomendas.Remove(enco);
+                db.SaveChanges();
+
+                return RedirectToRoute("Index","Encomenda");
+            }
+            catch (Exception)
+            {
+                return RedirectToRoute("Details/"+id, "Encomenda");
+            }
+
+        }
+
+        public ActionResult Remover(int id = 0)
+        {
+            try{
+                Encomenda enco = db.Encomendas.Find(id);
+                db.Encomendas.Remove(enco);
+                db.SaveChanges();
+                return RedirectToRoute("Index", "Encomenda");
+            }catch(Exception){
+                return RedirectToRoute("Details/"+id, "Encomenda");
+            }
+ 
+        }
+
         ////
         //// GET: /Encomenda/Create
 

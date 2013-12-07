@@ -37,5 +37,17 @@ namespace IDEIBiblio.Models
                 linhas.Add(l_d);
             }
         }
+
+        public float Get_Total(){
+            if(linhas == null){
+                linhas = new List<Linha_Doc>();
+            }
+            float total = 0;
+            foreach(Linha_Doc linha in linhas){
+                total += linha.qtd * linha.preço_unitário;
+            }
+            total += Portes;
+            return total;
+        }
     }
 }

@@ -302,6 +302,10 @@
     <Compile Include="Migrations\201312071535079_updEncoLogis.Designer.cs">
       <DependentUpon>201312071535079_updEncoLogis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312071704294_updFaturaRetirarNumero.cs" />
+    <Compile Include="Migrations\201312071704294_updFaturaRetirarNumero.Designer.cs">
+      <DependentUpon>201312071704294_updFaturaRetirarNumero.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Administrador.cs" />
@@ -383,20 +387,14 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-
-
-    <Content Include="Images\bar.png" />
-    <Content Include="Images\logo.png" />
-    <Content Include="Images\not-found.png" />
-
-    <Content Include="Images\cart.png" />
-
-
     <Content Include="Images\bar.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\not-found.png" />
     <Content Include="Images\cart.png" />
-
+    <Content Include="Images\bar.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\not-found.png" />
+    <Content Include="Images\cart.png" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -490,10 +488,7 @@
     <Content Include="Views\Livro\ListarCategoria.cshtml" />
     <Content Include="Views\Livro\ListarTodos.cshtml" />
     <Content Include="Views\Shared\_ProdutoPartial.cshtml" />
-
-
     <Content Include="Views\Home\Widget.cshtml" />
-
     <Content Include="Views\Carrinho\Index.cshtml" />
     <Content Include="Views\Carrinho\Details.cshtml" />
     <Content Include="Views\Carrinho\Create.cshtml" />
@@ -599,6 +594,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312071535079_updEncoLogis.resx">
       <DependentUpon>201312071535079_updEncoLogis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312071704294_updFaturaRetirarNumero.resx">
+      <DependentUpon>201312071704294_updFaturaRetirarNumero.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
