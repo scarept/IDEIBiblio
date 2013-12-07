@@ -182,10 +182,12 @@ namespace IDEIBiblio.Controllers
                 List<IDEIBiblio.Models.Cliente> tempList = cliente.ToList();
                 IDEIBiblio.Models.Cliente tmpClie = tempList.ElementAt(0);
                 Carrinho carro = tmpClie.carrinho;
-                Encomenda encomenda = new Encomenda(carro, tmpClie);
-
                 int logisticaID = Convert.ToInt32(collection.Get("Logistica"));
                 Logistica logi = db.logisticas.Find(logisticaID);
+
+                Encomenda encomenda = new Encomenda(carro, tmpClie,logi);
+
+                
                 float portes = (float)Convert.ToDouble(collection.Get("Portes"));
                 encomenda.Portes = portes;
 

@@ -73,21 +73,5 @@ namespace IDEIBiblio.Models
             linhas = new List<Item_Carrinho>();
         }
 
-        public Encomenda checkoutCarrinho(Cliente cli)
-        {
-            Encomenda novaEncomenda = new Encomenda(this,cli);
-            this.resetItemsCarrino();
-            DataContext db = new DataContext();
-            try
-            {
-                db.Entry(this).State = EntityState.Modified;
-                db.SaveChanges();
-                return novaEncomenda;
-            }
-            catch (Exception) { return null; }
-            
-            
-        }
-
     }
 }
