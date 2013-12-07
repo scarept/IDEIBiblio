@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using IDEIBiblio.Models;
 using IDEIBiblio.Dal;
+using WebMatrix.WebData;
 
 namespace IDEIBiblio.Controllers
 {
@@ -121,15 +122,96 @@ namespace IDEIBiblio.Controllers
             base.Dispose(disposing);
         }
 
-        public void AddToCart(Carrinho carro, Produto prod, int quant)
+        public ActionResult AddToCart(FormCollection collection)
         {
-            carro.AdicionarAoCarrinho(prod, quant);
+            int id = Convert.ToInt32(collection.Get("ID"));
+            int qtd = Convert.ToInt32(collection.Get("validate.inteiro"));
+
+            DataContext db = new DataContext();
+            Produto p = db.produtos.Find(id);
+
+            int id_login = WebSecurity.CurrentUserId;
+            var cliente = from d in db.Cliente where d.profile == id_login select d;
+            List<IDEIBiblio.Models.Cliente> tempList = cliente.ToList();
+            IDEIBiblio.Models.Cliente tmpClie = tempList.ElementAt(0);
+
+            tmpClie.carrinho.AdicionarAoCarrinho(p, qtd);
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(tmpClie).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Edit/"+tmpClie.carrinho.ID,"Carrinho");
+            }
+                return RedirectToAction("Edit/"+tmpClie.carrinho.ID,"Carrinho");
         }
 
-        public void Checkout(Carrinho carro)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Checkout(int id)
         {
-            Encomenda enco = new Encomenda();
+            Carrinho cart = db.carrinhos.Find(id);
+            IList<Logistica> logisticas = db.logisticas.ToList();
+            float menor = 999999999;
+            int idMenor = 0;
 
+            foreach (Logistica l in logisticas)
+            {
+                float portes = l.CalculaPortes(cart.linhas);
+                if (portes < menor)
+                {
+                    menor = portes;
+                    idMenor = l.ID;
+                }
+            }
+            ViewBag.portes = menor;
+            ViewBag.logistica = idMenor;
+            return View(cart);
+
+            
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CheckoutValidated(FormCollection collection)
+        {
+           try
+            {
+                int id_login = WebSecurity.CurrentUserId;
+                var cliente = from d in db.Cliente where d.profile == id_login select d;
+                List<IDEIBiblio.Models.Cliente> tempList = cliente.ToList();
+                IDEIBiblio.Models.Cliente tmpClie = tempList.ElementAt(0);
+                Carrinho carro = tmpClie.carrinho;
+                Encomenda encomenda = new Encomenda(carro, tmpClie);
+
+                int logisticaID = Convert.ToInt32(collection.Get("Logistica"));
+                Logistica logi = db.logisticas.Find(logisticaID);
+                float portes = (float)Convert.ToDouble(collection.Get("Portes"));
+                encomenda.Portes = portes;
+
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Edit/" + collection.Get("ID"), "Carrinho");
+            }
+           
+
+                
+
+                return RedirectToAction("Index", "Home");
+            
+                
+            
+       
+                
+            
+
+            
+            
+            
+            //Encomenda encomenda = new Encomenda()
+            
+        }
+
     }
 }

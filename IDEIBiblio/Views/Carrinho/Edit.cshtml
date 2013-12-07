@@ -6,7 +6,7 @@
 
 <h2>Carrinho de compras</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Checkout/"+Model.ID,"Carrinho")) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -14,9 +14,12 @@
         <legend>Carrinho</legend>
 
         @Html.HiddenFor(model => model.ID)
-
+        @foreach (IDEIBiblio.Models.Item_Carrinho linha in Model.linhas)
+        {
+            @linha.ID;
+        }
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Checkout" />
         </p>
     </fieldset>
 }

@@ -1,14 +1,17 @@
-﻿using System;
+﻿using IDEIBiblio.Dal;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.WebPages.Html;
 
 namespace IDEIBiblio.Models
 {
     public class Carrinho
     {
         public int ID { get; set; }
-        public IList<Item_Carrinho> linhas { get; set; }
+        public virtual IList<Item_Carrinho> linhas { get; set; }
        
         public void AdicionarAoCarrinho(Produto prod, int quant)
         {
@@ -34,8 +37,6 @@ namespace IDEIBiblio.Models
                 linha.qtd = quant;
                 linhas.Add(linha);
             }
-            //PERSISTIR CASO SEJA PARA TRATAR O CARRINHO NA BD
-            //storeDB.SaveChanges();
         }
 
         public bool RemoverDoCarrino(Produto prod)
@@ -49,6 +50,12 @@ namespace IDEIBiblio.Models
                     flag = true;
                 }
             }
+            if (flag)
+            {
+                DataContext db = new DataContext();
+                db.SaveChanges();
+            }
+            
             return flag;
         }
 
@@ -66,11 +73,20 @@ namespace IDEIBiblio.Models
             linhas = new List<Item_Carrinho>();
         }
 
-        public Encomenda checkout(Cliente cli)
+        public Encomenda checkoutCarrinho(Cliente cli)
         {
             Encomenda novaEncomenda = new Encomenda(this,cli);
             this.resetItemsCarrino();
-            return novaEncomenda;
+            DataContext db = new DataContext();
+            try
+            {
+                db.Entry(this).State = EntityState.Modified;
+                db.SaveChanges();
+                return novaEncomenda;
+            }
+            catch (Exception) { return null; }
+            
+            
         }
 
     }

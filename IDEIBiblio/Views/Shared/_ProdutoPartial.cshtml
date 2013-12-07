@@ -1,8 +1,11 @@
 ﻿@model IDEIBiblio.Models.Produto
 
-@if(true){
-    int i=0;
-<tr>
+
+@using (Html.BeginForm("AddToCart", "Carrinho"))
+    {
+    @Html.HiddenFor(model => model.ID)
+    IDEIBiblio.Models.ModelValidate validate = new IDEIBiblio.Models.ModelValidate();
+       <tr>
     <table width="800">
         <tr>
             <td rowspan="2">
@@ -21,8 +24,14 @@
             <td>
                 <b>Preço: </b>@Model.preco
             </td>
+
             <td rowspan="2">
-                <input id="Add" type="submit" value="Add" />
+                @if (Request.IsAuthenticated){
+                    <input id="Add" type="submit" value="Add" />
+                }else{
+                    <button type="button" disabled>Add</button>
+                }
+                
             </td>
         </tr>
         <tr>
@@ -30,11 +39,19 @@
                 <b>Editora: </b>@Model.editora
             </td>
             <td>
-                <b>Quant: </b><input id="Text1" type="text" size="2" width="10"/>
+                @if (Request.IsAuthenticated){
+                @Html.TextBoxFor(model => validate.inteiro)
+                }
+                else
+                {
+                    <input type="text" name="lname" disabled />
+                }
+                
             </td>
         </tr>
     </table>
-</tr>
+</tr> 
+    }
 
 
-}
+

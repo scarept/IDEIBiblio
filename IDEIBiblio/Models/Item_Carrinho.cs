@@ -8,7 +8,7 @@ namespace IDEIBiblio.Models
     public class Item_Carrinho
     {
         public int ID { get; set; }
-        public Produto produto { get; set; }
+        public virtual Produto produto { get; set; }
         public int qtd { get; set; }
     }
 }
