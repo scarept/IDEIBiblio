@@ -44,5 +44,12 @@ namespace IDEIBiblio.Controllers
 
             return View();
         }
+
+        public ActionResult Widget()
+        {
+            ViewBag.Message = "Widget";
+
+            return View();
+        }
     }
 }
