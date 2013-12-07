@@ -1,0 +1,50 @@
+﻿@model IDEIBiblio.Models.Carrinho
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Checkout</h2>
+@using (Ajax.BeginForm("CheckoutValidated", "Carrinho",
+                            new AjaxOptions { UpdateTargetId = "formId" }))
+{
+    @Html.AntiForgeryToken()
+    float portesVB = @ViewBag.portes;
+    int idLog = @ViewBag.logistica;   
+    <div id="formId">
+        @Html.HiddenFor(model => model.ID)
+        @Html.Hidden("Portes", @portesVB)
+        @Html.Hidden("Logistica", @portesVB)
+
+    </div>
+    <table>
+    <tr>
+        <th>Qtd</th>
+        <th>Titulo</th>
+        <th>Preço Unitário</th>
+        <th>Valor</th>
+    </tr>
+    @{float total = 0; float portes = Convert.ToUInt32(ViewBag.portes); total += portes; float subtotal = 0;}
+    @foreach (IDEIBiblio.Models.Item_Carrinho item in Model.linhas)
+    {
+        { subtotal = item.qtd * item.produto.preco; total = total + subtotal; }
+        
+        <tr>
+            <td>@item.qtd</td>
+            <td>@item.produto.titulo</td>
+            <td>@item.produto.preco €</td>
+            <td>@subtotal €</td>
+        </tr>
+    }
+
+    <tr>
+        <td></td><td></td>
+        <td>Portes</td><td>@portes</td>
+    </tr>
+    <tr>
+        <td></td><td></td>
+        <td>Total</td><td>@total €</td>
+    </tr>
+</table>
+    <input type="submit" value="Finalizar" />
+}

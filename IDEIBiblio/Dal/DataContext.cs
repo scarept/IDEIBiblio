@@ -41,6 +41,10 @@ namespace IDEIBiblio.Dal
 
         public DbSet<Item_Carrinho> items_carrinho { get; set; }
 
+        public DbSet<Logistica> logisticas { get; set; }
+
+        public DbSet<Administrador> Administradors { get; set; }
+
         
                
         
