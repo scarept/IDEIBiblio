@@ -50,11 +50,11 @@ namespace IDEIBiblio.Controllers
                 db.Encomendas.Remove(enco);
                 db.SaveChanges();
 
-                return RedirectToRoute("Index","Encomenda");
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception)
             {
-                return RedirectToRoute("Details/"+id, "Encomenda");
+                return RedirectToAction("Details/"+id, "Encomenda");
             }
 
         }
@@ -63,11 +63,14 @@ namespace IDEIBiblio.Controllers
         {
             try{
                 Encomenda enco = db.Encomendas.Find(id);
+                enco.linhas = new List<Linha_Doc>();
+                db.Entry(enco).State = EntityState.Modified;
+                db.SaveChanges();
                 db.Encomendas.Remove(enco);
                 db.SaveChanges();
-                return RedirectToRoute("Index", "Encomenda");
-            }catch(Exception){
-                return RedirectToRoute("Details/"+id, "Encomenda");
+                return RedirectToAction("Index", "Encomenda");
+            }catch(Exception e){
+                return RedirectToAction("Details/"+id, "Encomenda");
             }
  
         }
