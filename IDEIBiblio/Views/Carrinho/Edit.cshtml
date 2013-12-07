@@ -9,19 +9,65 @@
 @using (Html.BeginForm("Checkout/"+Model.ID,"Carrinho")) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Carrinho</legend>
-
-        @Html.HiddenFor(model => model.ID)
-        @foreach (IDEIBiblio.Models.Item_Carrinho linha in Model.linhas)
+    @Html.HiddenFor(model => model.ID)
+    <img src="~/Images/bar.png" width="1000" />
+    <table width="1000">
+        <tr>
+            <th>
+                &nbsp;
+            </th>
+            <th>
+                Referencia
+            </th>
+            <th>
+                Descriçao
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Preço
+            </th>
+        </tr>
+        <tr>
+            <td colspan="5"><img src="~/Images/smallbar.png" width="1000" style="align-content:center;" /></td>
+        </tr>
+        @{float soma = 0;}
+        @foreach (var item in Model.linhas)
         {
-            @linha.ID;
+                @Html.Partial("_PartialItemCarrinho", item)
+                {soma = soma + (item.produto.preco * item.qtd);}
         }
-        <p>
-            <input type="submit" value="Checkout" />
+    </table>
+
+    if (Model.linhas.Count == 0)
+    {
+        <p style="text-align:right;">
+            <button type="button" disabled>CheckOut</button>
         </p>
-    </fieldset>
+    }
+    else
+    {
+        
+        <img src="~/Images/bar.png" width="1000" />
+            <table width="1000">
+                <tr>
+                    <td align="right">
+                    <p>Sub-Total encomenda: @soma</p>
+                    </td>
+                </tr>
+            </table>
+        
+        
+        
+       <p style="text-align:right;">
+           <input type="submit" value="Checkout" />
+       </p> 
+    }
+    
+    
+        
+
 }
 
 @*<div>
