@@ -383,6 +383,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+<<<<<<< HEAD
 
     <Content Include="Images\bar.png" />
     <Content Include="Images\logo.png" />
@@ -390,6 +391,12 @@
 
     <Content Include="Images\cart.png" />
 
+=======
+    <Content Include="Images\bar.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\not-found.png" />
+    <Content Include="Images\cart.png" />
+>>>>>>> 7e09333385fc8e7b96cbc6ea17dbaf6b290b3cdc
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -483,6 +490,10 @@
     <Content Include="Views\Livro\ListarCategoria.cshtml" />
     <Content Include="Views\Livro\ListarTodos.cshtml" />
     <Content Include="Views\Shared\_ProdutoPartial.cshtml" />
+<<<<<<< HEAD
+=======
+    <Content Include="Views\Home\Widget.cshtml" />
+>>>>>>> 7e09333385fc8e7b96cbc6ea17dbaf6b290b3cdc
     <Content Include="Views\Carrinho\Index.cshtml" />
     <Content Include="Views\Carrinho\Details.cshtml" />
     <Content Include="Views\Carrinho\Create.cshtml" />
