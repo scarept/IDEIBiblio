@@ -511,7 +511,12 @@
     <Content Include="Views\Administrador\Edit.cshtml" />
     <Content Include="Views\Administrador\Delete.cshtml" />
     <Content Include="Views\Home\Widget.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Shared\_SugestionsPartial.cshtml" />
+=======
+    <Content Include="Views\Home\_SugestionsPartial.cshtml" />
+    <Content Include="Views\Shared\_PartialLinhaDoc.cshtml" />
+>>>>>>> 5d8964ad1bff1667d88ddeeef11754f4bc9b0564
     <Content Include="Views\Shared\_PartialItemCarrinho.cshtml" />
   </ItemGroup>
   <ItemGroup>

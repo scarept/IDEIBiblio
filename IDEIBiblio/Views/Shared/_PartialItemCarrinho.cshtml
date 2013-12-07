@@ -1,11 +1,15 @@
 ﻿@model IDEIBiblio.Models.Item_Carrinho
+@using (Ajax.BeginForm("RemoverItem", "Carrinho", new AjaxOptions { UpdateTargetId = "formId" }))
+{
+    int idL = @Model.ID;
+    <tr id="formId">
+        @Html.HiddenFor(model => idL)
+        @Html.HiddenFor(model => model.ID)
+        <td></td>@*<td><input type="submit" value="Eliminar" /></td>*@
+        <td>@Model.produto.ID</td>
+        <td>@Model.produto.titulo</td>
+        <td>@Model.qtd</td>
+        <td>@Model.produto.preco</td>
+    </tr>
+}
 
-<tr>
-    <td><img src="~/Images/DeleteRed.png" width="25" height="25" /></td>
-    <td>@Model.produto.ID</td>
-    <td>@Model.produto.titulo</td>
-    <td>@Model.qtd</td>
-    <td>@Model.produto.preco</td>
-
-
-</tr>
