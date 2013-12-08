@@ -61,7 +61,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Livro/Create
-
+        [Authorize]
         public ActionResult Create()
         {
             CategoriasDropDownList();

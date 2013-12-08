@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IDEIBiblio.Models.UsersContext">
+    <Position X="10.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDEIBiblio.Models.UserProfile">
+    <Position X="12.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="UsersContext" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDEIBiblio.Models.LocalPasswordModel">
+    <Position X="17" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Administrador">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAgAAAAAAAAAAAAAQAEAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Models\Administrador.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="UserProfile" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Carrinho">
+    <Position X="1.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEgEAAAAAAAAAAAAABAAAAAgAQAACAAAA=</HashCode>
+      <FileName>Models\Carrinho.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Item_Carrinho" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Cat_Livro">
+    <Position X="9.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAgAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Cat_Livro.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Livro" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Cat_Revista">
+    <Position X="12.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAgAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Cat_Revista.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Revista" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Cliente">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAAAAAACAgIAgAAAAABAAAAQAGAAAAAAEBAgAAgQ=</HashCode>
+      <FileName>Models\Cliente.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Morada" />
+      <Property Name="Carrinho" />
+      <Property Name="Compra" />
+      <Property Name="Fatura" />
+      <Property Name="Encomenda" />
+      <Property Name="UserProfile" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Compra">
+    <Position X="1.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAgAAQAAAAAEAQAAAAAAA=</HashCode>
+      <FileName>Models\Compra.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Encomenda">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEACAAAEAgAAAAgAAAkAAAAAAQBAAAAAA=</HashCode>
+      <FileName>Models\Encomenda.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Linha_Doc" />
+      <Property Name="Logistica" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Fatura">
+    <Position X="2.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAACAAAAAAAAAAAgAAAABAQAAABAAA=</HashCode>
+      <FileName>Models\Fatura.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Linha_Doc" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Gestor_P">
+    <Position X="14.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAgAAgAAAAAAAAAAQAEAAAAAAAAAAACAE=</HashCode>
+      <FileName>Models\Gestor_P.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Produto" />
+      <Property Name="UserProfile" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Item_Carrinho">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAgAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Item_Carrinho.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Linha_Doc">
+    <Position X="4.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAwAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Linha_Doc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Livro">
+    <Position X="9.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABIAAAAAAAIAAAAAAAEQAAAAA=</HashCode>
+      <FileName>Models\Livro.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Logistica">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAgAAAAAAAIAAAAAAAAAQAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\Logistica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDEIBiblio.Models.ModelValidate">
+    <Position X="17" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Models\ModelValidate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Morada">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAgAAAAAEgAAEAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\Morada.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Produto" Collapsed="true">
+    <Position X="11.25" Y="6" Width="1.5" />
+    <AssociationLine Name="Linha_Doc" Type="IDEIBiblio.Models.Linha_Doc" ManuallyRouted="true">
+      <Path>
+        <Point X="11.625" Y="6.562" />
+        <Point X="8.705" Y="6.562" />
+        <Point X="8.705" Y="12.34" />
+        <Point X="6" Y="12.34" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAQAAggAQAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\Produto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Linha_Doc" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Revista">
+    <Position X="12.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAIAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\Revista.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDEIBiblio.Models.Tipo_Pub">
+    <Position X="14.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAgAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Tipo_Pub.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Revista" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

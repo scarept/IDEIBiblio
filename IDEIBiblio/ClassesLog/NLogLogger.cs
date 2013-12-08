@@ -9,7 +9,7 @@ namespace IDEIBiblio.ClassesLog
 {
     public class NLogLogger : ILogger
     {
-        private NLog.Logger _logger;
+        private Logger _logger;
 
         public NLogLogger()
         {
