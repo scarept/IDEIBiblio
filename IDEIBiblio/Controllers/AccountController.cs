@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using IDEIBiblio.Filters;
 using IDEIBiblio.Models;
+using IDEIBiblio.Dal;
 
 namespace IDEIBiblio.Controllers
 {
@@ -329,6 +330,47 @@ namespace IDEIBiblio.Controllers
 
             ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
+        }
+
+        public string GetUserType()
+        {
+            int userID;
+            if (WebSecurity.Initialized)
+            {
+                userID = WebSecurity.CurrentUserId;
+            }
+            else
+            {
+                WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                userID = WebSecurity.CurrentUserId;
+            }
+            
+            DataContext dbDC = new DataContext();
+            try
+            {
+                 var cliente = from d in dbDC.Cliente where d.profile == userID select d;
+                 List<IDEIBiblio.Models.Cliente> tempList = cliente.ToList();
+                 IDEIBiblio.Models.Cliente tmpClie = tempList.ElementAt(0);
+                 return "Cliente";
+            }catch(Exception){}
+            try
+            {
+                var gestProd = from d in dbDC.Gestores where d.profile == userID select d;
+                List<IDEIBiblio.Models.Gestor_P> tempList = gestProd.ToList();
+                IDEIBiblio.Models.Gestor_P tmpClie = tempList.ElementAt(0);
+                return "Gestor";
+            }catch(Exception){}
+                   
+            try{
+                var admin = from d in dbDC.Administradors where d.profile == userID select d;
+                List<IDEIBiblio.Models.Administrador> tempList = admin.ToList();
+                IDEIBiblio.Models.Administrador tmpClie = tempList.ElementAt(0);
+                return "Administrador";
+            }catch(Exception){}
+
+            return null;
+
+            
         }
 
         #region Helpers

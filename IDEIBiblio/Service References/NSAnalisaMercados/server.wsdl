@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:server.AnalisaMercados" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:server.AnalisaMercados" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:server.AnalisaMercados">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="Valores">
+        <xsd:all>
+          <xsd:element name="ID" type="xsd:int" />
+          <xsd:element name="VALOR" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getUpdatePriceRequest" />
+  <wsdl:message name="getUpdatePriceResponse">
+    <wsdl:part name="return" type="tns:Valores" />
+  </wsdl:message>
+  <wsdl:portType name="server.AnalisaMercadosPortType">
+    <wsdl:operation name="getUpdatePrice">
+      <documentation>Permite obter uma atuliazaÃ§Ã£o de valores para alguns prudutos analizados pela empresa AnalisaMercados</documentation>
+      <wsdl:input message="tns:getUpdatePriceRequest" />
+      <wsdl:output message="tns:getUpdatePriceResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="server.AnalisaMercadosBinding" type="tns:server.AnalisaMercadosPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="getUpdatePrice">
+      <soap:operation soapAction="url:server.AnalisaMercados#AnalisaMercados" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="url:server.AnalisaMercados" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="url:server.AnalisaMercados" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="server.AnalisaMercados">
+    <wsdl:port name="server.AnalisaMercadosPort" binding="tns:server.AnalisaMercadosBinding">
+      <soap:address location="http://www.scare.pt/AnalisaMercados/server.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

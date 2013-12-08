@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using IDEIBiblio.Models;
 using IDEIBiblio.Dal;
+using WebMatrix.WebData;
 
 namespace IDEIBiblio.Controllers
 {
@@ -119,6 +120,33 @@ namespace IDEIBiblio.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        public Gestor_P ObterGestor_PAutenticado()
+        {
+            try
+            {
+                int id_login;
+                if (WebSecurity.Initialized)
+                {
+                    id_login = WebSecurity.CurrentUserId;
+                }
+                else
+                {
+                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    id_login = WebSecurity.CurrentUserId;
+                }
+                var gestor_p = from d in db.Gestores where d.profile == id_login select d;
+                List<IDEIBiblio.Models.Gestor_P> tempList = gestor_p.ToList();
+                IDEIBiblio.Models.Gestor_P tmpGest = tempList.ElementAt(0);
+                return tmpGest;
+            }
+            catch (Exception e)
+            {
+                ClassesLog.Log.GetLogger().Error(e);
+                return null;
+            }
+
         }
     }
 }

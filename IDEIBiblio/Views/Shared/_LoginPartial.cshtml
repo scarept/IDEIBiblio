@@ -1,28 +1,32 @@
 ﻿@if (Request.IsAuthenticated) {
-    //int id_login;
-    //if (WebSecurity.Initialized)
-    //{
-    //    id_login = WebSecurity.CurrentUserId;
-    //}
-    //else
-    //{
-    //    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
-    //    id_login = WebSecurity.CurrentUserId;
-    //}
-    
-    //IDEIBiblio.Dal.DataContext db = new IDEIBiblio.Dal.DataContext();
+    IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
+    string userType = aC.GetUserType();
 
-    //var cliente = from d in db.Cliente where d.profile == id_login select d;
-    //List<IDEIBiblio.Models.Cliente> tempList = cliente.ToList();
-    //IDEIBiblio.Models.Cliente tmpClie = tempList.ElementAt(0);
-    
-
-    IDEIBiblio.Controllers.ClienteController ctrCliente = new IDEIBiblio.Controllers.ClienteController();
-    IDEIBiblio.Models.Cliente tmpClie = ctrCliente.ObterClienteAutenticado();
-    int nItemsCarrinho = tmpClie.carrinho.getNItemsCarrinho();
     <text>
-        Olá, @Html.ActionLink(tmpClie.nome, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })
-        <a href="/Carrinho/Edit/@tmpClie.carrinho.ID"><img src="~/Images/cart.png" width="15" height="15" /><span class="username">@nItemsCarrinho</span></a>
+        
+        @if (userType == "Cliente")
+        {
+
+            IDEIBiblio.Controllers.ClienteController ctrCliente = new IDEIBiblio.Controllers.ClienteController();
+            IDEIBiblio.Models.Cliente tmpClie = ctrCliente.ObterClienteAutenticado();
+            int nItemsCarrinho = tmpClie.carrinho.getNItemsCarrinho();
+            <span>Olá, @Html.ActionLink(tmpClie.nome, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</span>
+            <a href="/Carrinho/Edit/@tmpClie.carrinho.ID"><img src="~/Images/cart.png" width="15" height="15" /><span class="username">@nItemsCarrinho</span></a>
+        }
+        else if (userType == "Gestor")
+        {
+            IDEIBiblio.Controllers.Gestor_PController ctrGestor = new IDEIBiblio.Controllers.Gestor_PController();
+            IDEIBiblio.Models.Gestor_P tmpGest = ctrGestor.ObterGestor_PAutenticado();
+            <span>Olá, @Html.ActionLink(tmpGest.nome, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</span>
+        }
+        else if (userType == "Administrador")
+        {
+            IDEIBiblio.Controllers.AdministradorController ctrAdmin = new IDEIBiblio.Controllers.AdministradorController();
+            IDEIBiblio.Models.Administrador tmpAdmin = ctrAdmin.ObterAdministradorAutenticado();
+            <span>Olá, @Html.ActionLink(tmpAdmin.nome, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</span>
+        }
+        
+        
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>

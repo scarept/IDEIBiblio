@@ -7,6 +7,9 @@ using System.Web;
 using System.Web.Mvc;
 using IDEIBiblio.Models;
 using IDEIBiblio.Dal;
+using IDEIBiblio.Filters;
+using WebMatrix.WebData;
+using System.Web.Security;
 
 namespace IDEIBiblio.Controllers
 {
@@ -48,15 +51,36 @@ namespace IDEIBiblio.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Administrador administrador)
+        [InitializeSimpleMembership]
+        public ActionResult Create(Administrador administrador, FormCollection collection)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Administradors.Add(administrador);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    RegisterModel reg_model_tmp = new RegisterModel();
+                    reg_model_tmp.UserName = collection.Get("reg_mod.UserName");
+                    reg_model_tmp.Password = collection.Get("reg_mod.Password");
+                    reg_model_tmp.ConfirmPassword = collection.Get("reg_mod.ConfirmPassword");
+                    WebSecurity.CreateUserAndAccount(reg_model_tmp.UserName, reg_model_tmp.Password);
+                    WebSecurity.Login(reg_model_tmp.UserName, reg_model_tmp.Password);
+                    int id = WebSecurity.GetUserId(reg_model_tmp.UserName);
+                    administrador.profile = id;
+                    Roles.AddUserToRole(reg_model_tmp.UserName, "Administrador");
+                    
+                }
+                if (ModelState.IsValid)
+                {
+                    db.Administradors.Add(administrador);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
+            catch (Exception e)
+            {
+                ClassesLog.Log.GetLogger().Error(e);
+                return View(administrador);
+            }
             return View(administrador);
         }
 
@@ -113,6 +137,33 @@ namespace IDEIBiblio.Controllers
             db.Administradors.Remove(administrador);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public Administrador ObterAdministradorAutenticado()
+        {
+            try
+            {
+                int id_login;
+                if (WebSecurity.Initialized)
+                {
+                    id_login = WebSecurity.CurrentUserId;
+                }
+                else
+                {
+                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    id_login = WebSecurity.CurrentUserId;
+                }
+                var administrador = from d in db.Administradors where d.profile == id_login select d;
+                List<IDEIBiblio.Models.Administrador> tempList = administrador.ToList();
+                IDEIBiblio.Models.Administrador tmpAdmi = tempList.ElementAt(0);
+                return tmpAdmi;
+            }
+            catch (Exception e)
+            {
+                ClassesLog.Log.GetLogger().Error(e);
+                return null;
+            }
+
         }
 
         protected override void Dispose(bool disposing)

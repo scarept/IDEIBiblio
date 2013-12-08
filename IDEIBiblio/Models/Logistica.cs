@@ -14,7 +14,17 @@ namespace IDEIBiblio.Models
         /*Método que permite obter o custo dos portes para determinado carrinho de compras*/
         public float CalculaPortes(IList<Item_Carrinho> linhas){
             int qtdTotalProdutos = CalculoTotalProdutosNoCarrinho(linhas);
-            float preço = 4;//ENVIO DE QUANTIDADES PELO WEBSERVICE e obtenção do preço
+            float preço = 0;//ENVIO DE QUANTIDADES PELO WEBSERVICE e obtenção do preço
+            if (this.nome == "ShippingAll")
+            {
+                NSShippingAll.serverShippingAllPortTypeClient proxy = new NSShippingAll.serverShippingAllPortTypeClient();
+                preço = proxy.getDeliveryPrice(qtdTotalProdutos);
+            }
+            else if(this.nome == "LogisticaSA")
+            {
+                //Falta pesqusia ao webservice
+                preço = 5;
+            }
             return preço;
         }
 

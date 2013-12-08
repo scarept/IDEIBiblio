@@ -27,13 +27,14 @@ namespace IDEIBiblio.Models
             cliente = cli;
             data = DateTime.Now;
             logistica = log;
+            linhas = new List<Linha_Doc>();
             foreach (Item_Carrinho i_c in carr.linhas)
             {
                 Linha_Doc l_d = new Linha_Doc();
                 l_d.produto = i_c.produto;
                 l_d.qtd = i_c.qtd;
                 l_d.preço_unitário = i_c.produto.preco;
-                linhas = new List<Linha_Doc>();
+                
                 linhas.Add(l_d);
             }
         }

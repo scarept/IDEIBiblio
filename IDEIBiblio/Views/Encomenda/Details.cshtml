@@ -3,8 +3,16 @@
 @{
     ViewBag.Title = "Detalhes de Encomenda";
 }
-
-<h2>Detalhes de Encomenda</h2>
+@if (@Model.linhas.Count() == 0)
+{
+    IDEIBiblio.Controllers.EncomendaController ctrEnc = new IDEIBiblio.Controllers.EncomendaController();
+    ctrEnc.Remover(Model.EncomendaID);
+    <h1>ENCOMENDA @Model.EncomendaID ELIMINADA</h1>
+    @Html.ActionLink("Voltar", "Index", "Home");
+}
+else
+{
+    <h2>Detalhes de Encomenda</h2>
 
 
 <h4>Nota de encomenda @Model.EncomendaID</h4>
@@ -122,6 +130,14 @@
 
 
 <p style="text-align: center;">
-    @Html.ActionLink("Validar Encomenda", "Validar/"+Model.EncomendaID, "Encomenda" ) |
-    @Html.ActionLink("Remover Encomenda","Remover/"+Model.EncomendaID, "Encomenda")
+    @{IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();}
+    @{string userType = aC.GetUserType();}
+    @if (userType == "Administrador")
+    {
+    @Html.ActionLink("Validar Encomenda", "Validar/" + Model.EncomendaID, "Encomenda");
+    <span>|</span>
+    @Html.ActionLink("Remover Encomenda", "Remover/" + Model.EncomendaID, "Encomenda");
+    }
 </p>
+
+}
