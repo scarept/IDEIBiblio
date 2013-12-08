@@ -220,5 +220,47 @@ namespace IDEIBiblio.Controllers
             IEnumerable<Revista> ret_revistas = revista_list;
             return View(ret_revistas);
         }
+
+        public ActionResult ListarEliminar()
+        {
+
+
+            List<Revista> revista_list = new List<Revista>();
+            var produtos = db.produtos.ToList();
+            foreach (var p in produtos)
+            {
+                var entityType = ObjectContext.GetObjectType(p.GetType());
+                Revista r = new Revista();
+                if (entityType == ObjectContext.GetObjectType(r.GetType()))
+                {
+                    r = (Revista)p;
+                    revista_list.Add(r);
+                }
+
+            }
+            IEnumerable<Revista> ret_revistas = revista_list;
+            return View(ret_revistas);
+        }
+
+        public ActionResult ListarEditar()
+        {
+
+
+            List<Revista> revista_list = new List<Revista>();
+            var produtos = db.produtos.ToList();
+            foreach (var p in produtos)
+            {
+                var entityType = ObjectContext.GetObjectType(p.GetType());
+                Revista r = new Revista();
+                if (entityType == ObjectContext.GetObjectType(r.GetType()))
+                {
+                    r = (Revista)p;
+                    revista_list.Add(r);
+                }
+
+            }
+            IEnumerable<Revista> ret_revistas = revista_list;
+            return View(ret_revistas);
+        }
     }
 }

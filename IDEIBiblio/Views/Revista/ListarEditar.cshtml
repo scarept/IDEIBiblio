@@ -1,0 +1,50 @@
+﻿@model IEnumerable<IDEIBiblio.Models.Revista>
+
+@{
+    ViewBag.Title = "Editar Revistas";
+}
+
+<h2>Editar Revistas</h2>
+
+<div class="editor-label">
+    
+</div>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.editora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.preco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.categoria)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.editora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.preco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categoria.nome)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) | 
+            @Html.ActionLink("Details", "Details", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>
