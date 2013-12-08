@@ -16,7 +16,7 @@
 
 <ol class="round">
 
-    <table cellpadding="10" cellspacing="10">
+    @*<table cellpadding="10" cellspacing="10">
         <tr>
             <th><h2>CLIENTE</h2></th>
             <th><h2>GESTOR DE PRODUTO</h2></th>
@@ -64,21 +64,9 @@
                 <ul><a href="">Verificar Alterações de Preços</a></ul>
             </td>
         </tr>
-    </table>
+    </table>*@
 
-
-    <h3>Novidades:</h3>
-
-    @foreach (var prod in @Model)
-    {
-        <li class="one">
-            <h4>@prod.titulo</h4>
-            <p>Editora: @prod.editora</p>
-            <p>Preço: @prod.preco €</p>
-            <p><img src=@prod.path_img alt="Imagem" width="75" height="100"></p>
-        </li>
-    }
-
-    @*@Html.Partial("_SugestionsPartial")*@
+    @Html.Partial("_PartialMiddleSection")
+    
 
 </ol>

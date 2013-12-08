@@ -1,0 +1,164 @@
+﻿@if (Request.IsAuthenticated)
+{
+    IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
+    string userType = aC.GetUserType();
+
+
+    if (userType == "Cliente")
+    {
+        <h3>Novidades:</h3>
+        foreach (var prod in @Model)
+        {
+            <li class="one">
+                <h4>@prod.titulo</h4>
+                <p>Editora: @prod.editora</p>
+                <p>Preço: @prod.preco €</p>
+                <p><img src=@prod.path_img alt="Imagem" width="75" height="100"></p>
+            </li>
+
+        }
+        @Html.Partial("_SugestionsPartial")
+    }
+    else if (userType == "Gestor")
+    {
+        <h2>Livro</h2>
+        <table>
+            <tr>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Livro/Create"><img src="~/Images/add.png" width="50" height="50" /></a></td><td width="55"><a href="/Livro/Create">Inserir Livro</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Livro/ListarEditar"><img src="~/Images/editar.png" width="50" height="50" /></a></td><td width="55"><a href="/Livro/ListarEditar">Editar Livro</a></td></tr></table>
+                </td>
+                <td>
+
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Livro/ListarRemover"><img src="~/Images/deletebt.png" width="50" height="50" /></a></td><td width="55"><a href="/Livro/ListarRemover">Remover Livro</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Cat_Livro/Create"><img src="~/Images/add.png" width="50" height="50" /></a></td><td width="55"><a href="/Cat_Livro/Create">Inserir Categoria</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Cat_Livro/Index"><img src="~/Images/lupa.png" width="50" height="50" /></a></td><td width="55"><a href="/Cat_Livro/Index">Ver Categorias</a></td></tr></table>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Revista</h2>
+        <table>
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100"><tr><td width="55"><a href="/Revista/Create"><img src="~/Images/add.png" width="50" height="50" /></a></td><td width="55"><a href="/Revista/Create">Inserir Revista</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100"><tr><td width="55"><a href="/Revista/ListarEditar"><img src="~/Images/editar.png" width="50" height="50" /></a></td><td width="55"><a href="/Revista/ListarEditar">Editar Revista</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Revista/ListarRemover"><img src="~/Images/deletebt.png" width="50" height="50" /></a></td><td width="55"><a href="/Revista/ListarRemover">Remover Revista</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Cat_Revista/Create"><img src="~/Images/add.png" width="50" height="50" /></a></td><td width="55"><a href="/Cat_Revista/Create">Inserir Categoria</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Cat_revista/Index"><img src="~/Images/lupa.png" width="50" height="50" /></a></td><td width="55"><a href="/Cat_Revista/Index">Ver Categorias</a></td></tr></table>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Administração</h2>
+        <table>
+            <tr>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/"><img src="~/Images/account.png" width="50" height="50" /></a></td><td width="55"><a href="/">Alterar definições conta</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/"><img src="~/Images/star.png" width="50" height="50" /></a></td><td width="55"><a href="/">Analisar Mercados</a></td></tr></table>
+</td>
+            </tr>
+        </table>
+    }
+    else if (userType == "Administrador")
+    {
+        <h2>Livro</h2>
+        <table>
+            <tr>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Livro/Create"><img src="~/Images/add.png" width="50" height="50" /></a></td><td width="55"><a href="/Livro/Create">Inserir Livro</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Livro/ListarEditar"><img src="~/Images/editar.png" width="50" height="50" /></a></td><td width="55"><a href="/Livro/ListarEditar">Editar Livro</a></td></tr></table>
+                </td>
+                <td>
+
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Livro/ListarRemover"><img src="~/Images/deletebt.png" width="50" height="50" /></a></td><td width="55"><a href="/Livro/ListarRemover">Remover Livro</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Cat_Livro/Create"><img src="~/Images/add.png" width="50" height="50" /></a></td><td width="55"><a href="/Cat_Livro/Create">Inserir Categoria</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Cat_Livro/Index"><img src="~/Images/lupa.png" width="50" height="50" /></a></td><td width="55"><a href="/Cat_Livro/Index">Ver Categorias</a></td></tr></table>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Revista</h2>
+        <table>
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100"><tr><td width="55"><a href="/Revista/Create"><img src="~/Images/add.png" width="50" height="50" /></a></td><td width="55"><a href="/Revista/Create">Inserir Revista</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100"><tr><td width="55"><a href="/Revista/ListarEditar"><img src="~/Images/editar.png" width="50" height="50" /></a></td><td width="55"><a href="/Revista/ListarEditar">Editar Revista</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Revista/ListarRemover"><img src="~/Images/deletebt.png" width="50" height="50" /></a></td><td width="55"><a href="/Revista/ListarRemover">Remover Revista</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Cat_Revista/Create"><img src="~/Images/add.png" width="50" height="50" /></a></td><td width="55"><a href="/Cat_Revista/Create">Inserir Categoria</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Cat_revista/Index"><img src="~/Images/lupa.png" width="50" height="50" /></a></td><td width="55"><a href="/Cat_Revista/Index">Ver Categorias</a></td></tr></table>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Administração</h2>
+        <table>
+            <tr>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Gestor/Create"><img src="~/Images/add.png" width="50" height="50" /></a></td><td width="55"><a href="/Gestor/Create">Registar Gestor</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Administrador/Create"><img src="~/Images/add.png" width="50" height="50" /></a></td><td width="55"><a href="/Administrador/Create">Registar Administrador</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/Cliente/Index"><img src="~/Images/acount.png" width="50" height="50" /></a></td><td width="55"><a href="/Cliente/Index">Listar Clientes</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/"><img src="~/Images/star.png" width="50" height="50" /></a></td><td width="55"><a href="/">Analisar Mercados</a></td></tr></table>
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" width="100"><tr><td width="55"><a href="/"><img src="~/Images/star.png" width="50" height="50" /></a></td><td width="55"><a href="/">Validar Encomendas</a></td></tr></table>
+                </td>
+            </tr>
+        </table>
+    }
+
+
+
+
+}
+else
+{
+    <h3>Novidades:</h3>
+    foreach (var prod in @Model)
+    {
+        <li class="one">
+            <h4>@prod.titulo</h4>
+            <p>Editora: @prod.editora</p>
+            <p>Preço: @prod.preco €</p>
+            <p><img src=@prod.path_img alt="Imagem" width="75" height="100"></p>
+        </li>
+
+    }
+    @Html.Partial("_SugestionsPartial")
+}
