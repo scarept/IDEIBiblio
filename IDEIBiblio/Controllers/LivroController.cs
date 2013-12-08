@@ -280,14 +280,15 @@ namespace IDEIBiblio.Controllers
         // POST: /Livro/PesquisarISBN
         [HttpPost, ActionName("PesquisarISBN")]
         [ValidateAntiForgeryToken]
-        public ActionResult PesquisarISBN(FormCollection collection)
+        public ActionResult PesquisarISBN(string isbn)
         {
             try
             {
-                //var query = from d in db.Livroes where d.isbn == id select d;
-                //List<IDEIBiblio.Models.Livro> lista = query.ToList();
+                int id = Convert.ToInt32(isbn);
+                var query = from d in db.Livroes where d.isbn == id select d;
+                List<IDEIBiblio.Models.Livro> lista = query.ToList();
 
-                //ViewBag.livros = lista;
+                ViewBag.livros = lista;
 
                return View();
             }

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<IDEIBiblio.Models.Revista>
+
+@{
+    ViewBag.Title = "Listar Todas";
+}
+
+<h2>Listar Todas as Revistas</h2>
+
+<table>
+    @foreach (var item in Model)
+    {
+        @Html.Partial("_ProdutoPartial", item)
+    }
+</table>

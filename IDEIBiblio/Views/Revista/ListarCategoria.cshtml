@@ -1,0 +1,44 @@
+﻿@model IDEIBiblio.Models.Revista
+
+@{
+    ViewBag.Title = "ListarCategoria";
+}
+
+<h2>Listar Revistas por Categoria</h2>
+@{
+    if (IsPost)
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+            <div class="editor-field">
+                @Html.DropDownList("categoriaSelecionada", (SelectList)ViewBag.categoria);
+            </div>
+            <input type="submit" value="ok" />
+        }
+
+
+        List<IDEIBiblio.Models.Revista> test = new List<IDEIBiblio.Models.Revista>();
+        test = ViewBag.listaRevistaCategoria;
+        if (test.Count > 0) { 
+        <h2>Categoria: </h2>
+        <table>
+            @foreach (IDEIBiblio.Models.Revista liv in test)
+            {
+                @Html.Partial("_ProdutoPartial", liv)
+            }
+        </table>
+    }
+    }
+    else
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+            <div class="editor-field">
+                @Html.DropDownList("categoriaSelecionada", (SelectList)ViewBag.categoria);
+            </div>
+            <input type="submit" value="ok" />
+        }
+    }
+}

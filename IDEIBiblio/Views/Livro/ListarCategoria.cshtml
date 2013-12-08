@@ -5,11 +5,8 @@
 <h2>Listar Livros Por Categoria</h2>
 
 @{
-    var Message = "";
     if (IsPost)
     {
-        @*<p>This is from the postback</p>*@
-        
         using (Html.BeginForm())
         {
             @Html.AntiForgeryToken();
@@ -22,6 +19,7 @@
     
         List<IDEIBiblio.Models.Livro> test = new List<IDEIBiblio.Models.Livro>();
         test = ViewBag.listaLivrosCategoria;
+        if(test.Count>0)
         <h2>Categoria: </h2>
         <table>
         @foreach (IDEIBiblio.Models.Livro liv in test)
@@ -29,10 +27,10 @@
             @Html.Partial("_ProdutoPartial", liv)
         }
         </table>
+}
     }
     else
     {
-        @*<p>This is without postback</p>*@
         using (Html.BeginForm())
         {
             @Html.AntiForgeryToken();

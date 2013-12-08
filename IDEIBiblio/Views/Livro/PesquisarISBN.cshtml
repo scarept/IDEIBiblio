@@ -16,7 +16,9 @@
         using (Html.BeginForm())
         {
             @Html.AntiForgeryToken();
-                <p>ISBN:</p> <input id="Text1" type="text" /> <input id="submit" type="submit" value="Pesquisar" />
+                <div class="editor-field">
+                    ISBN: @Html.TextBox("isbn"); <input id="submit" type="submit" value="Pesquisar" />
+                </div>
         }
 
 
@@ -35,7 +37,9 @@
             using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken();
-                <p>ISBN:</p> <input id="Text1" type="text" /> <input id="submit" type="submit" value="Pesquisar" />
+                <div class="editor-field">
+                    ISBN: @Html.TextBox("isbn"); <input id="submit" type="submit" value="Pesquisar" />
+                </div>
             }
         }
 }

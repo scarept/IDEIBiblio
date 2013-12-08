@@ -166,5 +166,59 @@ namespace IDEIBiblio.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+
+        //
+        // GET: /Revista/ListarCategoria
+        public ActionResult ListarCategoria()
+        {
+           
+            CategoriasDropDownList();
+            return View();
+        }
+
+        //
+        // POST: /Revista/ListarCategoria
+
+        [HttpPost, ActionName("ListarCategoria")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ListarCategoria(string categoriaSelecionada)
+        {
+            try
+            {
+                Cat_Revista tmp = db.Categorias_Revistas.Find(Convert.ToInt32(categoriaSelecionada));
+                ListarPorCategorias(tmp);
+            }
+            catch (Exception e) { ClassesLog.Log.GetLogger().Error(e); }
+            CategoriasDropDownList();
+            return View();
+        }
+
+        private void ListarPorCategorias(Cat_Revista cat)
+        {
+            var revistacategoriaQuery = from d in db.Revistas where d.categoria.ID == cat.ID select d;
+            List<IDEIBiblio.Models.Revista> lista = revistacategoriaQuery.ToList();
+
+            ViewBag.listaRevistaCategoria = lista;
+        }
+
+        public ActionResult ListarTodos()
+        {
+            List<Revista> revista_list = new List<Revista>();
+            var produtos = db.produtos.ToList();
+            foreach (var p in produtos)
+            {
+                var entityType = ObjectContext.GetObjectType(p.GetType());
+                Revista r = new Revista();
+                if (entityType == ObjectContext.GetObjectType(r.GetType()))
+                {
+                    r = (Revista)p;
+                    revista_list.Add(r);
+                }
+
+            }
+            IEnumerable<Revista> ret_revistas = revista_list;
+            return View(ret_revistas);
+        }
     }
 }

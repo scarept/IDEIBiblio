@@ -4,17 +4,18 @@
     ViewBag.Title = "ListarTodos";
 }
 
-<h2>ListarTodos</h2>
+<h2>Listar Todos os Livros</h2>
 <table>
         @foreach (var item in Model) {
-            <tr>
+            @Html.Partial("_ProdutoPartial", item)
+            @*<tr>
                 <td>
                         <h4>@item.titulo</h4>
                         <p>Editora: @item.editora</p>
                         <p>Preço: @item.preco €</p>
                         <p><img src=../@item.path_img alt="Imagem" width="75" height="100"></p>
                 </td>
-            </tr>
+            </tr>*@
             
        } 
 </table>
