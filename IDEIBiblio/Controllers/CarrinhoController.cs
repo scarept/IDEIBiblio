@@ -155,12 +155,11 @@ namespace IDEIBiblio.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Edit/"+id, "Carrinho");
             }
-            catch
+            catch(Exception error)
             {
+                ClassesLog.Log.GetLogger().Error(error);
                 return RedirectToAction("Edit/"+id, "Carrinho");
             }
-            
-            return null;
         }
         [HttpPost, ActionName("Bridge")]
         public ActionResult Bridge(int id)
@@ -219,8 +218,9 @@ namespace IDEIBiblio.Controllers
                 return RedirectToAction("Index","Home");
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                ClassesLog.Log.GetLogger().Error(e);
                 return RedirectToAction("Edit/" + collection.Get("ID"), "Carrinho");
             }
         }

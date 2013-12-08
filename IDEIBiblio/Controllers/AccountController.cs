@@ -85,6 +85,7 @@ namespace IDEIBiblio.Controllers
                 }
                 catch (MembershipCreateUserException e)
                 {
+                    ClassesLog.Log.GetLogger().Error(e);
                     ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
                 }
             }
@@ -157,8 +158,9 @@ namespace IDEIBiblio.Controllers
                     {
                         changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
+                        ClassesLog.Log.GetLogger().Error(e);
                         changePasswordSucceeded = false;
                     }
 
@@ -189,8 +191,9 @@ namespace IDEIBiblio.Controllers
                         WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
                         return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
+                        ClassesLog.Log.GetLogger().Error(e);
                         ModelState.AddModelError("", String.Format("Unable to create local account. An account with the name \"{0}\" may already exist.", User.Identity.Name));
                     }
                 }

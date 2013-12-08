@@ -80,6 +80,7 @@ namespace IDEIBiblio.Controllers
             }
             catch (Exception e)
             {
+                ClassesLog.Log.GetLogger().Error(e);
                 return View(cliente);
             }
             return View(cliente);
@@ -163,8 +164,9 @@ namespace IDEIBiblio.Controllers
                     IDEIBiblio.Models.Cliente tmpClie = tempList.ElementAt(0);
                     return tmpClie;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    ClassesLog.Log.GetLogger().Error(e);
                     return null;
                 }
 

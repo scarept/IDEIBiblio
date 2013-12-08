@@ -50,7 +50,7 @@ namespace IDEIBiblio.Controllers
                 revista = (Revista)db.produtos.Find(id);
             }
             catch (InvalidCastException e)
-            {}
+            { ClassesLog.Log.GetLogger().Error(e); }
             
             if (revista == null)
             {
@@ -80,7 +80,7 @@ namespace IDEIBiblio.Controllers
                 Cat_Revista tmp = db.Categorias_Revistas.Find(Convert.ToInt32(categoriaSelecionada));
                 revista.categoria = tmp;
             }
-            catch (Exception e) { }
+            catch (Exception e) { ClassesLog.Log.GetLogger().Error(e); }
             if (ModelState.IsValid)
             {
                 db.produtos.Add(revista);
@@ -118,7 +118,7 @@ namespace IDEIBiblio.Controllers
                 revista.categoria = null;
                 revista.categoria = tmp;
             }
-            catch (Exception e) { }
+            catch (Exception e) { ClassesLog.Log.GetLogger().Error(e); }
             if (ModelState.IsValid)
             {
                 db.Entry(revista).State = EntityState.Modified;

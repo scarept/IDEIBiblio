@@ -52,8 +52,9 @@ namespace IDEIBiblio.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                ClassesLog.Log.GetLogger().Error(e);
                 return RedirectToAction("Details/"+id, "Encomenda");
             }
 
@@ -70,6 +71,7 @@ namespace IDEIBiblio.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Encomenda");
             }catch(Exception e){
+                ClassesLog.Log.GetLogger().Error(e);
                 return RedirectToAction("Details/"+id, "Encomenda");
             }
  
@@ -86,8 +88,9 @@ namespace IDEIBiblio.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Details/" + idEncomenda, "Encomenda");
             }
-            catch
+            catch(Exception e)
             {
+                ClassesLog.Log.GetLogger().Error(e);
                 return RedirectToAction("Details/" + idEncomenda, "Encomenda");
             }
       

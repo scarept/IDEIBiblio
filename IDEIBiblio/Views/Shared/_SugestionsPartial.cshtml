@@ -57,8 +57,9 @@
         }
 
         }
-        catch (Exception)
+        catch (Exception e)
         {
+            IDEIBiblio.ClassesLog.Log.GetLogger().Error(e);
             <p>Sem sugestões disponiveis para mostrar</p>
         }
     }else{

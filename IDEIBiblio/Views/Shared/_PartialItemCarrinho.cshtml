@@ -5,9 +5,9 @@
     <tr id="formId">
         @*@Html.HiddenFor(model => idL)
         @Html.HiddenFor(model => model.ID)*@
-        <td>@Html.ActionLink("Eliminar", "RemoverItem/"+@Model.ID, "Carrinho")</td>
-
-        @*<td><a href="/Carrinho/RemoverItem/"+@Model.ID">Eliminar</a></td>*@
+        
+        @*<td>@Html.ActionLink("Eliminar", "RemoverItem/" + @Model.ID, "Carrinho",)</td>*@
+        <td>&nbsp;</td>
         <td>@Model.produto.ID</td>
         <td>@Model.produto.titulo</td>
         <td>@Model.qtd</td>

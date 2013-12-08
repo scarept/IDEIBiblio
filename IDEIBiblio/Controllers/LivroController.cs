@@ -51,8 +51,7 @@ namespace IDEIBiblio.Controllers
             {
                 livro = (Livro)db.produtos.Find(id);
             }
-            catch (InvalidCastException e) { }
-           
+            catch (InvalidCastException e) { ClassesLog.Log.GetLogger().Error(e); }
             if (livro == null)
             {
                 return HttpNotFound();
@@ -81,7 +80,8 @@ namespace IDEIBiblio.Controllers
             {
                 Cat_Livro tmp = db.Categorias_Livros.Find(Convert.ToInt32(categoriaSelecionada));
                 livro.categoria = tmp;
-            }catch (Exception e) { }
+            }
+            catch (Exception e) { ClassesLog.Log.GetLogger().Error(e); }
 
             // Colocação da imagem no livro
             if (file != null)
@@ -139,7 +139,7 @@ namespace IDEIBiblio.Controllers
                 livro.categoria = null;
                 livro.categoria = tmp;
             }
-            catch (Exception e) { }
+            catch (Exception e) { ClassesLog.Log.GetLogger().Error(e); }
 
             // Colocação da imagem no livro
             if (file != null)
@@ -255,7 +255,7 @@ namespace IDEIBiblio.Controllers
                 Cat_Livro tmp = db.Categorias_Livros.Find(Convert.ToInt32(categoriaSelecionada));
                 ListarPorCategorias(tmp);
             }
-            catch (Exception e) { }
+            catch (Exception e) { ClassesLog.Log.GetLogger().Error(e); }
             CategoriasDropDownList();
             return View();
         }
