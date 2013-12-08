@@ -1,30 +1,25 @@
 ﻿@if (Request.IsAuthenticated) {
-    int id_login;
-    if (WebSecurity.Initialized)
-    {
-        id_login = WebSecurity.CurrentUserId;
-    }
-    else
-    {
-        WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
-        id_login = WebSecurity.CurrentUserId;
-    }
+    //int id_login;
+    //if (WebSecurity.Initialized)
+    //{
+    //    id_login = WebSecurity.CurrentUserId;
+    //}
+    //else
+    //{
+    //    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+    //    id_login = WebSecurity.CurrentUserId;
+    //}
     
-    IDEIBiblio.Dal.DataContext db = new IDEIBiblio.Dal.DataContext();
+    //IDEIBiblio.Dal.DataContext db = new IDEIBiblio.Dal.DataContext();
 
-    var cliente = from d in db.Cliente where d.profile == id_login select d;
-    List<IDEIBiblio.Models.Cliente> tempList = cliente.ToList();
-    IDEIBiblio.Models.Cliente tmpClie = tempList.ElementAt(0);
-    int nItemsCarrinho = tmpClie.carrinho.getNItemsCarrinho();
-    //IDEIBiblio.Models.Livro tmpProd = new IDEIBiblio.Models.Livro();
-    //tmpProd.titulo = "Titulo";
-    //tmpClie.carrinho.AdicionarAoCarrinho(tmpProd, 2);
-   
-    //    db.produtos.Add(tmpProd);
-    //    db.SaveChanges();
-       
+    //var cliente = from d in db.Cliente where d.profile == id_login select d;
+    //List<IDEIBiblio.Models.Cliente> tempList = cliente.ToList();
+    //IDEIBiblio.Models.Cliente tmpClie = tempList.ElementAt(0);
     
-    //int teste;   
+
+    IDEIBiblio.Controllers.ClienteController ctrCliente = new IDEIBiblio.Controllers.ClienteController();
+    IDEIBiblio.Models.Cliente tmpClie = ctrCliente.ObterClienteAutenticado();
+    int nItemsCarrinho = tmpClie.carrinho.getNItemsCarrinho();
     <text>
         Olá, @Html.ActionLink(tmpClie.nome, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })
         <a href="/Carrinho/Edit/@tmpClie.carrinho.ID"><img src="~/Images/cart.png" width="15" height="15" /><span class="username">@nItemsCarrinho</span></a>

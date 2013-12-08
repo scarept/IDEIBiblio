@@ -82,10 +82,10 @@ namespace IDEIBiblio.Controllers
             {
                 return View(cliente);
             }
-                return View(cliente);
-            
-           
-            
+            return View(cliente);
+
+
+
         }
 
         //
@@ -143,6 +143,32 @@ namespace IDEIBiblio.Controllers
             return RedirectToAction("Index");
         }
 
+        //Retorna cliente autenticado no sistema
+        public Cliente ObterClienteAutenticado()
+        {
+            try
+                {
+                    int id_login;
+                    if (WebSecurity.Initialized)
+                    {
+                        id_login = WebSecurity.CurrentUserId;
+                    }
+                    else
+                    {
+                        WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                        id_login = WebSecurity.CurrentUserId;
+                    }
+                    var cliente = from d in db.Cliente where d.profile == id_login select d;
+                    List<IDEIBiblio.Models.Cliente> tempList = cliente.ToList();
+                    IDEIBiblio.Models.Cliente tmpClie = tempList.ElementAt(0);
+                    return tmpClie;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
