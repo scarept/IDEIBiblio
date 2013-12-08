@@ -1,13 +1,11 @@
-﻿@model IEnumerable<IDEIBiblio.Models.Revista>
+﻿@model IEnumerable<IDEIBiblio.Models.Livro>
 
 @{
-    ViewBag.Title = "Eliminar Revista";
+    ViewBag.Title = "Editar Livros";
 }
 
-<h2>Eliminar Revistas</h2>
-<div class="editor-label">
-    
-</div>
+<h2>Editar Livros</h2>
+
 <table>
     <tr>
         <th>
@@ -21,6 +19,15 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isbn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.publicação)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sinopse)
         </th>
         <th></th>
     </tr>
@@ -40,7 +47,19 @@
             @Html.DisplayFor(modelItem => item.categoria.nome)
         </td>
         <td>
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+            @Html.DisplayFor(modelItem => item.isbn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.publicação)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sinopse)
+        </td>
+        <td>
+            <img src="../@Html.DisplayFor(modelItem => item.path_img)" alt="Imagem" width="75" height="100"/></td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID })
         </td>
     </tr>

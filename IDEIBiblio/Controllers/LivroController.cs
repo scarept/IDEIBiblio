@@ -294,5 +294,47 @@ namespace IDEIBiblio.Controllers
             }
             
         }
+
+        public ActionResult ListarEliminar()
+        {
+
+            List<Livro> livros_list = new List<Livro>();
+            var produtos = db.produtos.ToList();
+            foreach (var p in produtos)
+            {
+                var entityType = ObjectContext.GetObjectType(p.GetType());
+                Livro l = new Livro();
+                if (entityType == ObjectContext.GetObjectType(l.GetType()))
+                {
+                    l = (Livro)p;
+                    livros_list.Add(l);
+                }
+
+            }
+            IEnumerable<Livro> ret_livros = livros_list;
+
+            return View(ret_livros);
+        }
+
+        public ActionResult ListarEditar()
+        {
+
+            List<Livro> livros_list = new List<Livro>();
+            var produtos = db.produtos.ToList();
+            foreach (var p in produtos)
+            {
+                var entityType = ObjectContext.GetObjectType(p.GetType());
+                Livro l = new Livro();
+                if (entityType == ObjectContext.GetObjectType(l.GetType()))
+                {
+                    l = (Livro)p;
+                    livros_list.Add(l);
+                }
+
+            }
+            IEnumerable<Livro> ret_livros = livros_list;
+
+            return View(ret_livros);
+        }
     }
 }
