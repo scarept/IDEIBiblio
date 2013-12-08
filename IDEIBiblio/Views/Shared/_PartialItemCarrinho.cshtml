@@ -1,15 +1,17 @@
 ﻿@model IDEIBiblio.Models.Item_Carrinho
-@using (Ajax.BeginForm("RemoverItem", "Carrinho", new AjaxOptions { UpdateTargetId = "formId" }))
-{
-    int idL = @Model.ID;
+@*@using (Ajax.BeginForm("RemoverItem", "Carrinho", new AjaxOptions { UpdateTargetId = "formId" }))
+{*@
+   
     <tr id="formId">
-        @Html.HiddenFor(model => idL)
-        @Html.HiddenFor(model => model.ID)
-        <td></td>@*<td><input type="submit" value="Eliminar" /></td>*@
+        @*@Html.HiddenFor(model => idL)
+        @Html.HiddenFor(model => model.ID)*@
+        <td>@Html.ActionLink("Eliminar", "RemoverItem/"+@Model.ID, "Carrinho")</td>
+
+        @*<td><a href="/Carrinho/RemoverItem/"+@Model.ID">Eliminar</a></td>*@
         <td>@Model.produto.ID</td>
         <td>@Model.produto.titulo</td>
         <td>@Model.qtd</td>
         <td>@Model.produto.preco</td>
     </tr>
-}
+@*}*@
 

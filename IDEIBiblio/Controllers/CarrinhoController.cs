@@ -146,21 +146,26 @@ namespace IDEIBiblio.Controllers
                 return RedirectToAction("Edit/"+tmpClie.carrinho.ID,"Carrinho");
         }
 
-        public ActionResult RemoverItem(FormCollection collection)
+        public ActionResult RemoverItem(int id)
         {
-            int idCarrinho = Convert.ToInt32(collection.Get("ID"));
-            int idItem = Convert.ToInt32(collection.Get("idL"));
-            Item_Carrinho item = db.items_carrinho.Find(idItem);
+            Item_Carrinho item = db.items_carrinho.Find(id);
             try
             {
                 db.items_carrinho.Remove(item);
                 db.SaveChanges();
-                return Redirect("/Carrinho/Edit/" + idCarrinho);
+                return RedirectToAction("Edit/"+id, "Carrinho");
             }
             catch
             {
-                return RedirectToAction("Edit/" + idCarrinho, "Carrinho");
+                return RedirectToAction("Edit/"+id, "Carrinho");
             }
+            
+            return null;
+        }
+        [HttpPost, ActionName("Bridge")]
+        public ActionResult Bridge(int id)
+        {
+            return Redirect("/Carrinho/Edit/"+id);
         }
 
         [HttpPost]

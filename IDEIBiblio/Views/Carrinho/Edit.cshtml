@@ -6,10 +6,13 @@
 
 <h2>Carrinho de compras</h2>
 
-@using (Html.BeginForm("Checkout/"+Model.ID,"Carrinho")) {
+@*@using (Html.BeginForm("Checkout/" + Model.ID, "Carrinho"))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.ID)*@
+
+
     <img src="~/Images/bar.png" width="1000" />
     <table width="1000">
         <tr>
@@ -40,7 +43,7 @@
         }
     </table>
 
-    if (Model.linhas.Count == 0)
+    @if (Model.linhas.Count == 0)
     {
         <p style="text-align:right;">
             <button type="button" disabled>CheckOut</button>
@@ -58,12 +61,18 @@
                 </tr>
             </table>
         
+         @(Html.BeginForm("Checkout/" + Model.ID, "Carrinho"))
+         {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.ID)
+
         
-        
-       <p style="text-align:right;">
+
+           <p style="text-align:right;">
            <input type="submit" value="Checkout" />
        </p> 
-    }
+}
     
     
         
