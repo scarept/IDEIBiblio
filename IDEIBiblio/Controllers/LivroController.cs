@@ -19,31 +19,31 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Livro/
-        [Authorize(Roles = "Cliente")]
-        public ActionResult Index()
-        {
+        
+        //public ActionResult Index()
+        //{
           
-           List<Livro> livros_list = new List<Livro>();
-           var produtos = db.produtos.ToList();
-           foreach (var p in produtos)
-           {
-              var entityType = ObjectContext.GetObjectType(p.GetType());
-              Livro l = new Livro();
-              if (entityType == ObjectContext.GetObjectType(l.GetType()))
-              {
-                  l = (Livro)p;
-                  livros_list.Add(l);
-              }
+        //   List<Livro> livros_list = new List<Livro>();
+        //   var produtos = db.produtos.ToList();
+        //   foreach (var p in produtos)
+        //   {
+        //      var entityType = ObjectContext.GetObjectType(p.GetType());
+        //      Livro l = new Livro();
+        //      if (entityType == ObjectContext.GetObjectType(l.GetType()))
+        //      {
+        //          l = (Livro)p;
+        //          livros_list.Add(l);
+        //      }
           
-           }
-           IEnumerable<Livro> ret_livros = livros_list;
+        //   }
+        //   IEnumerable<Livro> ret_livros = livros_list;
  
-          return View(ret_livros);
-        }
+        //  return View(ret_livros);
+        //}
 
         //
         // GET: /Livro/Details/5
-
+        [Authorize(Roles = "Gestor")]
         public ActionResult Details(int id = 0)
         {
             Livro livro = null;
@@ -61,7 +61,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Livro/Create
-        [Authorize]
+        [Authorize(Roles = "Gestor")]
         public ActionResult Create()
         {
             CategoriasDropDownList();
@@ -91,22 +91,18 @@ namespace IDEIBiblio.Controllers
                 
                 file.SaveAs(path);
                 livro.path_img = "Images/Livros/"+pic;
-                //// save the image path path to the database or you can send image 
-                //// directly to database
-                //// in-case if you want to store byte[] ie. for DB
-                //using (MemoryStream ms = new MemoryStream())
-                //{
-                //    file.InputStream.CopyTo(ms);
-                //    byte[] array = ms.GetBuffer();
-                //}
-
             }
-            
+            //Gestor_PController ctrGest = new Gestor_PController();
+            //Gestor_P gest = ctrGest.ObterGestor_PAutenticado();
+            ////livro.gestor_produto = gest;
+           
             if (ModelState.IsValid)
-            {                
+            {
                 db.produtos.Add(livro);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                db.SaveChanges();
+               
+                return RedirectToAction("Index","Home");
             }
             CategoriasDropDownList(livro.categoria);
             return View(livro);
@@ -114,7 +110,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Livro/Edit/5
-
+        [Authorize(Roles = "Gestor")]
         public ActionResult Edit(int id = 0)
         {
             Livro livro = (Livro)db.produtos.Find(id);
@@ -170,7 +166,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Livro/Delete/5
-
+        [Authorize(Roles = "Gestor,Administrador")]
         public ActionResult Delete(int id = 0)
         {
             Livro livro = (Livro)db.produtos.Find(id);
