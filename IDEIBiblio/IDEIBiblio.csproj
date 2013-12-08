@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -181,6 +184,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ClassesLog\ILogger.cs" />
+    <Compile Include="ClassesLog\Log.cs" />
+    <Compile Include="ClassesLog\LogUtility.cs" />
+    <Compile Include="ClassesLog\NLogLogger.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\CarrinhoController.cs" />
@@ -388,7 +395,12 @@
     <Content Include="Global.asax" />
     <Content Include="ClassDiagram1.cd" />
     <Content Include="ClassDiagram2.cd" />
+    <Content Include="NLog.config" />
+    <Content Include="ClienteController_Create.sequencediagram" />
+    <Content Include="ClienteController_Create_1.sequencediagram" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\403.jpg" />
+    <Content Include="Images\404.jpg" />
     <Content Include="Images\bar.png" />
     <Content Include="Images\DeleteRed.png" />
     <Content Include="Images\logo.png" />
@@ -512,28 +524,28 @@
     <Content Include="Views\Administrador\Edit.cshtml" />
     <Content Include="Views\Administrador\Delete.cshtml" />
     <Content Include="Views\Home\Widget.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Shared\_SugestionsPartial.cshtml" />
     <Content Include="Views\Home\_SugestionsPartial.cshtml" />
     <Content Include="Views\Shared\_PartialLinhaDoc.cshtml" />
-=======
-
-    <Content Include="Views\Shared\_SugestionsPartial.cshtml" />
-
-    <Content Include="Views\Home\_SugestionsPartial.cshtml" />
-    <Content Include="Views\Shared\_PartialLinhaDoc.cshtml" />
-
->>>>>>> ee7c8c2f69198b6898a817e437c33844aef2672b
     <Content Include="Views\Shared\_PartialItemCarrinho.cshtml" />
+    <Content Include="Views\Home\E404.cshtml" />
+    <Content Include="Views\Home\E403.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Livros\" />
+    <Folder Include="Logs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ClienteController_Create.sequencediagram.layout">
+      <DependentUpon>ClienteController_Create.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClienteController_Create_1.sequencediagram.layout">
+      <DependentUpon>ClienteController_Create_1.sequencediagram</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312032213546_initial.resx">
       <DependentUpon>201312032213546_initial.cs</DependentUpon>
     </EmbeddedResource>
