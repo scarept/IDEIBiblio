@@ -267,5 +267,35 @@ namespace IDEIBiblio.Controllers
             
             ViewBag.listaLivrosCategoria = lista;
         } 
+
+
+        //
+        // GET: /Livro/PesquisarISBN
+        public ActionResult PesquisarISBN()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Livro/PesquisarISBN
+        [HttpPost, ActionName("PesquisarISBN")]
+        [ValidateAntiForgeryToken]
+        public ActionResult PesquisarISBN(FormCollection collection)
+        {
+            try
+            {
+                //var query = from d in db.Livroes where d.isbn == id select d;
+                //List<IDEIBiblio.Models.Livro> lista = query.ToList();
+
+                //ViewBag.livros = lista;
+
+               return View();
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
+            
+        }
     }
 }

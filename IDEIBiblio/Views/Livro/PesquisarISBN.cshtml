@@ -5,3 +5,37 @@
 }
 
 <h2>PesquisarISBN</h2>
+
+
+
+
+@{
+    if (IsPost)
+    {
+
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+                <p>ISBN:</p> <input id="Text1" type="text" /> <input id="submit" type="submit" value="Pesquisar" />
+        }
+
+
+        List<IDEIBiblio.Models.Livro> test = new List<IDEIBiblio.Models.Livro>();
+        test = ViewBag.livros;
+        <table>
+            @foreach (IDEIBiblio.Models.Livro liv in test)
+            {
+                @Html.Partial("_ProdutoPartial", liv)
+            }
+        </table>
+    }
+    else
+    {
+            @Html.AntiForgeryToken();
+            using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken();
+                <p>ISBN:</p> <input id="Text1" type="text" /> <input id="submit" type="submit" value="Pesquisar" />
+            }
+        }
+}

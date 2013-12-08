@@ -184,11 +184,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+<<<<<<< HEAD
 
     <Compile Include="ClassesLog\Ilogger.cs" />
 
     <Compile Include="ClassesLog\ILogger.cs" />
 
+=======
+    <Compile Include="ClassesLog\Ilogger.cs" />
+    <Compile Include="ClassesLog\ILogger.cs" />
+>>>>>>> e77d7ecac47459aa26edb649e76a314d1e80de1f
     <Compile Include="ClassesLog\Log.cs" />
     <Compile Include="ClassesLog\LogUtility.cs" />
     <Compile Include="ClassesLog\NLogLogger.cs" />
@@ -397,13 +402,19 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="ClassDiagram1.cd" />
-    <Content Include="ClassDiagram2.cd" />
     <Content Include="NLog.config" />
+<<<<<<< HEAD
 
     <Content Include="ClienteController_Create.sequencediagram" />
     <Content Include="ClienteController_Create_1.sequencediagram" />
 
+=======
+    <Content Include="ClienteController_Create_1.sequencediagram" />
+    <Content Include="ClassDiagram1.cd" />
+    <Content Include="LivroController_Create.sequencediagram" />
+    <Content Include="ClienteController_Create.sequencediagram" />
+    <Content Include="ClienteController_Create_1.sequencediagram" />
+>>>>>>> e77d7ecac47459aa26edb649e76a314d1e80de1f
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\403.jpg" />
     <Content Include="Images\404.jpg" />
@@ -530,17 +541,24 @@
     <Content Include="Views\Administrador\Edit.cshtml" />
     <Content Include="Views\Administrador\Delete.cshtml" />
     <Content Include="Views\Home\Widget.cshtml" />
+<<<<<<< HEAD
 
     <Content Include="Views\Shared\_SugestionsPartial.cshtml" />
     <Content Include="Views\Home\_SugestionsPartial.cshtml" />
     <Content Include="Views\Shared\_PartialLinhaDoc.cshtml" />
 
+=======
+    <Content Include="Views\Shared\_SugestionsPartial.cshtml" />
+    <Content Include="Views\Home\_SugestionsPartial.cshtml" />
+    <Content Include="Views\Shared\_PartialLinhaDoc.cshtml" />1
+>>>>>>> e77d7ecac47459aa26edb649e76a314d1e80de1f
     <Content Include="Views\Shared\_SugestionsPartial.cshtml" />
     <Content Include="Views\Home\_SugestionsPartial.cshtml" />
     <Content Include="Views\Shared\_PartialLinhaDoc.cshtml" />
     <Content Include="Views\Shared\_PartialItemCarrinho.cshtml" />
     <Content Include="Views\Home\E404.cshtml" />
     <Content Include="Views\Home\E403.cshtml" />
+    <Content Include="Views\Livro\PesquisarISBN.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -551,11 +569,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ClienteController_Create.sequencediagram.layout">
-      <DependentUpon>ClienteController_Create.sequencediagram</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ClienteController_Create_1.sequencediagram.layout">
       <DependentUpon>ClienteController_Create_1.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LivroController_Create.sequencediagram.layout">
+      <DependentUpon>LivroController_Create.sequencediagram</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312032213546_initial.resx">
       <DependentUpon>201312032213546_initial.cs</DependentUpon>
