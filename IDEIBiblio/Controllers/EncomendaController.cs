@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using IDEIBiblio.Models;
 using IDEIBiblio.Dal;
+using IDEIBiblio.Comunications;
 
 namespace IDEIBiblio.Controllers
 {
@@ -16,7 +17,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Encomenda/
-
+         [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View(db.Encomendas.ToList());
@@ -24,17 +25,39 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Encomenda/Details/5
-
+        [Authorize(Roles = "Cliente,Administrador")]
         public ActionResult Details(int id = 0)
         {
             Encomenda encomenda = db.Encomendas.Find(id);
-            if (encomenda == null)
+            AccountController ctrAc = new AccountController();
+            string userType = ctrAc.GetUserType();
+            if (userType == "Cliente")
             {
-                return HttpNotFound();
+                ClienteController ctrCli = new ClienteController();
+                Cliente auth = ctrCli.ObterClienteAutenticado();
+                if (auth.ID != encomenda.cliente.ID)
+                {
+                    return RedirectToAction("Index", "Home");
+
+                }
+                if (encomenda == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(encomenda);
             }
-            return View(encomenda);
+            else
+            {
+                if (encomenda == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(encomenda);
+            }
+
         }
 
+        [Authorize(Roles = "Administrador")]
         public ActionResult Validar(int id = 0)
         {
             try
@@ -45,11 +68,12 @@ namespace IDEIBiblio.Controllers
                 compra.total = enco.Get_Total();
                 compra.cliente = enco.cliente;
                 compra.fatura = new Fatura(enco);
-
+                string mail = enco.cliente.email;
                 db.Compras.Add(compra);
                 db.Encomendas.Remove(enco);
                 db.SaveChanges();
-
+                MailController ctrMail = new MailController();
+                ctrMail.sendMail(mail, "Encomenda Processada", "A sua encomenda com o nº. " + enco.EncomendaID + " já foi processada.\n <a href=\"http://localhost:53958/Fatura/Details/" + compra.fatura.ID + "\">Fatura</a>");
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception e)
@@ -60,6 +84,7 @@ namespace IDEIBiblio.Controllers
 
         }
 
+        [Authorize(Roles = "Administrador")]
         public ActionResult Remover(int id = 0)
         {
             try{

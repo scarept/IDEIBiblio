@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using IDEIBiblio.Models;
 using IDEIBiblio.Dal;
 using WebMatrix.WebData;
+using IDEIBiblio.Filters;
+using System.Web.Security;
 
 namespace IDEIBiblio.Controllers
 {
@@ -17,7 +19,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Gestor_P/
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View(db.Gestores.ToList());
@@ -25,7 +27,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Gestor_P/Details/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int id = 0)
         {
             Gestor_P gestor_p = db.Gestores.Find(id);
@@ -38,7 +40,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Gestor_P/Create
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             return View();
@@ -49,21 +51,42 @@ namespace IDEIBiblio.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Gestor_P gestor_p)
+        [InitializeSimpleMembership]
+        public ActionResult Create(Gestor_P gestor, FormCollection collection)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Gestores.Add(gestor_p);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    RegisterModel reg_model_tmp = new RegisterModel();
+                    reg_model_tmp.UserName = collection.Get("reg_mod.UserName");
+                    reg_model_tmp.Password = collection.Get("reg_mod.Password");
+                    reg_model_tmp.ConfirmPassword = collection.Get("reg_mod.ConfirmPassword");
+                    WebSecurity.CreateUserAndAccount(reg_model_tmp.UserName, reg_model_tmp.Password);
+                    WebSecurity.GetUserId(reg_model_tmp.UserName);
+                    int id = WebSecurity.GetUserId(reg_model_tmp.UserName);
+                    gestor.profile = id;
+                    Roles.AddUserToRole(reg_model_tmp.UserName, "Gestor");
 
-            return View(gestor_p);
+                }
+                if (ModelState.IsValid)
+                {
+                    db.Gestores.Add(gestor);
+                    db.SaveChanges();
+                    return RedirectToAction("Index","Home");
+                }
+            }
+            catch (Exception e)
+            {
+                ClassesLog.Log.GetLogger().Error(e);
+                return View(gestor);
+            }
+            return View(gestor);
         }
 
         //
         // GET: /Gestor_P/Edit/5
-
+         [Authorize(Roles = "Gestor")]
         public ActionResult Edit(int id = 0)
         {
             Gestor_P gestor_p = db.Gestores.Find(id);
@@ -93,28 +116,28 @@ namespace IDEIBiblio.Controllers
         //
         // GET: /Gestor_P/Delete/5
 
-        public ActionResult Delete(int id = 0)
-        {
-            Gestor_P gestor_p = db.Gestores.Find(id);
-            if (gestor_p == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gestor_p);
-        }
+        //public ActionResult Delete(int id = 0)
+        //{
+        //    Gestor_P gestor_p = db.Gestores.Find(id);
+        //    if (gestor_p == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(gestor_p);
+        //}
 
         //
         // POST: /Gestor_P/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Gestor_P gestor_p = db.Gestores.Find(id);
-            db.Gestores.Remove(gestor_p);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Gestor_P gestor_p = db.Gestores.Find(id);
+        //    db.Gestores.Remove(gestor_p);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

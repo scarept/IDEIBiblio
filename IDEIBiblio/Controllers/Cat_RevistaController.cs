@@ -16,7 +16,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Cat_Revista/
-
+        [Authorize(Roles = "Administrador,Gestor")]
         public ActionResult Index()
         {
             return View(db.Categorias_Revistas.ToList());
@@ -25,19 +25,19 @@ namespace IDEIBiblio.Controllers
         //
         // GET: /Cat_Revista/Details/5
 
-        public ActionResult Details(int id = 0)
-        {
-            Cat_Revista cat_revista = db.Categorias_Revistas.Find(id);
-            if (cat_revista == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cat_revista);
-        }
+        //public ActionResult Details(int id = 0)
+        //{
+        //    Cat_Revista cat_revista = db.Categorias_Revistas.Find(id);
+        //    if (cat_revista == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(cat_revista);
+        //}
 
         //
         // GET: /Cat_Revista/Create
-
+        [Authorize(Roles = "Administrador,Gestor")]
         public ActionResult Create()
         {
             return View();
@@ -63,57 +63,57 @@ namespace IDEIBiblio.Controllers
         //
         // GET: /Cat_Revista/Edit/5
 
-        public ActionResult Edit(int id = 0)
-        {
-            Cat_Revista cat_revista = db.Categorias_Revistas.Find(id);
-            if (cat_revista == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cat_revista);
-        }
+        //public ActionResult Edit(int id = 0)
+        //{
+        //    Cat_Revista cat_revista = db.Categorias_Revistas.Find(id);
+        //    if (cat_revista == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(cat_revista);
+        //}
 
         //
         // POST: /Cat_Revista/Edit/5
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Cat_Revista cat_revista)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(cat_revista).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(cat_revista);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(Cat_Revista cat_revista)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(cat_revista).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(cat_revista);
+        //}
 
         //
         // GET: /Cat_Revista/Delete/5
 
-        public ActionResult Delete(int id = 0)
-        {
-            Cat_Revista cat_revista = db.Categorias_Revistas.Find(id);
-            if (cat_revista == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cat_revista);
-        }
+        //public ActionResult Delete(int id = 0)
+        //{
+        //    Cat_Revista cat_revista = db.Categorias_Revistas.Find(id);
+        //    if (cat_revista == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(cat_revista);
+        //}
 
         //
         // POST: /Cat_Revista/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Cat_Revista cat_revista = db.Categorias_Revistas.Find(id);
-            db.Categorias_Revistas.Remove(cat_revista);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Cat_Revista cat_revista = db.Categorias_Revistas.Find(id);
+        //    db.Categorias_Revistas.Remove(cat_revista);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

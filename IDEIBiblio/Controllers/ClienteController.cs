@@ -10,6 +10,7 @@ using IDEIBiblio.Dal;
 using System.Web.Security;
 using WebMatrix.WebData;
 using IDEIBiblio.Filters;
+using IDEIBiblio.Comunications;
 
 namespace IDEIBiblio.Controllers
 {
@@ -19,7 +20,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Cliente/
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View(db.Cliente.ToList());
@@ -27,7 +28,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Cliente/Details/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int id = 0)
         {
             Cliente cliente = db.Cliente.Find(id);
@@ -40,7 +41,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Cliente/Create
-
+        
         public ActionResult Create()
         {
             return View();
@@ -62,8 +63,7 @@ namespace IDEIBiblio.Controllers
                     reg_model_tmp.UserName = collection.Get("reg_mod.UserName");
                     reg_model_tmp.Password = collection.Get("reg_mod.Password");
                     reg_model_tmp.ConfirmPassword = collection.Get("reg_mod.ConfirmPassword");
-                    //AccountController act_ctr = new AccountController();
-                    //act_ctr.Register(reg_model_tmp);
+
                     WebSecurity.CreateUserAndAccount(reg_model_tmp.UserName, reg_model_tmp.Password);
                     WebSecurity.Login(reg_model_tmp.UserName, reg_model_tmp.Password);
                     int id = WebSecurity.GetUserId(reg_model_tmp.UserName);
@@ -75,7 +75,9 @@ namespace IDEIBiblio.Controllers
                 {
                     db.Cliente.Add(cliente);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    MailController ctrMail = new MailController();
+                    ctrMail.sendMail(cliente.email, "Registo Confirmado", "Obrigado pelo seu registo na nossa loja.\n Visite-nos e conheça as vantagens que temos para si ");
+                    return RedirectToAction("Index","Home");
                 }
             }
             catch (Exception e)
@@ -91,15 +93,21 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Cliente/Edit/5
-
+        [Authorize(Roles = "Cliente")]
         public ActionResult Edit(int id = 0)
         {
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
+            Cliente c = ObterClienteAutenticado();
+            if (c.ID != id)
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+            //Cliente cliente = db.Cliente.Find(id);
+            if (c == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(c);
         }
 
         //
@@ -113,7 +121,7 @@ namespace IDEIBiblio.Controllers
             {
                 db.Entry(cliente).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             return View(cliente);
         }
@@ -121,28 +129,28 @@ namespace IDEIBiblio.Controllers
         //
         // GET: /Cliente/Delete/5
 
-        public ActionResult Delete(int id = 0)
-        {
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cliente);
-        }
+        //public ActionResult Delete(int id = 0)
+        //{
+        //    Cliente cliente = db.Cliente.Find(id);
+        //    if (cliente == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(cliente);
+        //}
 
         //
         // POST: /Cliente/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Cliente cliente = db.Cliente.Find(id);
-            db.Cliente.Remove(cliente);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Cliente cliente = db.Cliente.Find(id);
+        //    db.Cliente.Remove(cliente);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         //Retorna cliente autenticado no sistema
         public Cliente ObterClienteAutenticado()

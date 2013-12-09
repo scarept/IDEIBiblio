@@ -19,28 +19,28 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Administrador/
-
-        public ActionResult Index()
-        {
-            return View(db.Administradors.ToList());
-        }
+        //[Authorize(Roles = "Administrador")]
+        //public ActionResult Index()
+        //{
+        //    return View(db.Administradors.ToList());
+        //}
 
         //
         // GET: /Administrador/Details/5
 
-        public ActionResult Details(int id = 0)
-        {
-            Administrador administrador = db.Administradors.Find(id);
-            if (administrador == null)
-            {
-                return HttpNotFound();
-            }
-            return View(administrador);
-        }
+        //public ActionResult Details(int id = 0)
+        //{
+        //    Administrador administrador = db.Administradors.Find(id);
+        //    if (administrador == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(administrador);
+        //}
 
         //
         // GET: /Administrador/Create
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             return View();
@@ -87,57 +87,57 @@ namespace IDEIBiblio.Controllers
         //
         // GET: /Administrador/Edit/5
 
-        public ActionResult Edit(int id = 0)
-        {
-            Administrador administrador = db.Administradors.Find(id);
-            if (administrador == null)
-            {
-                return HttpNotFound();
-            }
-            return View(administrador);
-        }
+        //public ActionResult Edit(int id = 0)
+        //{
+        //    Administrador administrador = db.Administradors.Find(id);
+        //    if (administrador == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(administrador);
+        //}
 
         //
         // POST: /Administrador/Edit/5
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Administrador administrador)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(administrador).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(administrador);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(Administrador administrador)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(administrador).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(administrador);
+        //}
 
         //
         // GET: /Administrador/Delete/5
 
-        public ActionResult Delete(int id = 0)
-        {
-            Administrador administrador = db.Administradors.Find(id);
-            if (administrador == null)
-            {
-                return HttpNotFound();
-            }
-            return View(administrador);
-        }
+        //public ActionResult Delete(int id = 0)
+        //{
+        //    Administrador administrador = db.Administradors.Find(id);
+        //    if (administrador == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(administrador);
+        //}
 
         //
         // POST: /Administrador/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Administrador administrador = db.Administradors.Find(id);
-            db.Administradors.Remove(administrador);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Administrador administrador = db.Administradors.Find(id);
+        //    db.Administradors.Remove(administrador);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         public Administrador ObterAdministradorAutenticado()
         {

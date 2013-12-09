@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using IDEIBiblio.Models;
 using IDEIBiblio.Dal;
 using WebMatrix.WebData;
+using IDEIBiblio.Comunications;
 
 namespace IDEIBiblio.Controllers
 {
@@ -63,9 +64,15 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Carrinho/Edit/5
-
+        [Authorize(Roles = "Cliente")]
         public ActionResult Edit(int id = 0)
         {
+            ClienteController ctrCli = new ClienteController();
+            Cliente auth = ctrCli.ObterClienteAutenticado();
+            if (auth.carrinho.ID != id)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             Carrinho carrinho = db.carrinhos.Find(id);
             if (carrinho == null)
             {
@@ -93,28 +100,28 @@ namespace IDEIBiblio.Controllers
         //
         // GET: /Carrinho/Delete/5
 
-        public ActionResult Delete(int id = 0)
-        {
-            Carrinho carrinho = db.carrinhos.Find(id);
-            if (carrinho == null)
-            {
-                return HttpNotFound();
-            }
-            return View(carrinho);
-        }
+        //public ActionResult Delete(int id = 0)
+        //{
+        //    Carrinho carrinho = db.carrinhos.Find(id);
+        //    if (carrinho == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(carrinho);
+        //}
 
         //
         // POST: /Carrinho/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Carrinho carrinho = db.carrinhos.Find(id);
-            db.carrinhos.Remove(carrinho);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Carrinho carrinho = db.carrinhos.Find(id);
+        //    db.carrinhos.Remove(carrinho);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
@@ -215,6 +222,9 @@ namespace IDEIBiblio.Controllers
                 db.Entry(tmpClie).State = EntityState.Modified;
                 db.Encomendas.Add(encomenda);
                 db.SaveChanges();
+                MailController ctrMail = new MailController();
+                
+                ctrMail.sendMail(db.Administradors.ToList().ElementAt(0).mail,"Nova Encomenda","Foi inserida uma nova encomenda no sistema. <a href=\"http://localhost:53958/Encomenda/Details/"+ encomenda.EncomendaID+ "\">Consulte</a>");
                 return RedirectToAction("Index","Home");
 
             }
