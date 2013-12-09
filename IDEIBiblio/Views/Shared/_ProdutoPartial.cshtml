@@ -2,15 +2,14 @@
 
 
 @using (Html.BeginForm("AddToCart", "Carrinho"))
-{
+    {
     @Html.HiddenFor(model => model.ID)
     IDEIBiblio.Models.ModelValidate validate = new IDEIBiblio.Models.ModelValidate();
        <tr>
     <table width="800">
         <tr>
             <td rowspan="2">
-            @try
-            {
+            @try{
                 IDEIBiblio.Models.Livro liv = (IDEIBiblio.Models.Livro)@Model;
                 <img src=../@liv.path_img alt="Imagem" width="75" height="100">
             }
@@ -20,7 +19,7 @@
                 <img src="~/Images/not-found.png" alt="Imagem" width="75" height="100" />
             }
             </td>
-            <td>
+            <td width="300">
                 <b>Titulo: </b>@Model.titulo
             </td>
             <td>
@@ -28,40 +27,32 @@
             </td>
 
             <td rowspan="2">
-                @{IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
-              string userType = aC.GetUserType();
-                }
-
-
-                @if (userType == "Cliente")
-                {
+                @if (Request.IsAuthenticated){
                     <input id="Add" type="submit" value="Add" />
-                }
-                else
-                {
+                }else{
+                    <button type="button" disabled>Add</button>
                 }
                 
             </td>
         </tr>
         <tr>
-            <td>
+            <td width="300">
                 <b>Editora: </b>@Model.editora
             </td>
-
-
-            @if (userType == "Cliente")
-            {
-                <td style="text-align:right">
-                    Quantidade:
-                    @Html.TextBoxFor(model => validate.inteiro)
-                </td>
-
-            }else{
-                <td>
-
-                </td>
-            }
-        
+            <td>Quantidade: 
+                @if (Request.IsAuthenticated){
+                @Html.TextBoxFor(model => validate.inteiro)
+                }
+                else
+                {
+                    <input type="text" name="lname" disabled />
+                }
+                
+            </td>
+        </tr>
+    </table>
+</tr> 
+    }
 
 
 
