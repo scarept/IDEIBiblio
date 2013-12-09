@@ -1,0 +1,40 @@
+﻿@model IEnumerable<IDEIBiblio.Models.Cliente>
+
+@{
+    ViewBag.Title = "Area Cliente";
+    IDEIBiblio.Controllers.ClienteController ctr = new IDEIBiblio.Controllers.ClienteController();
+    IDEIBiblio.Models.Cliente c = ctr.ObterClienteAutenticado();
+    string st = c.carrinho.ID + "";
+}
+
+<h2>Area do Cliente</h2>
+@{
+<table>
+    <tr>
+        <td>
+            <table width="100"><tr><td width="50"><a href="/Carrinho/Details/@st">IMAGEM</a></td><td width="50"><a href="/Carrinho/Details/@st">Carrinho</a></td></tr></table>
+        </td>
+    </tr>
+    <tr> 
+        <td>
+            <table width="100"><tr><td width="50"><a href="/Encomendas/Index">IMAGEM</a></td><td width="50"><a href="/Encomendas/Index">Encomendas</a></td></tr></table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table width="100"><tr><td width="50"><a href="/Compra/Index">IMAGEM</a></td><td width="50"><a href="/Compra/Index">Compras Efectuadas</a></td></tr></table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table width="100"><tr><td width="50"><a href="/Account/Manage">IMAGEM</a></td><td width="50"><a href="/Account/Manage">Mudar Password</a></td></tr></table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table width="100"><tr><td width="50"><a href="/Cliente/Edit/@c.ID">IMAGEM</a></td><td width="50"><a href="/Cliente/Edit/@c.ID">Editar Informações</a></td></tr></table>
+        </td>
+        
+    </tr>
+</table>
+    }
