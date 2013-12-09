@@ -17,9 +17,21 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Encomenda/
-         [Authorize(Roles = "Administrador")]
+         [Authorize(Roles = "Administrador,Cliente")]
         public ActionResult Index()
         {
+            AccountController ctrAc = new AccountController();
+            string userType = ctrAc.GetUserType();
+            if (userType == "Cliente")
+            {
+                ClienteController ctrCli = new ClienteController();
+                Cliente auth = ctrCli.ObterClienteAutenticado();
+                var encomendaQuery = from d in db.Encomendas
+                                  where d.cliente == auth
+                                  select d;
+                return View(encomendaQuery.ToList());
+            }
+                        
             return View(db.Encomendas.ToList());
         }
 
