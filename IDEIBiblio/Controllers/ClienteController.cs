@@ -184,5 +184,11 @@ namespace IDEIBiblio.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+
+        public ActionResult AreaCliente()
+        {
+            return View();
+        }
     }
 }

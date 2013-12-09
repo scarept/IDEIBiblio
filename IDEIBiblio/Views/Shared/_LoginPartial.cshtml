@@ -5,12 +5,13 @@
     <text>
         
         @if (userType == "Cliente")
-        {
+{
 
-            IDEIBiblio.Controllers.ClienteController ctrCliente = new IDEIBiblio.Controllers.ClienteController();
-            IDEIBiblio.Models.Cliente tmpClie = ctrCliente.ObterClienteAutenticado();
-            int nItemsCarrinho = tmpClie.carrinho.getNItemsCarrinho();
-            <span>Olá, @Html.ActionLink(tmpClie.nome, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</span>
+    IDEIBiblio.Controllers.ClienteController ctrCliente = new IDEIBiblio.Controllers.ClienteController();
+    IDEIBiblio.Models.Cliente tmpClie = ctrCliente.ObterClienteAutenticado();
+    int nItemsCarrinho = tmpClie.carrinho.getNItemsCarrinho();
+                <span>Olá, <a href="/Cliente/AreaCliente">@tmpClie.nome</a></span>
+                @*@Html.ActionLink(tmpClie.nome, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</span>*@
             <a href="/Carrinho/Edit/@tmpClie.carrinho.ID"><img src="~/Images/cart.png" width="15" height="15" /><span class="username">@nItemsCarrinho</span></a>
         }
         else if (userType == "Gestor")
