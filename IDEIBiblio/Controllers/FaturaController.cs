@@ -24,17 +24,39 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Fatura/Details/5
-
+        [Authorize(Roles="Cliente,Administrador")]
         public ActionResult Details(int id = 0)
         {
             Fatura fatura = db.Faturas.Find(id);
+            AccountController ctrAcc = new AccountController();
+            string userType = ctrAcc.GetUserType();
+            if (userType == "Cliente")
+            {
+                ClienteController ctrCli = new ClienteController();
+                Cliente auth = ctrCli.ObterClienteAutenticado();
+                var compraQuery = from d in db.Compras
+                                      where d.fatura.ID == fatura.ID
+                                      select d;
+                Compra compra = compraQuery.ToList().ElementAt(0);
+                if (auth.ID != compra.cliente.ID)
+                {
+                    return RedirectToAction("Index", "Home");
+
+                }
+                if (fatura == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(fatura);
+            }
+            
             if (fatura == null)
             {
                 return HttpNotFound();
             }
             return View(fatura);
         }
-
+        
         //
         // GET: /Fatura/Create
 
