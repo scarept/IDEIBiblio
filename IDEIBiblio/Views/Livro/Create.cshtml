@@ -3,7 +3,23 @@
 
 @{
     ViewBag.Title = "Inserir novo livro";
+    
 }
+
+var query = 'jquery';
+var URL = 'https://ajax.googleapis.com/ajax/services/search/books?v=1.0&q=' + query;
+
+$.ajax({
+    type: 'GET',
+    url: URL,
+    dataType: 'jsonp',
+    success: function( data, status ){
+        alert( data.responseData.results.length + ' results found!' );
+    },
+    error: function() {
+        alert( 'Something goes wrong!' );
+    }
+});
 
 <h2>Create</h2>
 
