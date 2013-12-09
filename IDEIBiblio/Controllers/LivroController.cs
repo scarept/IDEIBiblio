@@ -159,7 +159,7 @@ namespace IDEIBiblio.Controllers
             {
                 db.Entry(livro).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             return View(livro);
         }
@@ -276,11 +276,11 @@ namespace IDEIBiblio.Controllers
         // POST: /Livro/PesquisarISBN
         [HttpPost, ActionName("PesquisarISBN")]
         [ValidateAntiForgeryToken]
-        public ActionResult PesquisarISBN(string isbn)
+        public ActionResult PesquisarISBN(FormCollection collection)
         {
             try
             {
-                int id = Convert.ToInt32(isbn);
+                int id = Convert.ToInt32(collection.Get("isbn"));
                 var query = from d in db.Livroes where d.isbn == id select d;
                 List<IDEIBiblio.Models.Livro> lista = query.ToList();
 
@@ -336,5 +336,6 @@ namespace IDEIBiblio.Controllers
 
             return View(ret_livros);
         }
+
     }
 }
