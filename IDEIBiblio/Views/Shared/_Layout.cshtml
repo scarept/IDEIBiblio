@@ -2,9 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>IDEIBiblio</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
+        <link rel='stylesheet' type='text/css' href='/Content/styles.css' />
+        <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
@@ -12,15 +14,36 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
-                </div>
+                        @*<p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>*@
+                        <div id='cssmenu'>
+                            <ul>
+                                <li class='has-sub'><a href='index.html'><span>Home</span></a></li>
+                                <li class='has-sub'>
+                                    <a href='#'><span>Livro</span></a>
+                                    <ul>
+                                        <li><a href='#'><span>Todos</span></a></li>
+                                        <li><a href='#'><span>Por Categoria</span></a></li>
+                                        <li class='last'><a href='#'><span>Pesquisar ISBN</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class='has-sub'>
+                                    <a href='#'><span>Company</span></a>
+                                    <ul>
+                                        <li><a href='#'><span>About</span></a></li>
+                                        <li class='last'><a href='#'><span>Location</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class='last'><a href='#'><span>Contact</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
                 <div class="float-right">
                     <section id="login">
                         @Html.Partial("_LoginPartial")
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                             @*<li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                         </ul>
