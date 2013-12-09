@@ -35,30 +35,30 @@ namespace IDEIBiblio.Controllers
         //    return View(logistica);
         //}
 
-        //
-        // GET: /Logistica/Create
-        [Authorize(Roles = "Administrador")]
-        public ActionResult Create()
-        {
-            return View();
-        }
+        ////
+        //// GET: /Logistica/Create
+        //[Authorize(Roles = "Administrador")]
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        //
-        // POST: /Logistica/Create
+        ////
+        //// POST: /Logistica/Create
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Logistica logistica)
-        {
-            if (ModelState.IsValid)
-            {
-                db.logisticas.Add(logistica);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(Logistica logistica)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.logisticas.Add(logistica);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(logistica);
-        }
+        //    return View(logistica);
+        //}
 
         //
         // GET: /Logistica/Edit/5

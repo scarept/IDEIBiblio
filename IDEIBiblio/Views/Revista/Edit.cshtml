@@ -5,7 +5,7 @@
 }
 
 <h2>Editar dados de Revista</h2><p></p>
-
+<img src="~/Images/bar.png" width="1000"/>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -75,9 +75,7 @@
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

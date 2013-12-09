@@ -1,12 +1,12 @@
 ﻿@model IDEIBiblio.Models.Livro
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h2>Eliminar @Model.titulo</h2>
+<img src="~/Images/bar.png" width="1000"/>
+<h3>De certeza que este é o livro a eliminar?</h3>
 <fieldset>
     <legend>Livro</legend>
 
@@ -62,7 +62,6 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Delete" />
     </p>
 }

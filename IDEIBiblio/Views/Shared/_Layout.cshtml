@@ -15,28 +15,9 @@
             <div class="content-wrapper">
                 <div class="float-left">
                         @*<p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>*@
-                        <div id='cssmenu'>
-                            <ul>
-                                <li class='has-sub'><a href='index.html'><span>Home</span></a></li>
-                                <li class='has-sub'>
-                                    <a href='#'><span>Livro</span></a>
-                                    <ul>
-                                        <li><a href='#'><span>Todos</span></a></li>
-                                        <li><a href='#'><span>Por Categoria</span></a></li>
-                                        <li class='last'><a href='#'><span>Pesquisar ISBN</span></a></li>
-                                    </ul>
-                                </li>
-                                <li class='has-sub'>
-                                    <a href='#'><span>Company</span></a>
-                                    <ul>
-                                        <li><a href='#'><span>About</span></a></li>
-                                        <li class='last'><a href='#'><span>Location</span></a></li>
-                                    </ul>
-                                </li>
-                                <li class='last'><a href='#'><span>Contact</span></a></li>
-                            </ul>
-                        </div>
+                       @Html.Partial("_PartialMenuBar"); 
                     </div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                 <div class="float-right">
                     <section id="login">
                         @Html.Partial("_LoginPartial")

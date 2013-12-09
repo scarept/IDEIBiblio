@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<IDEIBiblio.Models.Cliente>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "";
 }
 
-<h2>Index</h2>
+<h2>Listagem de todos os clientes</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<img src="~/Images/bar.png" width="1000"/>
 <table>
     <tr>
         <th>
@@ -41,9 +39,7 @@
             @Html.DisplayFor(modelItem => item.telefone)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Details", "Details", new { id=item.ID })
         </td>
     </tr>
 }

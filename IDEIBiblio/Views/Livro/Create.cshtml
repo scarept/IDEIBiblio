@@ -6,23 +6,8 @@
     
 }
 
-var query = 'jquery';
-var URL = 'https://ajax.googleapis.com/ajax/services/search/books?v=1.0&q=' + query;
-
-$.ajax({
-    type: 'GET',
-    url: URL,
-    dataType: 'jsonp',
-    success: function( data, status ){
-        alert( data.responseData.results.length + ' results found!' );
-    },
-    error: function() {
-        alert( 'Something goes wrong!' );
-    }
-});
-
-<h2>Create</h2>
-
+<h2>Criar Livro</h2>
+<img src="~/Images/bar.png" width="1000"/>
 @using (Html.BeginForm("Create","Livro", FormMethod.Post, new { enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)

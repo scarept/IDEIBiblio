@@ -5,10 +5,18 @@
 }
 
 <h2>Listar Todas as Revistas</h2>
-
+<img src="~/Images/bar.png" width="1000"/>
 <table>
     @foreach (var item in Model)
     {
-        @Html.Partial("_ProdutoPartial", item)
+        IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
+            string userType = aC.GetUserType();
+            if (userType == "Cliente") { 
+                @Html.Partial("_ProdutoPartial", item)
+            }
+            else
+            {
+                @Html.Partial("_ProdutoPartialNonLogged", item)
+            }
     }
 </table>

@@ -5,7 +5,7 @@
 }
 
 <h2>Eliminar Revista</h2>
-
+<img src="~/Images/bar.png" width="1000"/>
 <h3>Tem a certeza que pretende eliminar esta revísta?</h3><p></p>
 <fieldset>
     <legend>Revista</legend>
@@ -57,7 +57,6 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Eliminar" /> |
-        @Html.ActionLink("Voltar", "Index")
+        <input type="submit" value="Eliminar" /> 
     </p>
 }

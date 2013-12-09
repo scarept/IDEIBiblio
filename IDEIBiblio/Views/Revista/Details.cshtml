@@ -2,10 +2,12 @@
 
 @{
     ViewBag.Title = "Detalhes de Revista";
+    IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
+    string userType = aC.GetUserType();
 }
 
 <h2>Detalhes de Revista</h2><p></p>
-
+<img src="~/Images/bar.png" width="1000"/>
 <fieldset>
     <legend>Revista</legend>
     <div class="display-label">
@@ -55,9 +57,10 @@
         @Html.DisplayFor(model => model.país)
     </div>
 
-
+    @if (userType != "Cliente")
+    {
+        <p>
+            <a href="/Revista/Edit/@Model.ID"><img src="~/Images/lapis.png" width="25" height="25" />Editar</a> | <a href="/Revista/Delete/@Model.ID"><img src="~/Images/deletebt.png" width="25" height="25" />Eliminar</a>
+        </p>
+    }
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

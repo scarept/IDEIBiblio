@@ -4,8 +4,8 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
+<h2>Editar @Model.titulo</h2>
+<img src="~/Images/bar.png" width="1000"/>
 @using (Html.BeginForm("Edit", "Livro", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -84,10 +84,6 @@
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

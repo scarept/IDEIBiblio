@@ -23,18 +23,18 @@ namespace IDEIBiblio.Controllers
             return View(db.Compras.ToList());
         }
 
-        //
-        // GET: /Compra/Details/5
-        [Authorize(Roles = "Administrador,Cliente")]
-        public ActionResult Details(int id = 0)
-        {
-            Compra compra = db.Compras.Find(id);
-            if (compra == null)
-            {
-                return HttpNotFound();
-            }
-            return View(compra);
-        }
+        ////
+        //// GET: /Compra/Details/5
+        //[Authorize(Roles = "Administrador,Cliente")]
+        //public ActionResult Details(int id = 0)
+        //{
+        //    Compra compra = db.Compras.Find(id);
+        //    if (compra == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(compra);
+        //}
 
         //
         // GET: /Compra/Create

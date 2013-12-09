@@ -7,7 +7,7 @@
 <h2>PesquisarISBN</h2>
 
 
-
+<img src="~/Images/bar.png" width="1000"/>
 
 @{
     if (IsPost)
@@ -25,9 +25,23 @@
         List<IDEIBiblio.Models.Livro> test = new List<IDEIBiblio.Models.Livro>();
         test = ViewBag.livros;
         <table>
-            @foreach (IDEIBiblio.Models.Livro liv in test)
+            @if (test.Count > 0) { 
+            foreach (IDEIBiblio.Models.Livro liv in test)
             {
+                IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
+                string userType = aC.GetUserType();
+                if (userType == "Cliente") { 
                 @Html.Partial("_ProdutoPartial", liv)
+                }
+                else
+                {
+                @Html.Partial("_ProdutoPartialNonLogged", liv)
+                }
+            }
+            }
+            else
+            {
+                <p>Não existe livro com esse ISBN</p>
             }
         </table>
     }

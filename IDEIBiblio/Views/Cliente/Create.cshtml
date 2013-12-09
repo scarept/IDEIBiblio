@@ -7,7 +7,7 @@
 }
 
 <h2>Registo de novo cliente</h2><p></p>
-
+<img src="~/Images/bar.png" width="1000"/>
 @using (Html.BeginForm("Create","Cliente")) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -101,10 +101,6 @@
         </p>
     </fieldset>
 }
-
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

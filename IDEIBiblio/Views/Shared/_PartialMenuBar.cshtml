@@ -1,0 +1,148 @@
+﻿@if (Request.IsAuthenticated)
+{
+    IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
+    string userType = aC.GetUserType();
+
+    <text>
+
+        @if (userType == "Cliente")
+        {
+            <div id='cssmenu'>
+                <ul>
+                <li class='has-sub'><a href='/Home/Index'><span>Home</span></a></li>
+                    <li class='has-sub'>
+                     <a href='#'><span>Livro</span></a>
+                    <ul>
+                <li><a href='/Livro/ListarTodos'><span>Todos</span></a></li>
+                <li><a href='/Livro/ListarCategoria'><span>Por Categoria</span></a></li>
+                <li><a href='/Livro/PesquisarISBN'><span>Pesquisar ISBN</span></a></li>
+                <li class='last'><a href='/Home/Widget'><span>Mais Info</span></a></li>
+            </ul>
+        </li>
+        <li class='has-sub'>
+            <a href='#'><span>Revista</span></a>
+            <ul>
+                <li><a href='/Revista/ListarTodos'><span>Todas</span></a></li>
+                <li class='last'><a href='/Revista/ListarCategoria'><span>Por Categoria</span></a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+            
+        }
+        else if (userType == "Gestor")
+        {
+            <div id='cssmenu'>
+                <ul>
+                <li class='has-sub'><a href='/Home/Index'><span>Home</span></a></li>
+                    <li class='has-sub'>
+                     <a href='#'><span>Livro</span></a>
+                    <ul>
+                <li><a href='/Livro/ListarTodos'><span>Todos</span></a></li>
+                <li><a href='/Livro/ListarCategoria'><span>Por Categoria</span></a></li>
+                <li><a href='/Livro/PesquisarISBN'><span>Pesquisar ISBN</span></a></li>
+                        <li><a href='/Home/Widget'><span>Mais Info</span></a></li>
+                <li><a href='/Livro/Create'><span>Inserir Livro</span></a></li>
+                        <li><a href='/Livro/ListarEditar'><span>Editar Livro</span></a></li>
+                        <li><a href='/Livro/ListarEliminar'><span>Remover Livro</span></a></li>
+                        <li class='last'><a href='/Cat_Livro/Create'><span>Inserir Categoria</span></a></li>
+                        <li class='last'><a href='/Cat_Livro/Index'><span>Listar Categoria</span></a></li>
+            </ul>
+        </li>
+        <li class='has-sub'>
+            <a href='#'><span>Revista</span></a>
+            <ul>
+                <li><a href='/Revista/ListarTodos'><span>Todas</span></a></li>
+                <li><a href='/Revista/ListarCategoria'><span>Por Categoria</span></a></li>
+                <li><a href='/Revista/Create'><span>Inserir Revista</span></a></li>
+                <li><a href='/Revista/ListarEditar'><span>Editar Revista</span></a></li>
+                <li><a href='/Revista/ListarEliminar'><span>Eliminar Revista</span></a></li>
+                <li><a href='/Cat_Revista/Create'><span>Criar Categoria</span></a></li>
+                <li class='last'><a href='/Cat_Revista/Index'><span>Listar Categoria</span></a></li>
+            </ul>
+        </li>
+    </ul>
+            </div>
+        }
+        else if (userType == "Administrador")
+        {
+            <div id='cssmenu'>
+                <ul>
+                <li class='has-sub'><a href='/Home/Index'><span>Home</span></a></li>
+                    <li class='has-sub'>
+                     <a href='#'><span>Livro</span></a>
+                    <ul>
+                <li><a href='/Livro/ListarTodos'><span>Todos</span></a></li>
+                <li><a href='/Livro/ListarCategoria'><span>Por Categoria</span></a></li>
+                <li><a href='/Livro/PesquisarISBN'><span>Pesquisar ISBN</span></a></li>
+                        <li><a href='/Home/Widget'><span>Mais Info</span></a></li>
+                <li><a href='/Livro/Create'><span>Inserir Livro</span></a></li>
+                        <li><a href='/Livro/ListarEditar'><span>Editar Livro</span></a></li>
+                        <li><a href='/Livro/ListarEliminar'><span>Remover Livro</span></a></li>
+                        <li class='last'><a href='/Cat_Livro/Create'><span>Inserir Categoria</span></a></li>
+                        <li class='last'><a href='/Cat_Livro/Index'><span>Listar Categoria</span></a></li>
+            </ul>
+        </li>
+        <li class='has-sub'>
+            <a href='#'><span>Revista</span></a>
+            <ul>
+                <li><a href='/Revista/ListarTodos'><span>Todas</span></a></li>
+                <li><a href='/Revista/ListarCategoria'><span>Por Categoria</span></a></li>
+                <li><a href='/Revista/Create'><span>Inserir Revista</span></a></li>
+                <li><a href='/Revista/ListarEditar'><span>Editar Revista</span></a></li>
+                <li><a href='/Revista/ListarEliminar'><span>Eliminar Revista</span></a></li>
+                <li><a href='/Cat_Revista/Create'><span>Criar Categoria</span></a></li>
+                <li class='last'><a href='/Cat_Revista/Index'><span>Listar Categoria</span></a></li>
+            </ul>
+        </li>
+                    <li class='has-sub'>
+                        <a href='#'><span>Administracao</span></a>
+                        <ul>
+                            <li><a href='/Gestor_P/Create'><span>Registar Gestor</span></a></li>
+                            <li><a href='/Administrador/Create'><span>Registar Administrador</span></a></li>
+                            <li><a href='/Cliente/Index'><span>Listar Clientes</span></a></li>
+                            <li><a href='/Encomenda/Index'><span>Validar Encomendas</span></a></li>
+                            <li><a href='/AnalisarMercados/Index'><span>Analisar Mercado</span></a></li>
+                            <li class='last'><a href='/Gestor_P/Index'><span>Listar Gestores</span></a></li>
+                        </ul>
+                    </li>
+    </ul>
+            </div>
+        }
+
+
+       
+    </text>
+}
+else
+{
+    <div id='cssmenu'>
+    <ul>
+        <li class='has-sub'><a href='/Home/Index'><span>Home</span></a></li>
+        <li class='has-sub'>
+            <a href='#'><span>Livro</span></a>
+            <ul>
+                <li><a href='#'><span>Todos</span></a></li>
+                <li><a href='#'><span>Por Categoria</span></a></li>
+                <li><a href='#'><span>Pesquisar ISBN</span></a></li>
+                <li class='last'><a href='#'><span>Mais Info</span></a></li>
+            </ul>
+        </li>
+        <li class='has-sub'>
+            <a href='#'><span>Revista</span></a>
+            <ul>
+                <li><a href='#'><span>Todas</span></a></li>
+                <li class='last'><a href='#'><span>Por Categoria</span></a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+}
+
+
+
+
+
+
+
+

@@ -2,10 +2,12 @@
 
 @{
     ViewBag.Title = "Detalhes de Livro";
+    IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
+    string userType = aC.GetUserType();
 }
 
-<h2>Detalhes de Livro</h2><p></p>
-
+<h2>Detalhes de @Model.titulo</h2>
+<img src="~/Images/bar.png" width="1000"/>
 <fieldset>
     <legend>Livro</legend>
     <table>
@@ -62,17 +64,11 @@
 
     </table>
    
-
-    @*<div class="display-label">
-         <b>@Html.DisplayNameFor(model => model.path_img)</b>
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.path_img)
-    </div>*@
-
-   
+    
+        @if (userType != "Cliente")
+        {
+            <p>
+                <a href="/Livro/Edit/@Model.ID"><img src="~/Images/lapis.png" width="25" height="25"/>Editar</a> | <a href="/Livro/Delete/@Model.ID"><img src="~/Images/deletebt.png" width="25" height="25" />Eliminar</a>
+            </p>
+        }
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

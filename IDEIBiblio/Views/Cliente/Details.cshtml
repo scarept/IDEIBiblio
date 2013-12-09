@@ -4,8 +4,8 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
+<h2>Detalhes do Cliente @Model.nome</h2>
+<img src="~/Images/bar.png" width="1000"/>
 <fieldset>
     <legend>Cliente</legend>
 
@@ -36,22 +36,5 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.telefone)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.username)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.username)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Password)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Password)
-    </div>
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

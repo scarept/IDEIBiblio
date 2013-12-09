@@ -5,6 +5,7 @@
 }
 
 <h2>Listar Revistas por Categoria</h2>
+<img src="~/Images/bar.png" width="1000"/>
 @{
     if (IsPost)
     {
@@ -25,7 +26,15 @@
         <table>
             @foreach (IDEIBiblio.Models.Revista liv in test)
             {
-                @Html.Partial("_ProdutoPartial", liv)
+                IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
+                string userType = aC.GetUserType();
+                if (userType == "Cliente") { 
+                    @Html.Partial("_ProdutoPartial", liv)
+                }
+                else
+                {
+                    @Html.Partial("_ProdutoPartialNonLogged", liv)
+                }
             }
         </table>
     }

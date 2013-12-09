@@ -28,7 +28,7 @@ namespace IDEIBiblio.Controllers
                 return RedirectToAction("Index", "Home");
             }
             
-            return View();
+            return View(p);
         }
 
     }
