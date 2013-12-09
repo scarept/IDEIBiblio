@@ -1,0 +1,15 @@
+diff a/IDEIBiblio/IDEIBiblio.csproj b/IDEIBiblio/IDEIBiblio.csproj	(rejected hunks)
+@@ -393,11 +393,10 @@
+     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+     <Content Include="favicon.ico" />
+     <Content Include="Global.asax" />
+-    <Content Include="ClassDiagram1.cd" />
+-    <Content Include="ClassDiagram2.cd" />
+     <Content Include="NLog.config" />
+-    <Content Include="ClienteController_Create.sequencediagram" />
+     <Content Include="ClienteController_Create_1.sequencediagram" />
++    <Content Include="ClassDiagram1.cd" />
++    <Content Include="LivroController_Create.sequencediagram" />
+     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+     <Content Include="Images\403.jpg" />
+     <Content Include="Images\404.jpg" />
