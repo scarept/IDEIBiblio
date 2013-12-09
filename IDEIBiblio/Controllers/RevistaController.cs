@@ -18,30 +18,30 @@ namespace IDEIBiblio.Controllers
         //
         // GET: /Revista/
 
-        public ActionResult Index()
-        {
+        //public ActionResult Index()
+        //{
             
             
-            List<Revista> revista_list = new List<Revista>();
-            var produtos = db.produtos.ToList();
-            foreach (var p in produtos)
-            {
-                var entityType = ObjectContext.GetObjectType(p.GetType());
-                Revista r = new Revista();
-                if (entityType == ObjectContext.GetObjectType(r.GetType()))
-                {
-                    r = (Revista)p;
-                    revista_list.Add(r);
-                }
+        //    List<Revista> revista_list = new List<Revista>();
+        //    var produtos = db.produtos.ToList();
+        //    foreach (var p in produtos)
+        //    {
+        //        var entityType = ObjectContext.GetObjectType(p.GetType());
+        //        Revista r = new Revista();
+        //        if (entityType == ObjectContext.GetObjectType(r.GetType()))
+        //        {
+        //            r = (Revista)p;
+        //            revista_list.Add(r);
+        //        }
 
-            }
-            IEnumerable<Revista> ret_revistas= revista_list;
-            return View(ret_revistas);
-        }
+        //    }
+        //    IEnumerable<Revista> ret_revistas= revista_list;
+        //    return View(ret_revistas);
+        //}
 
         //
         // GET: /Revista/Details/5
-
+        [Authorize(Roles = "Gestor")]
         public ActionResult Details(int id = 0)
         {
             Revista revista = null;
@@ -61,7 +61,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Revista/Create
-
+        [Authorize(Roles = "Gestor")]
         public ActionResult Create()
         {
             CategoriasDropDownList();
@@ -93,7 +93,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Revista/Edit/5
-
+        [Authorize(Roles = "Gestor")]
         public ActionResult Edit(int id = 0)
         {
             Revista revista = (Revista)db.produtos.Find(id);
@@ -130,7 +130,7 @@ namespace IDEIBiblio.Controllers
 
         //
         // GET: /Revista/Delete/5
-
+        [Authorize(Roles = "Gestor,Administrador")]
         public ActionResult Delete(int id = 0)
         {
             Revista revista = (Revista)db.produtos.Find(id);
@@ -220,7 +220,7 @@ namespace IDEIBiblio.Controllers
             IEnumerable<Revista> ret_revistas = revista_list;
             return View(ret_revistas);
         }
-
+        [Authorize(Roles = "Gestor,Administrador")]
         public ActionResult ListarEliminar()
         {
 
@@ -241,7 +241,7 @@ namespace IDEIBiblio.Controllers
             IEnumerable<Revista> ret_revistas = revista_list;
             return View(ret_revistas);
         }
-
+        [Authorize(Roles = "Gestor,Administrador")]
         public ActionResult ListarEditar()
         {
 

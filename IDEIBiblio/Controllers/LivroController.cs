@@ -294,7 +294,7 @@ namespace IDEIBiblio.Controllers
             }
             
         }
-
+        [Authorize(Roles = "Gestor,Administrador")]
         public ActionResult ListarEliminar()
         {
 
@@ -315,7 +315,7 @@ namespace IDEIBiblio.Controllers
 
             return View(ret_livros);
         }
-
+        [Authorize(Roles = "Gestor,Administrador")]
         public ActionResult ListarEditar()
         {
 
