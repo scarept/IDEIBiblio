@@ -2,14 +2,15 @@
 
 
 @using (Html.BeginForm("AddToCart", "Carrinho"))
-    {
+{
     @Html.HiddenFor(model => model.ID)
     IDEIBiblio.Models.ModelValidate validate = new IDEIBiblio.Models.ModelValidate();
        <tr>
     <table width="800">
         <tr>
             <td rowspan="2">
-            @try{
+            @try
+            {
                 IDEIBiblio.Models.Livro liv = (IDEIBiblio.Models.Livro)@Model;
                 <img src=../@liv.path_img alt="Imagem" width="75" height="100">
             }
@@ -27,10 +28,17 @@
             </td>
 
             <td rowspan="2">
-                @if (Request.IsAuthenticated){
+                @{IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
+              string userType = aC.GetUserType();
+                }
+
+
+                @if (userType == "Cliente")
+                {
                     <input id="Add" type="submit" value="Add" />
-                }else{
-                    <button type="button" disabled>Add</button>
+                }
+                else
+                {
                 }
                 
             </td>
@@ -39,20 +47,21 @@
             <td>
                 <b>Editora: </b>@Model.editora
             </td>
-            <td>Quantidade: 
-                @if (Request.IsAuthenticated){
-                @Html.TextBoxFor(model => validate.inteiro)
-                }
-                else
-                {
-                    <input type="text" name="lname" disabled />
-                }
-                
-            </td>
-        </tr>
-    </table>
-</tr> 
-    }
+
+
+            @if (userType == "Cliente")
+            {
+                <td style="text-align:right">
+                    Quantidade:
+                    @Html.TextBoxFor(model => validate.inteiro)
+                </td>
+
+            }else{
+                <td>
+
+                </td>
+            }
+        
 
 
 

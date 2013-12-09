@@ -6,17 +6,7 @@
 
     if (userType == "Cliente")
     {
-        <h3>Novidades:</h3>
-        foreach (var prod in @Model)
-        {
-            <li class="one">
-                <h4>@prod.titulo</h4>
-                <p>Editora: @prod.editora</p>
-                <p>Preço: @prod.preco €</p>
-                <p><img src=@prod.path_img alt="Imagem" width="75" height="100"></p>
-            </li>
-
-        }
+        @Html.Partial("_PartialNovidades")
         @Html.Partial("_SugestionsPartial")
     }
     else if (userType == "Gestor")
@@ -149,16 +139,7 @@
 }
 else
 {
-    <h3>Novidades:</h3>
-    foreach (var prod in @Model)
-    {
-        <li class="one">
-            <h4>@prod.titulo</h4>
-            <p>Editora: @prod.editora</p>
-            <p>Preço: @prod.preco €</p>
-            <p><img src=@prod.path_img alt="Imagem" width="75" height="100"></p>
-        </li>
-
-    }
+    
+    @Html.Partial("_PartialNovidades")
     @Html.Partial("_SugestionsPartial")
 }

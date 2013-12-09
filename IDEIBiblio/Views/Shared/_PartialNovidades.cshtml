@@ -1,27 +1,27 @@
 ﻿@{
 
-IDEIBiblio.Dal.DataContext db = new IDEIBiblio.Dal.DataContext();
+    IDEIBiblio.Dal.DataContext db = new IDEIBiblio.Dal.DataContext();
 
-List<IDEIBiblio.Models.Livro> allProds = db.Livroes.ToList();
-List<IDEIBiblio.Models.Livro> prod = new List<IDEIBiblio.Models.Livro>();
-if (allProds.Count() > 4)
-{
-   prod.Add(allProds.ElementAt(allProds.Count()-1));
-   prod.Add(allProds.ElementAt(allProds.Count() - 2));
-   prod.Add(allProds.ElementAt(allProds.Count() - 3));
-   prod.Add(allProds.ElementAt(allProds.Count() - 4));
-}
-else
-{
-   prod = allProds;
-}
-
-
-
-<h3>Novidades:</h3>
-foreach (var produt in prod)
+    List<IDEIBiblio.Models.Livro> allProds = db.Livroes.ToList();
+    List<IDEIBiblio.Models.Livro> prod = new List<IDEIBiblio.Models.Livro>();
+    if (allProds.Count() > 4)
     {
-    @Html.Partial("_ProdutoPartial", produt)
+        prod.Add(allProds.ElementAt(allProds.Count() - 1));
+        prod.Add(allProds.ElementAt(allProds.Count() - 2));
+        prod.Add(allProds.ElementAt(allProds.Count() - 3));
+        prod.Add(allProds.ElementAt(allProds.Count() - 4));
+    }
+    else
+    {
+        prod = allProds;
     }
 
+
+    <table width="800">
+        <h3>Novidades:</h3>
+        @foreach (var produt in prod)
+        {
+        @Html.Partial("_ProdutoPartial", produt)
+        }
+    </table>
 }
