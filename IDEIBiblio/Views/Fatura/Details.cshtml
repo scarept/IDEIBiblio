@@ -1,36 +1,122 @@
 ﻿@model IDEIBiblio.Models.Fatura
-
+@Html.AntiForgeryToken()
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes de Factura";
 }
 
-<h2>Details</h2>
+<h2>Detalhes de Factura</h2>
 
-<fieldset>
-    <legend>Fatura</legend>
+<h4>Factura @Model.ID</h4>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.data)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.data)
-    </div>
+@{
+    IDEIBiblio.Dal.DataContext db = new IDEIBiblio.Dal.DataContext();
+    var compraQuery = from d in db.Compras
+                      where d.fatura.ID == Model.ID
+                      select d;
+    IDEIBiblio.Models.Compra compra = compraQuery.ToList().ElementAt(0);
+}
+    <table width="1000">
+        <tr>
+            <td align="left"><img src="~/Images/newLogo.png" width="100" height="50" /></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td align="left">
+                <p>Empresa IDEIBiblio LDA</p>
+                <p>ZONA INDUSTRIAL DO PORTO</p>
+                <p>9999-999 PORTO</p>
+                <p>Tel: 123456789</p>
+            </td>
+            <td align="right">
+                <p>@compra.cliente.nome</p>
+                <p>@compra.cliente.morada.rua</p>
+                <p>Nº: @compra.cliente.morada.porta Andar: @compra.cliente.morada.andar</p>
+                <p>@compra.cliente.morada.cod_postal</p>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.vencimento)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.vencimento)
-    </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="left">
+                Contribuinte: 500500500<br />
+                Cap. Social: 2.500.000<br />
+            </td>
+            <td align="right">
+                Contribuinte nº @compra.cliente.nif
+            </td>
+        </tr>
+    </table>
+    <img src="~/Images/bar.png" width="1000" />
+    <table width="1000">
+        <tr>
+            <th>
+                <b>@Html.DisplayNameFor(model => model.ID)</b>
+            </th>
+            <th>
+                <b>@Html.DisplayNameFor(model => model.data)</b>
+            </th>
+            <th>
+                <b>@Html.DisplayNameFor(model => compra.cliente.ID)</b>
+            </th>
+            <th>
+                <b>@Html.DisplayNameFor(model => compra.cliente.nome)</b>
+            </th>
+            <th>
+                <b>@Html.DisplayNameFor(model => compra.cliente.nif)</b>
+            </th>
+        </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.portes)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.portes)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.data)
+            </td>
+            <td>
+                @Html.DisplayFor(model => compra.cliente.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(model => compra.cliente.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(model => compra.cliente.nif)
+            </td>
+        </tr>
+    </table>
+    <img src="~/Images/bar.png" width="1000" />
+    <table width="1000">
+        <tr>
+            <th>
+                Referencia
+            </th>
+            <th>
+                Descriçao
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Preço
+            </th>
+        </tr>
+        <tr>
+            <td colspan="5"><img src="~/Images/smallbar.png" width="1000" style="align-content:center;" /></td>
+        </tr>
+        @foreach (var item in Model.linha_fatura)
+        {
+            @Html.Partial("_PartialLinhaDoc2", item)
+        }
+    </table>
+    <img src="~/Images/bar.png" width="1000" />
+    <table width="1000">
+        <tr>
+            <td align="left">
+                
+                Vencimento: @Model.vencimento
+            </td>
+            <td align="right">
+                <p>Valor portes: @Model.portes €</p>
+                <p><b>Total encomenda: @compra.total €</b></p>
+            </td>
+        </tr>
+    </table>

@@ -19,6 +19,7 @@ namespace IDEIBiblio.Controllers
         [Authorize(Roles="Administrador,Cliente")]
         public ActionResult Index()
         {
+            IList<Compra> compras = db.Compras.ToList();
             return View(db.Compras.ToList());
         }
 

@@ -27,8 +27,9 @@ namespace IDEIBiblio.Controllers
                 ClienteController ctrCli = new ClienteController();
                 Cliente auth = ctrCli.ObterClienteAutenticado();
                 var encomendaQuery = from d in db.Encomendas
-                                  where d.cliente == auth
-                                  select d;
+                                  where d.cliente.ID == auth.ID
+                                     select d;
+                
                 return View(encomendaQuery.ToList());
             }
                         

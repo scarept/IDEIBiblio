@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<IDEIBiblio.Models.Compra>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Compras";
+    
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Lista de Compras</h2>
 <table>
     <tr>
         <th>
@@ -29,9 +26,7 @@
             @Html.DisplayFor(modelItem => item.total)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            <a href="/Fatura/Details/@item.ID">Detalhes</a>
         </td>
     </tr>
 }

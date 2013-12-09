@@ -11,8 +11,8 @@ namespace IDEIBiblio.Comunications
     {
         public void sendMail(string address, string subject, string message)
         {
-            string email = "marciomartins.it@gmail.com";
-            string password = "Marc1OMart1nS";
+            string email = "arqsiteste@gmail.com";
+            string password = "arqsi73s73";
 
             var loginInfo = new NetworkCredential(email, password);
             var msg = new MailMessage();
