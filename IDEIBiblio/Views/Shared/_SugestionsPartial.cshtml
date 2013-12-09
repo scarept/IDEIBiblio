@@ -68,8 +68,18 @@
         List<IDEIBiblio.Models.Livro> t = db.Livroes.ToList();
         if (t.Count > 1)
         {
-            @Html.Partial("_ProdutoPartial", t.ElementAt(t.Count - 1));
-            @Html.Partial("_ProdutoPartial", t.ElementAt(t.Count - 2));
+            IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
+            string userType = aC.GetUserType();
+            if (userType == "Cliente") { 
+                @Html.Partial("_ProdutoPartial", t.ElementAt(t.Count - 1));
+                @Html.Partial("_ProdutoPartial", t.ElementAt(t.Count - 2));
+            }
+            else
+            {
+                @Html.Partial("_ProdutoPartialNonLogged", t.ElementAt(t.Count - 1));
+                @Html.Partial("_ProdutoPartialNonLogged", t.ElementAt(t.Count - 2));
+            }
+            
         }
         else
         {

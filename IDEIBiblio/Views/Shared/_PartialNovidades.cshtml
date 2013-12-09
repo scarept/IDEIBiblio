@@ -21,7 +21,15 @@
         <h3>Novidades:</h3>
         @foreach (var produt in prod)
         {
-        @Html.Partial("_ProdutoPartial", produt)
+            IDEIBiblio.Controllers.AccountController aC = new IDEIBiblio.Controllers.AccountController();
+            string userType = aC.GetUserType();
+            if (userType == "Cliente") { 
+                @Html.Partial("_ProdutoPartial", produt)
+            }
+            else
+            {
+                @Html.Partial("_ProdutoPartialNonLogged", produt)
+            }
         }
     </table>
 }
